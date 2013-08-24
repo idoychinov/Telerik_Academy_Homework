@@ -1,0 +1,11 @@
+Popular programming languages:
+
+Java - is general pourpose, object-oriented programming language. It's main difference from C# is that it's architecture indipendent and programms writen in Java can run on wide range of devices and operating systems granted that they have instaled Java Runtime.
+
+Python - high-level programming language that emphasizes on code readability. It has more "forgiving" syntax than other languages and can also be used as scripting language.
+
+C++ - allows low-level programing that gives some advanced options to programmers, but has complex sintaxis and lacks some of the advanced futures that other languages and frameworks provide, like garbage colection
+
+PHP - scripting language used mainly for server-side web development.
+
+C# - modern programing language with clear syntaxis and easy to learn.

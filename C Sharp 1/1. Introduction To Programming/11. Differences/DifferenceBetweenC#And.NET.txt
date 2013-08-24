@@ -1,0 +1,2 @@
+C# is modern programming language used to create software applications.
+.NET is software framework containing libraries and allowing programs to be writen in several different programming languages including C#.
