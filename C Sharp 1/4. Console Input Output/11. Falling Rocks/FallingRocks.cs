@@ -17,7 +17,7 @@ class FallingRocks
     const int MaxLives = 5;
     const int MenuHeight = 6;
     const int RockFallScore = 20;
-    const int moveStep = 1;
+    const int MoveStep = 1;
     static readonly char[] enemySymbols = { '^', '@', '*', '&', '+', '%', '$', '#', '!', '.', ';', '-' };
     private static int score;
     private static int lives=MaxLives;
@@ -138,16 +138,16 @@ class FallingRocks
                 if (key.Key == ConsoleKey.LeftArrow)
                 {
                     ClearAtPositon(position+1, MaxHeight - 2, 1);
-                    position -= moveStep;
-                    if (position < 1)
+                    position -= MoveStep;
+                    if (position < 2)
                     {
-                        position = 1;
+                        position = 2;
                     }
                 }
                 else if (key.Key == ConsoleKey.RightArrow)
                 {
                     ClearAtPositon(position - 1, MaxHeight - 2, 1);
-                    position += moveStep;
+                    position += MoveStep;
                     if (position > MaxWidth - 3)
                     {
                         position = MaxWidth - 3;
