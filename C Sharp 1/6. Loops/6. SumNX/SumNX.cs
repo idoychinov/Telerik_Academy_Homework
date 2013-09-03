@@ -9,8 +9,8 @@ class SumNX
     static void Main()
     {
         uint N, X;
-        BigInteger factorielN = 1, productX = 1, result=1;
-
+        decimal factorielN = 1, productX = 1, result=1;
+        
         while (true)
         {
             MyIOClass.Input(out N, "Enter the number N: ");
@@ -31,7 +31,7 @@ class SumNX
        
 
         Console.WriteLine("The sum S is: {0}", result);
-
+        
     }
 }
 

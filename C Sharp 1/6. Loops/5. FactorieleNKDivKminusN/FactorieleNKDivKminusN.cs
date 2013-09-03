@@ -8,8 +8,8 @@ class FactorieleNKDivKminusN
 {
     static void Main()
     {
-        uint N, K,devider;
-        BigInteger factorielK = 1, factorielN = 1, factorielDevider=1;
+        ulong N, K,devider;
+        BigInteger factoriel=1;
 
         while (true)
         {
@@ -22,21 +22,20 @@ class FactorieleNKDivKminusN
             Console.WriteLine("\nThe numbers must be as follows (1<N<K)!\n");
         }
         devider = K - N;
-        for (int i = 2; i <= K; i++)
+        for (ulong i = 2; i <= K; i++)
         {
-            factorielK *= i;
             if (i <= N)
             {
-                factorielN *= i;
+                factoriel *= i;
             }
-            if (i <= devider)
+            if (i > devider)
             {
-                factorielDevider *= i;
+                factoriel *= i;
             }
         }
 
 
-        Console.WriteLine("(N!*K!)/(K-N)! is: {0}", ((factorielK * factorielN) / factorielDevider));
+        Console.WriteLine("(N!*K!)/(K-N)! is: {0:e} \nor {0}", factoriel);
 
     }
 }

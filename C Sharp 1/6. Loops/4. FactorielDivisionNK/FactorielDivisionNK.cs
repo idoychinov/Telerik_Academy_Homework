@@ -8,8 +8,8 @@ class FactorielDivisionNK
 {
     static void Main()
     {
-        uint N,K;
-        BigInteger factorielK=1,factorielN=1;
+        ulong N,K;
+        BigInteger factoriel=1;
 
         while (true)
         {
@@ -22,15 +22,13 @@ class FactorielDivisionNK
             Console.WriteLine("\nThe numbers must be as follows (1<K<N)!\n");
         }
 
-        for (int i = 2; i <= N; i++)
+        for (ulong i = K+1; i <= N; i++)
 		{
-            if (i <= K)
-            {
-                factorielK *= (BigInteger)i;
-            }
-            factorielN *= (BigInteger)i;
+
+            factoriel *= (BigInteger)i;
+            
 		}
-        Console.WriteLine("N!/K! is: {0}", factorielN/factorielK);
+        Console.WriteLine("N!/K! is: {0:e} \nor : {0}", factoriel);
         
     }
 }
