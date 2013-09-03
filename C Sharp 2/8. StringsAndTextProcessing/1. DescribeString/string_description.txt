@@ -1,0 +1,19 @@
+Strings in C# are objects of type String whose value is text. They are stored as a sequence of read-only collection of char objects.
+C# strings are not null terminated so they can have null characters in them. Strings are used in most if not all user interactions since all the text output is in string format. 
+String have fixed lenght and their elements can be accessed by index the same as arrays.
+String is reference type and is stored in the dynamic memory.
+Strings use Unicode in order to support multiple alphabets.
+
+The most important methods of the String type are:
+
+Compare - compares two strings Lexicographicly. Can be used for both case sensitive and insensitive comparison
+IndexOf - finds the index of char or string value within the string
+Trim - returns string with removed withspaces
+Remove - returns string with removed characters
+Split - spilts the string in array of strings
+Substring - returns substring by given parameters
+ToCharArray - returns array of chars containing all the symbols in the string
+ToUpper - makes all letters upper case
+ToLower - makes all letters lower case
+Concat - concatenates two strings
+Format - returns formated string based on parameters

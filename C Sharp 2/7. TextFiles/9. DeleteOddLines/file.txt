@@ -1,0 +1,12 @@
+1odd
+2even
+3odd
+4even
+5odd
+6even
+7odd
+8even
+9odd
+10even
+11odd
+12even

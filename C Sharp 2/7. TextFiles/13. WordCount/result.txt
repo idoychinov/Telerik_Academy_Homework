@@ -1,0 +1,4 @@
+the : 6 occurencess
+words : 4 occurencess
+file : 3 occurencess
+program : 1 occurencess
