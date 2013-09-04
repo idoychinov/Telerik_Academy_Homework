@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{49C07A7B-2725-4493-A3BB-AAB297CBAD8A}</ProjectGuid>
+    <ProjectGuid>{6F0F8C0D-E1B3-4AC6-8303-C629E1B4E9E0}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_1.PrintMatrix</RootNamespace>
-    <AssemblyName>_1.PrintMatrix</AssemblyName>
+    <RootNamespace>_7.LargestArea</RootNamespace>
+    <AssemblyName>_7.LargestArea</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PrintMatrix.cs" />
+    <Compile Include="LargestArea.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

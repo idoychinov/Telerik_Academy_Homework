@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. ArrayOfStrings", "5. Arr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6. Matrix", "6. Matrix\6. Matrix.csproj", "{47361668-38C7-4496-B8B0-3D2A680053CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7. LargestArea", "7. LargestArea\7. LargestArea.csproj", "{6F0F8C0D-E1B3-4AC6-8303-C629E1B4E9E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{47361668-38C7-4496-B8B0-3D2A680053CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47361668-38C7-4496-B8B0-3D2A680053CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47361668-38C7-4496-B8B0-3D2A680053CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F0F8C0D-E1B3-4AC6-8303-C629E1B4E9E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F0F8C0D-E1B3-4AC6-8303-C629E1B4E9E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F0F8C0D-E1B3-4AC6-8303-C629E1B4E9E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F0F8C0D-E1B3-4AC6-8303-C629E1B4E9E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

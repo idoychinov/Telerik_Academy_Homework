@@ -3,7 +3,7 @@
 
 using System;
 
-class Program
+class PrintMatrix
 {
     static void FillMatrix(int[,] mat, char mode)
     {

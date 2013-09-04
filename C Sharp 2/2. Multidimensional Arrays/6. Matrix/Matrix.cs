@@ -1,4 +1,5 @@
-﻿/* Problem 6. * Write a class Matrix, to holds a matrix of integers. Overload the operators for adding, subtracting and multiplying of matrices, indexer for accessing the matrix content and ToString().
+﻿/* Problem 6. * Write a class Matrix, to holds a matrix of integers. Overload the operators for adding, subtracting and multiplying of matrices,
+ * indexer for accessing the matrix content and ToString().
 */
 
 using System;
@@ -115,7 +116,8 @@ class Matrix
         matrix1.values = new int[,] {
         { 5, -4, 3 }, 
         { 2, 7, -1 }, 
-        { 0, 1, 4 } };
+        { 0, 1, 4 },
+        };
 
         matrix2.values = new int[,] {
         { 2, 4, 1 }, 
@@ -134,9 +136,10 @@ class Matrix
         while (true)
         {
             Console.WriteLine("Select by pressing the apropriate key on the keyboard");
-            Console.WriteLine("1- Add matrixes");
-            Console.WriteLine("2- Substract matrixes");
-            Console.WriteLine("3- Multiplicate matrixes");
+            Console.WriteLine("1 - Add matrices");
+            Console.WriteLine("2 - Substract matrices");
+            Console.WriteLine("3 - Multiplicate matrices");
+            Console.WriteLine("4 - Index matrix");
             Console.WriteLine("e- Exit");
             Console.WriteLine("Chose operation:");
             ConsoleKeyInfo key = Console.ReadKey();
@@ -155,6 +158,10 @@ class Matrix
                 case ConsoleKey.NumPad3:
                     Multiplication(matrix3, matrix4);
                     break;
+                case ConsoleKey.D4:
+                case ConsoleKey.NumPad4:
+                    Index(matrix1);
+                    break;
                 case ConsoleKey.E:
                     return;
             }
@@ -171,7 +178,14 @@ class Matrix
         Console.WriteLine("\n     +\n");
         Console.WriteLine(matrix2.ToString());
         Console.WriteLine("\n     =\n");
-        Console.WriteLine((matrix1 + matrix2).ToString());
+        try
+        {
+            Console.WriteLine((matrix1 + matrix2).ToString());
+        }
+        catch (InvalidOperationException ie)
+        {
+            Console.WriteLine("Error" + ie.Message);
+        }
     }
 
     static void Substract(Matrix matrix1, Matrix matrix2)
@@ -181,7 +195,14 @@ class Matrix
         Console.WriteLine("\n     -\n");
         Console.WriteLine(matrix2.ToString());
         Console.WriteLine("\n     =\n");
-        Console.WriteLine((matrix1 - matrix2).ToString());
+        try
+        {
+            Console.WriteLine((matrix1 - matrix2).ToString());
+        }
+        catch(InvalidOperationException ie)
+        {
+            Console.WriteLine("Error" + ie.Message);
+        }
     }
 
     static void Multiplication(Matrix matrix1, Matrix matrix2)
@@ -191,7 +212,43 @@ class Matrix
         Console.WriteLine("\n     *\n");
         Console.WriteLine(matrix2.ToString());
         Console.WriteLine("\n     =\n");
-        Console.WriteLine((matrix1 * matrix2).ToString());
+        try
+        {
+            Console.WriteLine((matrix1 * matrix2).ToString());
+        }
+        catch (InvalidOperationException ie)
+        {
+            Console.WriteLine("Error" + ie.Message);
+        }
+    }
+
+    static void Index(Matrix matrix)
+    {
+        int row, col;
+        try
+        {
+            Console.Write("Enter Row: ");
+            row = int.Parse(Console.ReadLine());
+            Console.Write("Enter Col: ");
+            col = int.Parse(Console.ReadLine());
+            Console.WriteLine("The element at index [{0},{1}] is ", row, col, matrix[row, col]);
+        }
+        catch (IndexOutOfRangeException ie)
+        {
+            Console.WriteLine("Error"+ie.Message);
+        }
+        catch (FormatException fe)
+        {
+            Console.WriteLine("Error" + fe.Message);
+        }
+        catch (ArgumentNullException ae)
+        {
+            Console.WriteLine("Error" + ae.Message);
+        }
+        catch (OverflowException oe)
+        {
+            Console.WriteLine("Error" + oe.Message);
+        }
     }
 }
 
