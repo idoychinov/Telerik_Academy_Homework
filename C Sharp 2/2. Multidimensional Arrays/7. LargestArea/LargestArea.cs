@@ -5,6 +5,10 @@
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// UNFINISHED
+/// </summary>
+
 class LargestArea
 {
     static void Main()
@@ -27,19 +31,22 @@ class LargestArea
             Console.WriteLine();
         }
 
-        bool[, ,] visited = new bool[N, K, 3];  // the last dimension is used for , all visited  , temp path, final path
-        int path = 0;
-        int currentPath = 0;
+        bool[, ] visited = new bool[N, K];  
+        bool[,] finalPath = new bool[N, K];
+        int pathLength = 0;
+        int currentPathLength = 0;
         for (int i = 0; i < N; i++)
         {
             for (int j = 0; j < K; j++)
             {
-                if (!visited[i, j, 0])
+                if (!visited[i, j])
                 {
-                    currentPath = FindPath(mat, visited, i, j);
-                    if (currentPath > path)
+                    bool[,] currentPath = new bool[N, K];
+                    currentPathLength = FindPath(mat, visited,currentPath, i, j);
+                    if (currentPathLength > pathLength)
                     {
-                        path = currentPath;
+                        pathLength = currentPathLength;
+                        finalPath = new bool[,](currentPath.Clone());
                     }
                 }
 
@@ -50,7 +57,7 @@ class LargestArea
         {
             for (int j = 0; j < K; j++)
             {
-                if (visited[i, j, 1])
+                if (finalPath[i, j])
                 {
                     Console.BackgroundColor = ConsoleColor.Gray;
                 }
@@ -66,7 +73,7 @@ class LargestArea
 
     }
 
-    private static int FindPath(int[,] mat, bool[, ,] visited, int i, int j)
+    private static int FindPath(int[,] mat, bool[,] visited,bool [,] currentPath, int i, int j) // add direction, depending on direction recursivly call find path until all paths are exausted
     {
         throw new NotImplementedException();
     }
