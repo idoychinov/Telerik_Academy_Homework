@@ -63,6 +63,29 @@ namespace P04ConsoleJustification
             }
             if (currentRow.Length>1)
             {
+                if (currentRow[currentRow.Length - 1] == ' ')
+                {
+                    currentRow.Remove(currentRow.Length - 1, 1);
+                }
+                int index = 0;
+                while (currentRow.Length < W)
+                {
+                    index = currentRow.ToString().IndexOf(' ', index);
+                    if (index < 0)
+                    {
+                        index = currentRow.ToString().IndexOf(' ', 0);
+                    }
+                    while (currentRow[index + 1] == ' ')
+                    {
+                        index++;
+                    }
+                    if (index < 0 || index > W)
+                    {
+                        break;
+                    }
+                    currentRow.Insert(index, ' ');
+                    index += 2;
+                }
                 output.Add(currentRow.ToString().Trim());
             }
             PrintLines(output);
