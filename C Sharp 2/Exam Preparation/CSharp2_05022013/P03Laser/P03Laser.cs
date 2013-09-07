@@ -60,6 +60,7 @@ namespace P03Laser
 
             public bool Traverse(Laser laser)
             {
+
                 int moveX = laser.Width + laser.VectorX;
                 int moveY = laser.Height + laser.VectorY;
                 int moveZ = laser.Depth + laser.VectorZ;
@@ -73,15 +74,6 @@ namespace P03Laser
                 }
                 else
                 {
-                    if (this.Outside(moveX, moveY, moveZ))
-                    {
-                        this.CubeState(laser.Width, laser.Height, laser.Depth, true);
-                        laser.Width = moveX;
-                        laser.Height = moveY;
-                        laser.Depth = moveZ;
-                        Reflect(laser);
-                        return true;
-                    }
                     laser.Width = moveX;
                     laser.Height = moveY;
                     laser.Depth = moveZ;
@@ -89,32 +81,22 @@ namespace P03Laser
                     return true;
                 }
                 
-            }
+            }         
 
-            private void Reflect(Laser laser)
+            internal void CheckReflect(Laser laser)
             {
-                if ((laser.Width == this.width - 1)  || (laser.Width== 0))
+                if ((laser.Width + laser.VectorX > this.width - 1) || (laser.Width + laser.VectorX < 0))
                 {
                     laser.VectorX = laser.VectorX * (-1);
                 }
-                else if ((laser.Height== this.height - 1) || (laser.Height == 0))
+                else if ((laser.Height + laser.VectorY > this.height - 1) || (laser.Height + laser.VectorY < 0))
                 {
                     laser.VectorY = laser.VectorY * (-1);
                 }
-                else if ((laser.Depth == this.depth - 1) || (laser.Depth == 0))
+                else if ((laser.Depth + laser.VectorZ > this.depth - 1) || (laser.Depth + laser.VectorZ < 0))
                 {
                     laser.VectorZ = laser.VectorZ * (-1);
                 }
-
-            }
-
-            private bool Outside(int w, int h, int d)
-            {
-                if (w < 1 || w > this.width-1 || h < 1 || h > this.height-1 || d < 1 || d > this.depth-1)
-                {
-                    return true;
-                }
-                return false;
             }
         }
 
@@ -148,6 +130,7 @@ namespace P03Laser
             cube.CubeState(laser.Width, laser.Height, laser.Depth, true);
             while (cube.Traverse(laser))
             {
+                cube.CheckReflect(laser);
             }
             Console.WriteLine("{0} {1} {2}", laser.Width + 1, laser.Height + 1, laser.Depth + 1);
         }

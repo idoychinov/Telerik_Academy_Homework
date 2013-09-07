@@ -21,59 +21,76 @@ namespace P05TwoIsBetterThanOne
                 list[i] = int.Parse(input2[i]);
             }
             Console.WriteLine(PalindromeCount(A, B));
-            //Console.WriteLine(FindE(list,percentile));
+            Console.WriteLine(FindE(list,percentile));
         }
 
         private static int FindE(int[] list, int percentile)
         {
             
             Array.Sort(list);
-            if (percentile == 0)
+            for (int i = 0; i < list.Length; i++)
             {
-                return list[0];
+                int count = 0;
+                for (int j = 0; j < list.Length; j++)
+                {
+                    if (list[i] >= list[j])
+                    {
+                        count++;
+                    }
+                }
+                if(count>=list.Length*(percentile/100.0))
+                {
+                    return list[i];
+                }
             }
-            int element = (int)((list.Length / 100d )*percentile);
-            if (element >= list.Length)
-            {
-                element = list.Length - 1;
-            }
-            return list[element];
+            return list[list.Length-1];
         }
 
         private static int PalindromeCount(long A, long B)
         {
             int count = 0;
-            for (long i = A; i <= B; i++)
+            int left = 0;
+
+            var numbers = new List<long> { 3, 5 };
+            while (left < numbers.Count)
             {
-                string  number = i.ToString();
-                for (int j = 0; j <= number.Length/ 2; j++)
+                int right = numbers.Count;
+                for (int i = left; i < right; i++)
                 {
-                    if (number[j] != '5' && number[j] != '3')
+                    if (numbers[i] < B)
                     {
-                        break;
+                        long temp;
+                        temp = (numbers[i] * 10) + 3;
+                        numbers.Add(temp);
+                        temp = (numbers[i] * 10) + 5;
+                        numbers.Add(temp);
+                        
                     }
-                    else
-                    {
-                        if (number[j] != number[number.Length - 1 - j])
-                        {
-                            break;
-                        }
-                        else
+                }
+                left = right;
+            }
+            foreach (var item in numbers)
+            {
+                if (item >= A && item<=B && IsPalindrome(item))
                         {
                             count++;
                         }
-                    }
-                }
-                //char[] array = i.ToString().ToCharArray();
-                //Array.Reverse(array);
-                //string normal = i.ToString();
-                //string reverce = new string(array);
-                //if (String.Compare(normal, reverce) == 0)
-                //{
-                //    count++;
-                //}
             }
             return count;
+        }
+
+        static bool IsPalindrome(long input)
+        {
+            string number = input.ToString();
+            for (int i = 0; i < number.Length/2; i++)
+            {
+                if (number[i] != number[number.Length - 1 - i])
+                        {
+                            return false;
+                        }
+                        
+            }
+            return true;
         }
     }
 }

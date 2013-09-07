@@ -25,51 +25,35 @@ namespace P02JoroTheRabbit
 
         static int TryAllPaths()
         {
-            int maxJumps = int.MinValue;
-            for (int i = 0; i < terrain.Length; i++)
+            int bestPath = 0;
+            for (int startIndex = 0; startIndex < terrain.Length; startIndex++)
             {
-                int currentJumps = TryAllSteps(i);
-                if (currentJumps > maxJumps)
+                for (int step = 1; step < terrain.Length; step++)
                 {
-                    maxJumps = currentJumps;
+                    int index = startIndex;
+                    int path=1;
+                    int next = (index + step);
+                    if (next >= terrain.Length)
+                    {
+                        next = (index + step) % terrain.Length;
+                    }
+                    while(terrain[index]<terrain[next])
+                    {
+                        path++;
+                        index = next;
+                        next = (index + step);
+                        if (next >= terrain.Length)
+                        {
+                            next = (index + step) % terrain.Length;
+                        }
+                    }
+                    if (path > bestPath)
+                    {
+                        bestPath = path;
+                    }
                 }
             }
-            return maxJumps;
-        }
-
-        private static int TryAllSteps(int startPosition)
-        {
-            int maxJumps = int.MinValue;
-            for (int i = 1; i < terrain.Length; i++)
-            {
-                int currentJumps = TryStep(startPosition,i);
-                if (currentJumps > maxJumps)
-                {
-                    maxJumps = currentJumps;
-                }
-            }
-            return maxJumps;
-        }
-
-        private static int TryStep(int startPosition, int step)
-        {
-            bool[] visited = new bool[terrain.Length];
-            int jumps = 0;
-            int currentPosition = startPosition;
-            int value = int.MinValue;
-            while (!visited[currentPosition])
-            {
-                if (terrain[currentPosition] <= value)
-                {
-                    break;
-                }
-                value = terrain[currentPosition];
-                jumps++;
-                visited[currentPosition] = true;
-                currentPosition = (currentPosition + step) % terrain.Length;
-
-            }
-            return jumps;
+            return bestPath;
         }
     }
 }
