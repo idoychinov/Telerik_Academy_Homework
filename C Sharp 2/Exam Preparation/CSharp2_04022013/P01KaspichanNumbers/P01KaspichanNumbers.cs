@@ -50,9 +50,5 @@ namespace P01KaspichanNumbers
             return output.ToString();
         }
 
-        //static string[] parseNumber(string input, string[] systemDigintsList)
-        //{
-        //    return systemDigintsList;
-        //}
     }
 }
