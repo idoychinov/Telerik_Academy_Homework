@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace P04FTML
 {
+    /// <summary>
+    /// UNFINISHED 60/100
+    /// </summary>
     class P04FTML
     {
         static string[] allTags = { "<upper>", "<lower>", "<toggle>", "<del>", "<rev>", "</upper>", "</lower>", "</toggle>", "</del>", "</rev>" };
