@@ -1,0 +1,10 @@
+Pesho 1000
+Gosho 900
+Tosho 800
+Misho 700
+Sasho 600
+Grisho 500
+Masha 400
+Sasha 300
+Just 270
+Chasha 200
