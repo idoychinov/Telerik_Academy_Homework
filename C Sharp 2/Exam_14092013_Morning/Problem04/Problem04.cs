@@ -17,7 +17,7 @@ namespace Problem04
         static void Main()
         {
             //only for testing
-            string file = @"..\..\..\t5.txt";
+            string file = @"..\..\..\t1.txt";
             if (File.Exists(file))
             {
                 Console.SetIn(new StreamReader(file));
@@ -36,21 +36,29 @@ namespace Problem04
         static string Decode(string message)
         {
             StringBuilder output = new StringBuilder();
+            StringBuilder Digit = new StringBuilder();
             for (int i = 0; i < message.Length; i++)
             {
                 if (char.IsDigit(message[i]))
                 {
-                    int repeat = int.Parse(message[i].ToString());
-                    i++;
-                    char letterToRepeat = message[i];
-                    for (int j = 0; j < repeat; j++)
-                    {
-                        output.Append(letterToRepeat);
-                    }
+                    Digit.Append(message[i]);
                 }
                 else
                 {
-                    output.Append(message[i]);
+                    if (Digit.Length == 0)
+                    {
+                        output.Append(message[i]);
+                    }
+                    else
+                    {
+                        int repeat = int.Parse(Digit.ToString());
+                        for (int j = 0; j < repeat; j++)
+                        {
+                            output.Append(message[i]);
+                        }
+                        Digit.Clear();
+                    }
+                    
                 }
             }
             return output.ToString();
