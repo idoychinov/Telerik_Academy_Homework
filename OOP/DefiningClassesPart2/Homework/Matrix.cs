@@ -125,5 +125,46 @@ namespace Homework
             return result;
         }
 
+        public static bool operator true(Matrix<T> matrix)
+        {
+            if (matrix == null || matrix.rows == 0 || matrix.columns == 0)
+            {
+                return false;
+            }
+
+            for (int row = 0; row < matrix.rows; row++)
+            {
+                for (int col = 0; col < matrix.columns; col++)
+                {
+                    if (!matrix[row, col].Equals(default(T)))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        public static bool operator false(Matrix<T> matrix)
+        {
+            if (matrix == null || matrix.rows == 0 || matrix.columns == 0)
+            {
+                return true;
+            }
+
+            for (int row = 0; row < matrix.rows; row++)
+            {
+                for (int col = 0; col < matrix.columns; col++)
+                {
+                    if (!matrix[row, col].Equals(default(T)))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
+
 }

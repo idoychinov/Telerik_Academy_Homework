@@ -18,7 +18,7 @@ namespace Homework
             StreamWriter writer = new StreamWriter(fileLocation, true);
             using (writer)
             {
-                foreach (var item in path.Path)
+                foreach (var item in path.PathList)
                 {
                     writer.WriteLine(item);
                 }
@@ -36,10 +36,10 @@ namespace Homework
                 {
                     string[] clearLine = line.Split(new char[] {'{',' ','}',','} , StringSplitOptions.RemoveEmptyEntries);
                     int[] pointCoordinates = clearLine.Select(s => int.Parse(s)).ToArray();
-                    result.Path.Add(new Point3D(pointCoordinates[0],pointCoordinates[1],pointCoordinates[2]));
+                    result.PathList.Add(new Point3D(pointCoordinates[0],pointCoordinates[1],pointCoordinates[2]));
                 }
 
-                if (result.Path == null)
+                if (result.PathList == null)
                 {
                     throw new InvalidDataException("The specified file doesn't contain any path information");
                 }
