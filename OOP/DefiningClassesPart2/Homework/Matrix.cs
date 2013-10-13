@@ -8,7 +8,7 @@ namespace Homework
 {
     // Problem 8. Define a class Matrix<T> to hold a matrix of numbers (e.g. integers, floats, decimals). 
 
-    class Matrix<T>
+    public class Matrix<T>
         where T : struct, IComparable
     {
         private T[,] matrixValues;
@@ -34,8 +34,8 @@ namespace Homework
         public Matrix(int rows, int columns)
         {
             this.matrixValues = new T[rows, columns];
-            this.rows = Rows;
-            this.columns = Columns;
+            this.rows = rows;
+            this.columns = columns;
         }
 
         // Problem 9. Implement an indexer this[row, col] to access the inner matrix cells.

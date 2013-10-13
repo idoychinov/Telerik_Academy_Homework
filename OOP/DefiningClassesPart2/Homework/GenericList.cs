@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Homework
 {
@@ -9,7 +10,7 @@ namespace Homework
     // clearing the list, finding element by its value and ToString(). Check all input parameters to avoid accessing elements at invalid positions.
 
 
-    class GenericList<T>
+    public class GenericList<T>
         where T: IComparable
     {
         private T[] list;
@@ -27,6 +28,22 @@ namespace Homework
             capacity = initialElementsCount;
         }
 
+        public int Count
+        {
+            get
+            {
+                return this.count;
+            }
+        }
+
+        public int Capacity
+        {
+            get
+            {
+                return this.capacity;
+            }
+        }
+
         public GenericList()
             : this(0)
         {
@@ -41,14 +58,13 @@ namespace Homework
 
             this.list[count] = element;
             this.count++;
-            List<int> a =new List<int>();
         }
 
         public T this[int key]
         {
             get
             {
-                if(key<0||key>=this.count)
+                if(key<0 || key>=this.count)
                 {
                     throw new IndexOutOfRangeException("Index is out of range");
                 }
@@ -99,14 +115,51 @@ namespace Homework
             this.count++;
         }
 
-        public void ClearList()
+        public void ClearList() 
         {
-            this();
+            this.list= new T[0];
+            this.count = 0;
+            this.capacity = 0;
         }
+        
+        public int FindElementByValue(T value)
+        {
+            int foundIndex = -1;
+            int currentIndex=0;
+            foreach (var element in this.list)
+            {
+                if (value.CompareTo(element)==0)
+                {
+                    foundIndex = currentIndex;
+                    break;
+                }
+                currentIndex++;
+            }
 
-        //TODO: Find element by value
-        //TODO: ToString()
+            return foundIndex;
+        }
+        
+        public override string ToString()
+        {
+            if (this.list == null)
+            {
+                throw new NullReferenceException("Object is not initialized");
+            }
+            if (this.list.Length == 0)
+            {
+                return string.Empty;
+            }
 
+            StringBuilder stringRepresentation = new StringBuilder();
+            stringRepresentation.Append("{ ");
+            foreach (var element in this.list)
+            {
+                stringRepresentation.Append(element);
+                stringRepresentation.Append(" ");
+            }
+            stringRepresentation.Append("}");
+            return stringRepresentation.ToString();
+        }
 
         // Problem 6. Implement auto-grow functionality: when the internal array is full, create a new array of double size and move all elements to it.
 
@@ -136,6 +189,7 @@ namespace Homework
             else
             {
                 this.capacity = 1;
+                this.list = new T[this.capacity];
             }
         }
 
@@ -154,20 +208,53 @@ namespace Homework
         // Problem 7. Create generic methods Min<T>() and Max<T>() for finding the minimal and maximal element in the  GenericList<T>. 
         // You may need to add a generic constraints for the type T.
 
-        public T Min<T>()
+        public T Min()
         {
-            //TODO validations
-            T min = (T)this.list[0];
+            if (this.list == null)
+            {
+                throw new NullReferenceException("Object is not initialized");
+            }
+            if (this.list.Length == 0)
+            {
+                throw new InvalidOperationException("Empty list");
+            }
+
+            var min = this.list[0];
 
             for (int i = 1; i < count; i++)
             {
                 if (this.list[i].CompareTo(min) < 0)
                 {
-                    min = (T)this.list[i];
+                    min = this.list[i];
                 }
             }
 
-            return min;
+            return (T) Convert.ChangeType(min,typeof(T));
+        }
+
+
+        public T Max()
+        {
+            if (this.list == null)
+            {
+                throw new NullReferenceException("Object is not initialized");
+            }
+            if (this.list.Length == 0)
+            {
+                throw new InvalidOperationException("Empty list");
+            }
+
+            var max = this.list[0];
+
+            for (int i = 1; i < count; i++)
+            {
+                if (this.list[i].CompareTo(max) > 0)
+                {
+                    max = this.list[i];
+                }
+            }
+
+            return (T)Convert.ChangeType(max, typeof(T));
         }
 
     }

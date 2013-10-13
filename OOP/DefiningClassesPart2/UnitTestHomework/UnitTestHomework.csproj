@@ -51,9 +51,10 @@
   </Choose>
   <ItemGroup>
     <Compile Include="TestCalculations3DSpace.cs" />
+    <Compile Include="TestGenericList.cs" />
+    <Compile Include="TestMatrix.cs" />
     <Compile Include="TestPoint3D.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestPathClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Homework\Homework.csproj">
