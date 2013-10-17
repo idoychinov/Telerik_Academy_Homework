@@ -1,7 +1,43 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shapes", "Shapes\Shapes.csproj", "{3100801D-2469-41EE-9EC2-F9B0E23F917A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank", "Bank\Bank.csproj", "{BEE76458-EE6B-4B07-9ACF-73BEE9387499}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RangeException", "RangeException\RangeException.csproj", "{D39360A4-5789-4061-B10D-F94CEF82310A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestShapes", "TestShapes\TestShapes.csproj", "{AA05C63D-B106-4B18-8AF4-CF0D338510F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestRangeException", "TestRangeException\TestRangeException.csproj", "{7AFADA61-37C2-4A57-B1BB-406B94AD0D9F}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3100801D-2469-41EE-9EC2-F9B0E23F917A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3100801D-2469-41EE-9EC2-F9B0E23F917A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3100801D-2469-41EE-9EC2-F9B0E23F917A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3100801D-2469-41EE-9EC2-F9B0E23F917A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEE76458-EE6B-4B07-9ACF-73BEE9387499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEE76458-EE6B-4B07-9ACF-73BEE9387499}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEE76458-EE6B-4B07-9ACF-73BEE9387499}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEE76458-EE6B-4B07-9ACF-73BEE9387499}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D39360A4-5789-4061-B10D-F94CEF82310A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D39360A4-5789-4061-B10D-F94CEF82310A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D39360A4-5789-4061-B10D-F94CEF82310A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D39360A4-5789-4061-B10D-F94CEF82310A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA05C63D-B106-4B18-8AF4-CF0D338510F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA05C63D-B106-4B18-8AF4-CF0D338510F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA05C63D-B106-4B18-8AF4-CF0D338510F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA05C63D-B106-4B18-8AF4-CF0D338510F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AFADA61-37C2-4A57-B1BB-406B94AD0D9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AFADA61-37C2-4A57-B1BB-406B94AD0D9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AFADA61-37C2-4A57-B1BB-406B94AD0D9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AFADA61-37C2-4A57-B1BB-406B94AD0D9F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
