@@ -41,12 +41,12 @@
       <HashCode>AAAAAAAAAQAAAAAAABAAAAIAAAAAABAAACAAAAEAAAA=</HashCode>
       <FileName>ConsoleRenderer.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="AcademyPopcorn.Engine" Collapsed="true">
     <Position X="17.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAAFAAAAEAAAQAAAAAAAAABggAAAACAAAAAACAwAI=</HashCode>
+      <HashCode>CAAAAFQAAAEAAASAAAAAABAABggAAAACAAAAAACAwAI=</HashCode>
       <FileName>Engine.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -71,7 +71,7 @@
       <HashCode>AAAAAAAAAAAAAAAQAEAAEAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
       <FileName>KeyboardInterface.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="AcademyPopcorn.MatrixCoords" Collapsed="true">
     <Position X="15.75" Y="5.25" Width="1.5" />
@@ -94,6 +94,27 @@
       <FileName>Racket.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="AcademyPopcorn.EngineWithPlayerShooter">
+    <Position X="17.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>EngineWithPlayerShooter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AcademyPopcorn.TrailObject" Collapsed="true">
+    <Position X="6.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>TrailObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AcademyPopcorn.MeteoriteBall" Collapsed="true">
+    <Position X="11" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MeteoriteBall.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="AcademyPopcorn.ICollidable" Collapsed="true">
     <Position X="15.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
@@ -108,14 +129,14 @@
       <FileName>IObjectProducer.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="AcademyPopcorn.IRenderable" Collapsed="true">
+  <Interface Name="AcademyPopcorn.IRenderable">
     <Position X="19.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAEAAAA=</HashCode>
       <FileName>IRenderable.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="AcademyPopcorn.IRenderer" Collapsed="true">
+  <Interface Name="AcademyPopcorn.IRenderer">
     <Position X="15.75" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAABAAAAIAAAAAAAAAACAAAAAAAAA=</HashCode>

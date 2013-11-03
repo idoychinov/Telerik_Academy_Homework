@@ -25,7 +25,24 @@ namespace AcademyPopcorn
                 engine.AddObject(currBlock);
             }
 
-            Ball theBall = new Ball(new MatrixCoords(WorldRows / 2, 0),
+            // Problem 1. The AcademyPopcorn class contains an IndestructibleBlock class. Use it to create side and ceiling walls to the game. 
+            // You can ONLY edit the AcademyPopcornMain.cs file.
+            for (int i = 0; i < WorldRows; i++)
+            {
+                Block currentIndestructibleBlock = new IndestructibleBlock(new MatrixCoords(i, 0));
+                engine.AddObject(currentIndestructibleBlock);
+                currentIndestructibleBlock = new IndestructibleBlock(new MatrixCoords(i, WorldCols - 1));
+                engine.AddObject(currentIndestructibleBlock);
+            }
+
+            for (int i = 0; i < WorldCols; i++)
+            {
+                Block currentIndestructibleBlock = new IndestructibleBlock(new MatrixCoords(0, i));
+                engine.AddObject(currentIndestructibleBlock);
+            }
+
+            // Problem 7. Test the MeteoriteBall by replacing the normal ball in the AcademyPopcornMain.cs file.
+            Ball theBall = new MeteoriteBall(new MatrixCoords(WorldRows / 2, 0),
                 new MatrixCoords(-1, 1));
 
             engine.AddObject(theBall);
@@ -33,6 +50,7 @@ namespace AcademyPopcorn
             Racket theRacket = new Racket(new MatrixCoords(WorldRows - 1, WorldCols / 2), RacketLength);
 
             engine.AddObject(theRacket);
+
         }
 
         static void Main(string[] args)
@@ -40,7 +58,7 @@ namespace AcademyPopcorn
             IRenderer renderer = new ConsoleRenderer(WorldRows, WorldCols);
             IUserInterface keyboard = new KeyboardInterface();
 
-            Engine gameEngine = new Engine(renderer, keyboard);
+            Engine gameEngine = new Engine(renderer, keyboard,200);
 
             keyboard.OnLeftPressed += (sender, eventInfo) =>
             {

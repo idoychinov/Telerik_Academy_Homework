@@ -11,7 +11,7 @@ namespace AcademyPopcorn
         {
             if (Console.KeyAvailable)
             {
-                var keyInfo = Console.ReadKey();
+                var keyInfo = Console.ReadKey(true);
                 if (keyInfo.Key.Equals(ConsoleKey.A))
                 {
                     if (this.OnLeftPressed != null)

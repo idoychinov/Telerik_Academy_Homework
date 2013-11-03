@@ -7,12 +7,14 @@ namespace AcademyPopcorn
 {
     public class Engine
     {
+        const int SLEEP_TIME_DEFAULT_VALUE = 500;
         IRenderer renderer;
         IUserInterface userInterface;
         List<GameObject> allObjects;
         List<MovingObject> movingObjects;
         List<GameObject> staticObjects;
         Racket playerRacket;
+        int sleepTime;
 
         public Engine(IRenderer renderer, IUserInterface userInterface)
         {
@@ -21,6 +23,20 @@ namespace AcademyPopcorn
             this.allObjects = new List<GameObject>();
             this.movingObjects = new List<MovingObject>();
             this.staticObjects = new List<GameObject>();
+            this.sleepTime = SLEEP_TIME_DEFAULT_VALUE;
+        }
+
+        // Problem 2. The Engine class has a hardcoded sleep time (search for "System.Threading.Sleep(500)". 
+        // Make the sleep time a field in the Engine and implement a constructor, which takes it as an additional parameter.
+
+        public Engine(IRenderer renderer, IUserInterface userInterface, int sleepTime)
+            : this(renderer, userInterface)
+        {
+            if (sleepTime < 1)
+            {
+                throw new ArgumentException("Sleep time must be atleast 1 milisecond!");
+            }
+            this.sleepTime = sleepTime;
         }
 
         private void AddStaticObject(GameObject obj)
@@ -55,11 +71,24 @@ namespace AcademyPopcorn
             }
         }
 
+        // Problem 3. Search for a "TODO" in the Engine class, regarding the AddRacket method. Solve the problem mentioned there. 
+        // There should always be only one Racket. Note: comment in TODO not completely correct
+
         private void AddRacket(GameObject obj)
         {
-            //TODO: we should remove the previous racket from this.allObjects
+            // TODO: we should remove the previous racket from this.allObjects
+            if (this.playerRacket != null)
+            {
+                RemoveOldRacket();
+            }
             this.playerRacket = obj as Racket;
             this.AddStaticObject(obj);
+        }
+
+        private void RemoveOldRacket()
+        {
+            this.staticObjects.Remove(this.playerRacket);
+            this.allObjects.Remove(this.playerRacket);
         }
 
         public virtual void MovePlayerRacketLeft()
@@ -78,7 +107,7 @@ namespace AcademyPopcorn
             {
                 this.renderer.RenderAll();
 
-                System.Threading.Thread.Sleep(500);
+                System.Threading.Thread.Sleep(sleepTime);
 
                 this.userInterface.ProcessInput();
 
