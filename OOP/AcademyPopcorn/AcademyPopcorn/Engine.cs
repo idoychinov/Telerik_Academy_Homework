@@ -13,7 +13,7 @@ namespace AcademyPopcorn
         List<GameObject> allObjects;
         List<MovingObject> movingObjects;
         List<GameObject> staticObjects;
-        Racket playerRacket;
+        protected Racket playerRacket; // Added protected for problem 13 in order to get the current racket cordinates
         int sleepTime;
 
         public Engine(IRenderer renderer, IUserInterface userInterface)
@@ -62,7 +62,6 @@ namespace AcademyPopcorn
                 if (obj is Racket)
                 {
                     AddRacket(obj);
-
                 }
                 else
                 {

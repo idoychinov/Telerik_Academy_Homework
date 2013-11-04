@@ -21,28 +21,47 @@ namespace AcademyPopcorn
             for (int i = startCol; i < endCol; i++)
             {
                 Block currBlock = new Block(new MatrixCoords(startRow, i));
-
                 engine.AddObject(currBlock);
             }
+
+            // Exploding block test
+
+            Block explodingRock = new ExplodingBlock(new MatrixCoords(8, 17));
+            engine.AddObject(explodingRock);
+
+            Block BlockToExplode = new Block(new MatrixCoords(8, 18));
+            engine.AddObject(BlockToExplode);
+            BlockToExplode = new Block(new MatrixCoords(7, 18));
+            engine.AddObject(BlockToExplode);
+            BlockToExplode = new Block(new MatrixCoords(9, 18));
+            engine.AddObject(BlockToExplode);
+
+
+            // Gift Block test
+            Block giftBlock = new GiftBlock(new MatrixCoords(16, WorldCols-6));
+            engine.AddObject(giftBlock);
+
+            // Problem 9. Test the UnpassableBlock and the UnstoppableBall by adding them to the engine in AcademyPopcornMain.cs file
 
             // Problem 1. The AcademyPopcorn class contains an IndestructibleBlock class. Use it to create side and ceiling walls to the game. 
             // You can ONLY edit the AcademyPopcornMain.cs file.
             for (int i = 0; i < WorldRows; i++)
             {
-                Block currentIndestructibleBlock = new IndestructibleBlock(new MatrixCoords(i, 0));
+                Block currentIndestructibleBlock = new UnpassableBlock(new MatrixCoords(i, 0),false);
                 engine.AddObject(currentIndestructibleBlock);
-                currentIndestructibleBlock = new IndestructibleBlock(new MatrixCoords(i, WorldCols - 1));
+                currentIndestructibleBlock = new UnpassableBlock(new MatrixCoords(i, WorldCols - 1), false);
                 engine.AddObject(currentIndestructibleBlock);
             }
 
             for (int i = 0; i < WorldCols; i++)
             {
-                Block currentIndestructibleBlock = new IndestructibleBlock(new MatrixCoords(0, i));
+                Block currentIndestructibleBlock = new UnpassableBlock(new MatrixCoords(0, i),true);
                 engine.AddObject(currentIndestructibleBlock);
             }
 
+            
             // Problem 7. Test the MeteoriteBall by replacing the normal ball in the AcademyPopcornMain.cs file.
-            Ball theBall = new MeteoriteBall(new MatrixCoords(WorldRows / 2, 0),
+            Ball theBall = new UnstopableBall(new MatrixCoords(WorldRows / 2, 0),
                 new MatrixCoords(-1, 1));
 
             engine.AddObject(theBall);
@@ -58,7 +77,7 @@ namespace AcademyPopcorn
             IRenderer renderer = new ConsoleRenderer(WorldRows, WorldCols);
             IUserInterface keyboard = new KeyboardInterface();
 
-            Engine gameEngine = new Engine(renderer, keyboard,200);
+            EngineWithPlayerShooter gameEngine = new EngineWithPlayerShooter(renderer, keyboard, 200);
 
             keyboard.OnLeftPressed += (sender, eventInfo) =>
             {
@@ -68,6 +87,11 @@ namespace AcademyPopcorn
             keyboard.OnRightPressed += (sender, eventInfo) =>
             {
                 gameEngine.MovePlayerRacketRight();
+            };
+
+            keyboard.OnActionPressed += (sender, eventInfo) =>
+            {
+                gameEngine.ShootPlayerRacket();
             };
 
             Initialize(gameEngine);
