@@ -39,7 +39,7 @@ namespace AcademyPopcorn
             List<GameObject> shootingRacket = new List<GameObject>();
             if (IsDestroyed)
             {
-                shootingRacket = new List<GameObject> { new GiftShootingRacketPowerUp(this.topLeft) };
+                shootingRacket = new List<GameObject> { new ShootingRacket(this.topLeft,1) };
             }
             return shootingRacket;
         }

@@ -13,7 +13,7 @@ namespace AcademyPopcorn
         List<GameObject> allObjects;
         List<MovingObject> movingObjects;
         List<GameObject> staticObjects;
-        protected Racket playerRacket; // Added protected for problem 13 in order to get the current racket cordinates
+        Racket playerRacket; // Added protected for problem 13 in order to get the current racket cordinates
         int sleepTime;
 
         public Engine(IRenderer renderer, IUserInterface userInterface)

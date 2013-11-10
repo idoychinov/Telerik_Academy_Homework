@@ -54,7 +54,6 @@
     <Compile Include="ExplodingBlock.cs" />
     <Compile Include="Gift.cs" />
     <Compile Include="GiftBlock.cs" />
-    <Compile Include="GiftShootingRacketPowerUp.cs" />
     <Compile Include="ICollidable.cs" />
     <Compile Include="IndestructibleBlock.cs" />
     <Compile Include="IObjectProducer.cs" />
