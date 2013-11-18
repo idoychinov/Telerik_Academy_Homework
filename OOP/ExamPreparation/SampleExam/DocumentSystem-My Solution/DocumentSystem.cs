@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public interface IDocument
 {
@@ -24,8 +25,10 @@ public interface IEncryptable
 
 public class DocumentSystem
 {
+    private static List<Document> allDocuments;
     static void Main()
     {
+        allDocuments = new List<Document>();
         IList<string> allCommands = ReadAllCommands();
         ExecuteCommands(allCommands);
     }
@@ -115,14 +118,14 @@ public class DocumentSystem
   
     private static void AddTextDocument(string[] attributes)
     {
-        TextDocument createdDocument = new TextDocument("test");
-        createdDocument.LoadProperty("Content", "alabala");
-        createdDocument.LoadProperty("Charset", "windows-1251");
+        Document currentDocument = CreateDocument(typeof(TextDocument),attributes); 
+        allDocuments.Add(currentDocument);
     }
 
     private static void AddPdfDocument(string[] attributes)
     {
-        // TODO
+        Document currentDocument = CreateDocument(typeof(PDFDocument), attributes);
+        allDocuments.Add(currentDocument);
     }
 
     private static void AddWordDocument(string[] attributes)
@@ -168,5 +171,41 @@ public class DocumentSystem
     private static void ChangeContent(string name, string content)
     {
         // TODO
+    }
+
+    private static IDictionary<string,string> SeparateAttributes(string[] attributes)
+    {
+        var result = attributes.Select(pair => pair.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries))
+            .ToDictionary(pair=>pair[0],pair=>pair[1]);
+        return result;
+    }
+
+    private static Document CreateDocument(Type documentType, string[] attributes)
+    {
+        var parameters = SeparateAttributes(attributes);
+        Document createdDocument;
+        if (documentType==typeof(TextDocument))
+        {
+            createdDocument = new TextDocument(parameters["name"]);   
+        }
+        else if (documentType == typeof(TextDocument))
+        {
+            createdDocument = new PDFDocument(parameters["name"]);
+        }
+        else
+        {
+            throw new ArgumentException("Cann't create document of type "+documentType.Name 
+                +". Type is not defined CreateDocument method."); 
+        }
+        
+        parameters.Remove("name");
+        foreach (var parameter in parameters)
+        {
+            var keyAsCharArray = parameter.Key.ToCharArray();
+            keyAsCharArray[0] = char.ToUpper(keyAsCharArray[0]);
+            createdDocument.LoadProperty(keyAsCharArray.ToString(), parameter.Value);
+        }
+
+        return createdDocument;
     }
 }
