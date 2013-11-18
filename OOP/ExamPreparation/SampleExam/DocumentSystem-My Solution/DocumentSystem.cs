@@ -115,7 +115,9 @@ public class DocumentSystem
   
     private static void AddTextDocument(string[] attributes)
     {
-        // TODO
+        TextDocument createdDocument = new TextDocument("test");
+        createdDocument.LoadProperty("Content", "alabala");
+        createdDocument.LoadProperty("Charset", "windows-1251");
     }
 
     private static void AddPdfDocument(string[] attributes)
