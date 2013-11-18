@@ -18,31 +18,36 @@ namespace AcademyPopcorn
             int startCol = 2;
             int endCol = WorldCols - 2;
 
-            for (int i = startCol; i < endCol; i++)
-            {
-                Block currBlock = new Block(new MatrixCoords(startRow, i));
-                engine.AddObject(currBlock);
-            }
+            InitializeBlocks(startCol, endCol, startRow, engine);
 
-            // Exploding block test
+            InitializeSpecialBlocks(engine);
 
-            Block explodingRock = new ExplodingBlock(new MatrixCoords(8, 17));
-            engine.AddObject(explodingRock);
+            InitializeWalls(engine);
 
-            Block BlockToExplode = new Block(new MatrixCoords(8, 18));
-            engine.AddObject(BlockToExplode);
-            BlockToExplode = new Block(new MatrixCoords(7, 18));
-            engine.AddObject(BlockToExplode);
-            BlockToExplode = new Block(new MatrixCoords(9, 18));
-            engine.AddObject(BlockToExplode);
+            InitializeBall(engine);
 
+            InitializeRacket(engine);
+        }
+  
+        private static void InitializeRacket(Engine engine)
+        {
+            Racket theRacket = new Racket(new MatrixCoords(WorldRows - 1, WorldCols / 2), RacketLength);
 
-            // Gift Block test
-            Block giftBlock = new GiftBlock(new MatrixCoords(16, WorldCols-6));
-            engine.AddObject(giftBlock);
+            engine.AddObject(theRacket);
+        }
+  
+        private static void InitializeBall(Engine engine)
+        {
+            // Problem 7. Test the MeteoriteBall by replacing the normal ball in the AcademyPopcornMain.cs file.
+            Ball theBall = new UnstopableBall(new MatrixCoords(WorldRows / 2, 0),
+                new MatrixCoords(-1, 1));
 
+            engine.AddObject(theBall);
+        }
+  
+        private static void InitializeWalls(Engine engine)
+        {
             // Problem 9. Test the UnpassableBlock and the UnstoppableBall by adding them to the engine in AcademyPopcornMain.cs file
-
             // Problem 1. The AcademyPopcorn class contains an IndestructibleBlock class. Use it to create side and ceiling walls to the game. 
             // You can ONLY edit the AcademyPopcornMain.cs file.
             for (int i = 0; i < WorldRows; i++)
@@ -58,18 +63,33 @@ namespace AcademyPopcorn
                 Block currentIndestructibleBlock = new UnpassableBlock(new MatrixCoords(0, i),true);
                 engine.AddObject(currentIndestructibleBlock);
             }
+        }
+  
+        private static void InitializeSpecialBlocks(Engine engine)
+        {
+            // Exploding block test
+            Block explodingRock = new ExplodingBlock(new MatrixCoords(8, 17));
+            engine.AddObject(explodingRock);
 
-            
-            // Problem 7. Test the MeteoriteBall by replacing the normal ball in the AcademyPopcornMain.cs file.
-            Ball theBall = new UnstopableBall(new MatrixCoords(WorldRows / 2, 0),
-                new MatrixCoords(-1, 1));
+            Block BlockToExplode = new Block(new MatrixCoords(8, 18));
+            engine.AddObject(BlockToExplode);
+            BlockToExplode = new Block(new MatrixCoords(7, 18));
+            engine.AddObject(BlockToExplode);
+            BlockToExplode = new Block(new MatrixCoords(9, 18));
+            engine.AddObject(BlockToExplode);
 
-            engine.AddObject(theBall);
-
-            Racket theRacket = new Racket(new MatrixCoords(WorldRows - 1, WorldCols / 2), RacketLength);
-
-            engine.AddObject(theRacket);
-
+            // Gift Block test
+            Block giftBlock = new GiftBlock(new MatrixCoords(16, WorldCols - 6));
+            engine.AddObject(giftBlock);
+        }
+  
+        private static void InitializeBlocks(int startCol, int endCol, int startRow, Engine engine)
+        {
+            for (int i = startCol; i < endCol; i++)
+            {
+                Block currBlock = new Block(new MatrixCoords(startRow, i));
+                engine.AddObject(currBlock);
+            }
         }
 
         static void Main(string[] args)

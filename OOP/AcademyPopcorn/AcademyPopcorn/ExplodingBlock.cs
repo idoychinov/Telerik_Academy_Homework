@@ -19,9 +19,9 @@ namespace AcademyPopcorn
 
         public override IEnumerable<GameObject> ProduceObjects()
         {
+            List<GameObject> producedBlastWave = new List<GameObject>();
             if (this.IsDestroyed)
             {
-                List<GameObject> producedBlastWave = new List<GameObject>();
                 for (int row = -1; row < 2; row++)
                 {
                     for (int col = -1; col < 2; col++)
@@ -34,7 +34,7 @@ namespace AcademyPopcorn
             }
             else
             {
-                return new List<GameObject>();
+                return producedBlastWave;
             }
         }
     }

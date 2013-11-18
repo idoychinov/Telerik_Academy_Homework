@@ -31,5 +31,10 @@ namespace AcademyPopcorn
                 this.IsDestroyed = true;
             }
         }
+
+        public override string GetCollisionGroupString()
+        {
+            return "trailObject";
+        }
     }
 }

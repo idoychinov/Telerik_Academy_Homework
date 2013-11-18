@@ -15,14 +15,20 @@ namespace AcademyPopcorn
         {
         }
 
+        
         public override string GetCollisionGroupString()
         {
             return UnstopableBall.CollisionGroupString;
         }
 
+        //public override bool CanCollideWith(string otherCollisionGroupString)
+        //{
+        //    return otherCollisionGroupString == "unpassableBlock" || otherCollisionGroupString == "racket";
+        //}
+
         public override void RespondToCollision(CollisionData collisionData)
         {
-            if (collisionData.hitObjectsCollisionGroupStrings.Contains("unpassableBlock")||
+            if (collisionData.hitObjectsCollisionGroupStrings.Contains("unpassableBlock") ||
                  collisionData.hitObjectsCollisionGroupStrings.Contains("racket"))
             {
                 if (collisionData.CollisionForceDirection.Row * this.Speed.Row < 0)
