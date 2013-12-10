@@ -1,40 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Text;
 
 public abstract class Document : IDocument
 {
-
-    public Document(string name)
-    {
-        this.Name = name;
-    }
-
     public string Name { get; protected set; }
 
     public string Content { get; protected set; }
 
     public virtual void LoadProperty(string key, string value)
     {
-        var property = this.GetType().GetProperty(key);
-        property.SetValue(this, value);
+        if (key == "name")
+        {
+            this.Name = value;
+        }
+        else if (key == "content")
+        {
+            this.Content =value;
+        }
     }
 
     public virtual void SaveAllProperties(IList<KeyValuePair<string, object>> output)
     {
-        var properties = this.GetType().GetProperties();
-        foreach (var property in properties)
+        if(output==null)
         {
-            var name = property.Name.ToLower();
-            var value = property.GetValue(this);
-            output.Add(new KeyValuePair<string, object>(name, value));
+            throw new ArgumentNullException("Output list of properties is not defined!");
         }
+        else
+        {
+            output.Add(new KeyValuePair<string, object>("name", this.Name));
+            output.Add(new KeyValuePair<string, object>("content", this.Content));
+        }
+        
     }
 
     public override string ToString()
     {
-        var output = new StringBuilder();
+        return PropertiesToString();
+    }
+
+    protected virtual string PropertiesToString()
+    {
+        List<KeyValuePair<string, object>> allProperties = new List<KeyValuePair<string, object>>();
+        this.SaveAllProperties(allProperties);
+        allProperties.Sort(DocumentSystem.CompareAttributes);
+        StringBuilder output = new StringBuilder();
+        foreach (var property in allProperties)
+        {
+            if (property.Value != null)
+            {
+                output.Append(property.Key + "=" + property.Value + ";");
+            }
+        }
+        output.Remove(output.Length - 1, 1);
         return output.ToString();
     }
 }

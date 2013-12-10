@@ -4,24 +4,26 @@ using System.Linq;
 
 public interface IDocument
 {
-	string Name { get; }
-	string Content { get; }
-	void LoadProperty(string key, string value);
-	void SaveAllProperties(IList<KeyValuePair<string, object>> output);
-	string ToString();
+    string Name { get; }
+    string Content { get; }
+    void LoadProperty(string key, string value);
+    void SaveAllProperties(IList<KeyValuePair<string, object>> output);
+    string ToString();
 }
 
 public interface IEditable
 {
-	void ChangeContent(string newContent);
+    void ChangeContent(string newContent);
 }
 
 public interface IEncryptable
 {
-	bool IsEncrypted { get; }
-	void Encrypt();
-	void Decrypt();
+    bool IsEncrypted { get; }
+    void Encrypt();
+    void Decrypt();
 }
+
+enum ChangeType { Encript, Decript, Edit };
 
 public class DocumentSystem
 {
@@ -36,6 +38,7 @@ public class DocumentSystem
     private static IList<string> ReadAllCommands()
     {
         List<string> commands = new List<string>();
+
         while (true)
         {
             string commandLine = Console.ReadLine();
@@ -115,97 +118,172 @@ public class DocumentSystem
             throw new InvalidOperationException("Invalid command: " + cmd);
         }
     }
-  
+
     private static void AddTextDocument(string[] attributes)
     {
-        Document currentDocument = CreateDocument(typeof(TextDocument),attributes); 
-        allDocuments.Add(currentDocument);
+        CreateDocument(typeof(TextDocument), attributes);
     }
 
     private static void AddPdfDocument(string[] attributes)
     {
-        Document currentDocument = CreateDocument(typeof(PDFDocument), attributes);
-        allDocuments.Add(currentDocument);
+        CreateDocument(typeof(PDFDocument), attributes);
     }
 
     private static void AddWordDocument(string[] attributes)
     {
-        // TODO
+        CreateDocument(typeof(WordDocument), attributes);
     }
 
     private static void AddExcelDocument(string[] attributes)
     {
-        // TODO
+        CreateDocument(typeof(ExcelDocument), attributes);
     }
 
     private static void AddAudioDocument(string[] attributes)
     {
-        // TODO
+        CreateDocument(typeof(AudioDocument), attributes);
     }
 
     private static void AddVideoDocument(string[] attributes)
     {
-        // TODO
+        CreateDocument(typeof(VideoDocument), attributes);
     }
 
     private static void ListDocuments()
     {
-        // TODO
+        foreach (Document document in allDocuments)
+        {
+            Console.WriteLine(document.ToString());
+        }
     }
 
     private static void EncryptDocument(string name)
     {
-        // TODO
+        ChangeDocument(name, ChangeType.Encript, string.Empty);
     }
+
+
 
     private static void DecryptDocument(string name)
     {
-        // TODO
+        ChangeDocument(name, ChangeType.Decript, string.Empty);
     }
 
     private static void EncryptAllDocuments()
     {
-        // TODO
+        int encryptedDocuments = 0;
+        foreach (var document in allDocuments)
+        {
+            if (document is IEncryptable)
+            {
+                (document as IEncryptable).Encrypt();
+            }
+        }
+
+        if (encryptedDocuments == 0)
+        {
+            Console.WriteLine("No encryptable documents found");
+        }
+        else
+        {
+            Console.WriteLine("All documents encrypted");
+        }
     }
 
     private static void ChangeContent(string name, string content)
     {
-        // TODO
+        ChangeDocument(name, ChangeType.Edit, content);
     }
 
-    private static IDictionary<string,string> SeparateAttributes(string[] attributes)
+    private static IDictionary<string, string> SeparateAttributes(string[] attributes)
     {
         var result = attributes.Select(pair => pair.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries))
-            .ToDictionary(pair=>pair[0],pair=>pair[1]);
+            .ToDictionary(pair => pair[0], pair => pair[1]);
         return result;
     }
 
-    private static Document CreateDocument(Type documentType, string[] attributes)
+    private static bool hasName(IDictionary<string, string> attributes)
     {
-        var parameters = SeparateAttributes(attributes);
-        Document createdDocument;
-        if (documentType==typeof(TextDocument))
+        if (attributes.ContainsKey("name"))
         {
-            createdDocument = new TextDocument(parameters["name"]);   
-        }
-        else if (documentType == typeof(TextDocument))
-        {
-            createdDocument = new PDFDocument(parameters["name"]);
+            return true;
         }
         else
         {
-            throw new ArgumentException("Cann't create document of type "+documentType.Name 
-                +". Type is not defined CreateDocument method."); 
+            return false;
         }
-        
-        parameters.Remove("name");
-        foreach (var parameter in parameters)
-        {
-            var keyAsCharArray = parameter.Key.ToCharArray();
-            keyAsCharArray[0] = char.ToUpper(keyAsCharArray[0]);
-            createdDocument.LoadProperty(keyAsCharArray.ToString(), parameter.Value);
-        }
+    }
 
-        return createdDocument;
+    private static void CreateDocument(Type documentType, string[] attributes)
+    {
+        IDictionary<string, string> nameValueAtributePairs = SeparateAttributes(attributes);
+        if (hasName(nameValueAtributePairs))
+        {
+            string name = nameValueAtributePairs["name"];
+
+            Document currentDocument = (dynamic)Activator.CreateInstance(documentType);
+
+            foreach (var attribute in nameValueAtributePairs)
+            {
+                currentDocument.LoadProperty(attribute.Key, attribute.Value);
+            }
+            allDocuments.Add(currentDocument);
+            Console.WriteLine("Document added:{0}", name);
+        }
+        else
+        {
+            Console.WriteLine("Document has no name");
+        }
+    }
+
+    internal static int CompareAttributes(KeyValuePair<string, object> a, KeyValuePair<string, object> b)
+    {
+        return a.Key.CompareTo(b.Key);
+    }
+
+    private static void ChangeDocument(string name, ChangeType typeOfChange, string content)
+    {
+        List<Document> documentsWithSameName = allDocuments.FindAll(delegate(Document doc)
+        {
+            if (doc.Name == name)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        });
+
+        if (documentsWithSameName.Count == 0)
+        {
+            Console.WriteLine("Document not found:{0}", name);
+        }
+        foreach (var document in documentsWithSameName)
+        {
+            string message = string.Empty;
+            if (document is IEncryptable)
+            {
+                switch (typeOfChange)
+                {
+                    case ChangeType.Decript: message = "Document decrypted:" + name; (document as IEncryptable).Encrypt(); break;
+                    case ChangeType.Encript: message = "Document encripted:" + name; (document as IEncryptable).Decrypt(); break;
+                    case ChangeType.Edit: message = "Document content changed:" + name; (document as IEditable).ChangeContent(content); break;
+                    default: throw new ArgumentException();
+                }
+                Console.WriteLine(message);
+            }
+            else
+            {
+                switch (typeOfChange)
+                {
+                    case ChangeType.Decript: message = "Document does not support encryption:" + name; break;
+                    case ChangeType.Encript: message = "Document does not support decryption:" + name; break;
+                    case ChangeType.Edit: message = "Document is not editable:" + name; break;
+                    default: throw new ArgumentException();
+                }
+                Console.WriteLine(message);
+            }
+        }
     }
 }
