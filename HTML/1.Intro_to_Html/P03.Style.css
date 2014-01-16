@@ -1,0 +1,26 @@
+﻿body {
+    background-color: lightblue;
+    color: darkblue;
+}
+
+nav ul {
+    list-style: none;
+}
+
+    nav ul .after {
+        clear: both;
+    }
+
+    nav ul li {
+        float: left;
+        width: 30%;
+    }
+
+nav .current {
+    color:rgb(150, 133, 130);
+}
+
+#profile_picture {
+    width:200px;
+    height:200px;
+}
