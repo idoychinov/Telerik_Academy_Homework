@@ -12,49 +12,128 @@
             border: 1px solid lightgray;
         }
 
-        th, td {
-            
+        tfoot tr td {
+            background-color:lightgreen;
         }
-
-            th input {
-                
-            }
-
-        input {
-            
-        }
-
         textarea {
-            resize:none;
-           
+            resize: none;
         }
+
+        input[type=submit] {
+            margin-left: 40%;
+        }
+
         label {
-            font-weight:bold;
-            text-align:right;
+            float:right;
+            font-weight: bold;
+            text-align: right;
         }
+            label.radioLabel {
+                float:none;
+                font-weight:normal;
+                text-align:left;
+            }
     </style>
 </head>
 <body>
     <form>
         <table>
+            <tfoot>
+                <tr>
+                    <td colspan="4">
+                        <input type="submit" value="Submit"/>
+                        <input type="reset" value="Clear The Form"/>
+                    </td>
+                </tr>
+            </tfoot>
             <tbody>
                 <tr>
-                    <td><label for="LastName">Last Name</label></td>
-                    <td colspan="3"><input id="LastName" type="text" value="Nakov"/></td>
+                    <td>
+                        <label for="LastName">Last Name</label></td>
+                    <td colspan="3">
+                        <input id="LastName" name="lastname" type="text" value="Nakov" /></td>
                 </tr>
                 <tr>
-                    <td><label for="FirstName">First Name</label></td>
-                    <td colspan="3"><input id="FirstName" type="text" value="Svetlin"/></td>
+                    <td>
+                        <label for="FirstName">First Name</label></td>
+                    <td colspan="3">
+                        <input id="FirstName" name="firstname" type="text" value="Svetlin" /></td>
                 </tr>
                 <tr>
-                    <td><label for="Address">Address</label></td>
-                    <td colspan="3"><textarea id="Address" rows="4" cols="30">17 Histo Botev</textarea></td>
+                    <td>
+                        <label for="Address">Address</label></td>
+                    <td colspan="3">
+                        <textarea id="Address" name="address" rows="4" cols="30" draggable="false">17 Histo Botev</textarea></td>
                 </tr>
                 <tr>
-                    <td><label for="City">City</label></td>
-                    <td ><input id="City" type="text" value="Kaspichan"/></td>
-                    <td><label for="State">State</label></td>
-                    <td ><input id="State" type="text" value=""/></td>
+                    <td>
+                        <label for="City">City</label></td>
+                    <td>
+                        <input id="City" name="city" type="text" value="Kaspichan" /></td>
+                    <td>
+                        <label for="State">State</label></td>
+                    <td>
+                        <input id="State" name="state" type="text" value="" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="ZipCode">Zip/Postal Code</label></td>
+                    <td colspan="3">
+                        <input id="ZipCode" name="zipcode" type="number" value="9325" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="Country">Country</label></td>
+                    <td colspan="3">
+                        <select id="Country" name="country">
+                            <option value="bul" selected="selected">Bulgaria</option>
+                            <option value="rom">Romania</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="phone">Phone(country code,area code,number)</label></td>
+                    <td colspan="3">(+<input name="countrycode" type="number" value="359" />)<input name="areacode" type="number" value="88" />-<input id="phone" type="tel" value="8334343" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="Email">E-mail</label></td>
+                    <td colspan="3">
+                        <input id="Email" name="email" type="email" value="nakov@kaspichan.org" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="Month">Birth date</label></td>
+                    <td colspan="3">Month<input id="Month" name="month" type="number" value="06" />
+                        Day<input name="Day" type="number" value="14" />
+                        Year(4 digit)<input id="Year" type="number" value="1960" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="Gender">Gender</label></td>
+                    <td colspan="3">
+                        <select id="Gender" name="gender">
+                            <option value="male" selected="selected">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Starting date</label></td>
+                    <td colspan="3">
+                        <input id="Spring" name="startingdate" type="radio" value="Spring 2006" /><label class="radioLabel" for="Spring">Spring 2006</label>
+                        <input id="Summer" name="startingdate" type="radio" value="Summer 2006" /><label class="radioLabel" for="Summer">Summer 2006</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="Comments">Comments/Questions</label></td>
+                    <td colspan="3">
+                        <textarea id="Comments" name="comments" rows="5" cols="30" >Please send me more information about the lodging</textarea></td>
                 </tr>
             </tbody>
         </table>
