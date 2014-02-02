@@ -3,7 +3,12 @@ body {
     font-size:18px;
 }
 
-.green-circle {
+.status {
+    zoom:1;
+}
+.status:before {
+    margin-right:5px;
+    content:"";
     border-radius:50%;
     width:15px;
     height:15px;
