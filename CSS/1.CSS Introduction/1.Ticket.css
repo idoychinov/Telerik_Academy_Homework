@@ -1,0 +1,41 @@
+body {
+    background-color:darkgray;
+    font-size:18px;
+}
+
+.green-circle {
+    border-radius:50%;
+    width:15px;
+    height:15px;
+    background-color:lightgreen;
+    display:inline-block;
+}
+#support-status {
+    color:red;
+    font-weight:bold;
+}
+.gold-text {
+    color:lightgoldenrodyellow;
+}
+.grey-text {
+    color:lightgray;
+}
+.orange-text{
+    color:orange;
+    font-weight:bold;
+}
+#col1 {
+    width:150px;
+}
+table td:nth-child(1){
+    font-style:italic;
+    color:white;
+    vertical-align:top;
+}
+
+th {
+    color:lightgray;
+    font-size:1.5em;
+    text-align:left;
+    font-weight:normal;
+}

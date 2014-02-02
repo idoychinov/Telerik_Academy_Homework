@@ -1,0 +1,27 @@
+body {
+    color:black;
+    font-size:18px;
+}
+
+table tr:nth-child(2n+1){
+    background-color:white;
+}
+table tr:nth-child(2n){
+    background-color:#ECECD8;
+}
+
+th {
+    color:white;
+    background-color:green;
+    font-weight:normal;
+}
+
+table, td, th {
+    border: 1px solid #EFECDD;
+    border-collapse:collapse;
+}
+
+    table img {
+        width:20px;
+        height:15px;
+    }
