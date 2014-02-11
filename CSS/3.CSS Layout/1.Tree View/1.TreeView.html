@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Tree  view</title>
+    <style>
+        ul {
+            list-style:none;
+        }
+
+        ul > li:hover {
+            text-decoration: underline;
+        }
+
+        ul > li > ul {
+            display:none;
+        }
+        ul > li:hover > ul {
+            display: block;
+        }
+
+            ul > li:hover > ul> li {
+                text-decoration: none;
+            }
+       
+    </style>
+</head>
+<body>
+    <ul>
+        <li>List item</li>
+        <li>
+            Sub Menu
+            <ul>
+                <li>
+                    Sub Menu
+                    <ul>
+                        <li>Sub List Item</li>
+                        <li>Sub List Item</li>
+                        <li>
+                            Sub Menu
+                            <ul>
+                                <li>List Item</li>
+                                <li>List Item</li>
+                            </ul>
+                        </li>
+                        <li>Sub List Item</li>
+                    </ul>
+                </li>
+                <li>Sub List Item</li>
+                <li>Sub List Item</li>
+            </ul>
+        </li>
+        <li>List item</li>
+        <li>List item</li>
+        <li>List item</li>
+    </ul>
+</body>
+</html>
