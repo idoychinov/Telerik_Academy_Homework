@@ -1,0 +1,117 @@
+/*reset*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        font-weight: inherit;
+        font-style: inherit;
+        font-size: 100%;
+        font-family: inherit;
+        vertical-align: baseline;
+}
+
+body {
+    font-family: Arial, Tahoma, Verdana, sans-serif;
+    font-size: 12px;
+    color: #889592;
+    
+}
+
+    body div {
+        background: #1E3741;
+        padding: 10px 0px;
+        width: 640px;
+        border-top-left-radius:15px;
+        border-bottom-right-radius:15px;
+        margin:auto;
+    }
+
+header {
+    margin: 0px 10px;
+    height: 30px;
+}
+
+    header nav ul {
+        display: inline;
+    }
+
+        header nav ul li {
+            list-style-type: none;
+            float: left;
+            padding: 0px 14px;
+            margin-left: 1px;
+            background: #4b5f67;
+            font-size: 11px;
+        }
+
+            header nav ul li a {
+                color: #9faa92;
+                text-decoration: none;
+                font-weight: bold;
+                line-height: 30px;
+            }
+
+            header nav ul li:active, header nav ul li.menu {
+                background-color: transparent;
+            }
+
+                header nav ul li:active a, header nav ul li.menu a {
+                    color: #fff;
+                }
+
+            header nav ul li a:hover {
+                text-decoration: underline;
+            }
+
+section {
+    padding-top: 20px;
+    width: auto;
+    display: block;
+    position: relative;
+}
+
+    section article {
+        display: block;
+        border-bottom: 1px solid rgba(155, 155, 155, 0.4);
+        margin: 0px;
+        padding: 10px 10px 10px 20px;
+        width: 237px;
+    }
+
+        section article:last-of-type {
+            border-bottom: none;
+        }
+
+        section article a {
+            text-decoration: none;
+            color: #9faa92;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        section article:hover, section article.selected {
+            background: #00968c;
+        }
+
+                section article:hover a, section article.selected a {
+                    color: #fff;
+                }
+
+        section article img {
+            display: none;
+            width: 325px;
+            height: 235px;
+            position: absolute;
+            top: 20px;
+            right: 48px;
+        }
+
+        section article.selected img {
+            display: block;
+        }
+
+        section article:hover img {
+            display: block;
+            z-index: 100;
+        }

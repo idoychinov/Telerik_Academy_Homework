@@ -1,0 +1,128 @@
+body,html,ul,p,h1,h2{
+	margin:0;
+	padding:0;
+}
+
+body{
+	padding:5px;
+	background:#ffffff;
+	color:#000000;
+	font: normal 14px/16px Arial, "Helvetica Neue", Helvetica, sans-serif;
+	text-align:center;
+}
+
+ul{
+	list-style:none;
+}
+
+.left{
+	float:left;
+}
+
+.right{
+	float:right;
+}
+
+.clearfix
+{
+	zoom:1;
+}
+
+.clearfix:after
+{
+	height:0;
+	content:"";
+	clear:both;
+	display:block;
+}
+.left img {
+width:110px;
+height:67px;
+}
+#container{
+	width:685px;
+	margin:0 auto;
+	padding:10px 5px;;
+	border:1px solid #000000;
+	border-radius:12px 9px 9px 12px;
+}
+
+	#nav ul{
+		width:320px;
+		margin:10px auto;
+	}
+
+		#nav li{
+			margin:0 1px;
+			font-size:1.3em;
+			float:left;
+		}
+		
+		#nav a{
+			color:#00a9ef;	
+		}
+	
+	hr{
+		width:90%;
+		border:none;
+		border-bottom:1px solid #000000;
+	}
+	
+	#content{
+		margin:0 5px;
+		border:1px solid #000000;
+	}
+
+	.apple{
+		margin: 10px 5px;
+		padding:5px;
+		width:205px;
+		border:1px solid #000000;
+		position:relative;
+	}
+
+	.apple h2{
+		width:140px;
+		background:#ffffff;
+		font-size:1em;
+		font-weight:normal;
+		display:inline-block;
+		position:relative;
+		top:-15px;
+	}
+	
+	.apple p{
+		margin-top:5px;
+	}
+	
+	.apple .specif{
+		position:absolute;
+		bottom:5px;
+		right:15px;
+	}
+	
+#sliders{
+	position:relative;
+	top:132px;
+	right:14px;
+}	
+	
+	#sliders div{
+	width:190px;
+	padding-top:15px;
+	position:relative;
+}
+
+	#sliders span,
+	#sliders output{
+		position:absolute;
+		top:0;
+	}
+	
+	#sliders span{
+		left:15px;
+	}
+	
+	#sliders output{
+		right:20px;
+	}

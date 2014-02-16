@@ -1,0 +1,173 @@
+body, nav , section, aside,ul,p{
+	margin:0;
+	padding:0;
+}
+
+body{
+	width:852px;
+	height:640px;
+	background-color:#f1f1f1;
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	border:1px solid black;
+	margin:5px;
+}
+
+nav{
+	float:left;
+	width:150px;
+	background:url('img/house.png');
+	background-position:5px 15px;
+	background-repeat:no-repeat;
+}
+
+section{
+	width:540px;
+	height:580px;
+	float:left;
+	border:1px solid #808080;
+	background-color:#fff;
+	margin-top:2px;
+}
+
+aside{
+	width:156px;
+	float:left;
+	margin-left:2px;
+	margin-top:1px;
+}
+
+ul{
+	list-style-type:none;
+	padding-left:5px;
+	padding-bottom:10px;
+}
+
+li{
+	line-height:120%;
+}
+
+ul li:first-of-type a{
+	color:#900b09;
+	font-weight:bold;
+}
+
+a{
+	text-decoration:none;
+	color: black;
+}
+
+a:hover{
+	text-decoration:underline;
+}
+
+div a, article a{
+	color:#900b09;
+	text-decoration:underline;
+}
+
+article:first-of-type{
+	background:url('img/logocss.jpg');
+	background-position:5px 20px;
+	background-repeat:no-repeat;
+}
+
+article a{
+	margin-left:5px;
+}
+
+article:first-of-type a{
+	margin-left:120px;
+}
+
+article:first-of-type p{
+	font-weight:bold;
+	margin-left:120px;
+}
+
+p{
+	margin:10px 5px 12px 5px;	
+}
+
+h1.home{
+	font-size:1em;
+	padding-left:32px;
+	padding-top: 15px;
+}
+
+h2{
+	margin-right:5px;
+	margin-left:5px;
+	background-color:#808080;
+	font-size:1.2em;
+	color:#fff;
+	padding-left:5px;
+}
+
+h3{
+	margin:0;
+	color:#fff;
+	background-color:#808080;
+	font-size:1em;
+	margin-bottom:4px;
+
+}
+
+div{
+	width:155px;
+	border:1px solid #808080;
+	background-color:#fff;
+	text-align:center;
+	margin-top:1px;
+	padding-top:4px;
+	padding-bottom:5px;
+}
+
+div a:hover{
+	color:red;
+}
+
+div.noPadding{
+	padding-top:0;
+}
+
+img{
+	padding:5px;
+	border:none;
+}
+
+input{
+	padding:0;
+}
+
+input[type=search]{
+	width:100px;
+}
+
+button.prev{
+	background:url('img/previous.png');
+	background-position:left;
+	background-repeat:no-repeat;
+	border:1px solid black;
+	width:80px;
+}
+button.next{
+	background:url('img/next.png');
+	background-position:right;
+	background-repeat:no-repeat;
+	border:1px solid black;
+	width:80px;
+}
+div.buttons{
+	padding-top:4px;
+	width:530px;
+	height:26px;
+	margin-left:5px;
+	text-align: left;
+	border:none;
+	border-bottom:2px solid #808080;
+}
+div.down{
+	border-top:2px solid #808080;
+	margin-top:10px;
+}

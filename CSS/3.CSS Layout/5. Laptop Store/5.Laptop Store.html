@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<Head>
+	<title>Laptop Store</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="5.Laptop Store.css">
+</head>
+<body>
+	<div id="container">
+		<div id="nav">
+			<ul class="clearfix">
+				<li><a href="#">Apple</a></li>
+				<li><a href="#">Toshiba</a></li>
+				<li><a href="#">Lenovo</a></li>
+				<li><a href="#">Dell</a></li>
+				<li><a href="#">Asus</a></li>
+				<li><a href="#">Acer</a></li>
+				<li><a href="#">HP</a></li>
+			</ul>
+		</div>
+		<hr />
+		<div id="content" class="clearfix">
+			<div class="left">
+			<div class="clearfix">
+				<div class="apple left clearfix">
+					<h2>Apple MacBook Air</h2>
+					<div class="left">
+						<img src="laptop.png" alt="Apple MacBook Air" />
+						<p>1300 USD</p>
+					</div>
+					<div class="specif">
+						<p>64 GB SSD</p>
+						<p>2 GB DDR</p>
+						<p>Intel Core i5</p>
+					</div>
+				</div>
+				<div class="apple left clearfix">
+					<h2>Apple MacBook Air</h2>
+					<div class="left">
+						<img src="laptop.png" alt="Apple MacBook Air" />
+						<p>1300 USD</p>
+					</div>
+					<div class="specif">
+						<p>64 GB SSD</p>
+						<p>2 GB DDR</p>
+						<p>Intel Core i5</p>
+					</div>
+				</div>
+			</div>	
+			<div class="clearfix">
+				<div class="apple left clearfix">
+					<h2>Apple MacBook Air</h2>
+					<div class="left">
+						<img src="laptop.png" alt="Apple MacBook Air" />
+						<p>1300 USD</p>
+					</div>
+					<div class="specif">
+						<p>64 GB SSD</p>
+						<p>2 GB DDR</p>
+						<p>Intel Core i5</p>
+					</div>
+				</div>
+				<div class="apple left clearfix">
+					<h2>Apple MacBook Air</h2>
+					<div class="left">
+						<img src="laptop.png" alt="Apple MacBook Air" />
+						<p>1300 USD</p>
+					</div>
+					<div class="specif">
+						<p>64 GB SSD</p>
+						<p>2 GB DDR</p>
+						<p>Intel Core i5</p>
+					</div>
+				</div>
+			</div>	
+			<div class="clearfix">
+				<div class="apple left clearfix">
+					<h2>Apple MacBook Air</h2>
+					<div class="left">
+						<img src="laptop.png" alt="Apple MacBook Air" />
+						<p>1300 USD</p>
+					</div>
+					<div class="specif">
+						<p>64 GB SSD</p>
+						<p>2 GB DDR</p>
+						<p>Intel Core i5</p>
+					</div>
+				</div>
+				<div class="apple left clearfix">
+					<h2>Apple MacBook Air</h2>
+					<div class="left">
+						<img src="laptop.png" alt="Apple MacBook Air" />
+						<p>1300 USD</p>
+					</div>
+					<div class="specif">
+						<p>64 GB SSD</p>
+						<p>2 GB DDR</p>
+						<p>Intel Core i5</p>
+					</div>
+				</div>
+			</div>
+			</div>	
+			<form id="sliders" class="right"  method="get" action="#">
+				<div>
+					<span>Min price:</span>
+					<input type="range" min="50" max="3000" step="50" value="1500"
+						   oninput="minPrice.value = this.value + ' USD'" />
+					<output name="minPrice">1500 USD</output>
+				</div>
+
+				<div>
+					<span>Max price:</span>
+					<input type="range" min="50" max="3000" step="50" value="1500"
+						   oninput="maxPrice.value = this.value + ' USD'" />
+					<output name="maxPrice">1500 USD</output>
+				</div>
+
+				<div>
+					<span>Min RAM:</span>
+					<input type="range" min="1" max="16" step="1" value="8"
+						   oninput="minRam.value = this.value + ' GB'" />
+					<output name="minRam">8 GB</output>
+				</div>
+
+				<div>
+					<span>Max RAM:</span>
+					<input type="range" min="1" max="16" step="1" value="8"
+						   oninput="maxRam.value = this.value + ' GB'" />
+					<output name="maxRam">8 GB</output>
+				</div>
+			</form>
+		</div>	
+	</div>
