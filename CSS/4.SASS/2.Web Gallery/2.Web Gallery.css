@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  padding: 0; }
+  body section, body article, body nav, body div, body ul, body li, body a, body img {
+    margin: 0;
+    padding: 0; }
+  body ul {
+    list-style: none; }
+    body ul li {
+      display: inline-block; }
+  body section {
+    width: 600px;
+    margin: 40px auto; }
+    body section nav ul li label img {
+      width: 80px;
+      height: 80px; }
+    body section article ul li {
+      position: absolute; }
+      body section article ul li img {
+        display: none;
+        width: 400px;
+        height: 400px; }
+      body section article ul li input[type=radio] {
+        display: none; }
+        body section article ul li input[type=radio]:checked + img {
+          display: block; }
+

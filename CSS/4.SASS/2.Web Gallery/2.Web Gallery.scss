@@ -1,0 +1,51 @@
+body
+{
+	margin:0;
+	padding:0;
+
+	section,article,nav,div,ul,li,a,img {
+		margin:0;
+		padding:0;
+	}
+
+	ul {
+		list-style: none;
+		li{
+			display: inline-block;
+		}
+	}
+	section {
+		
+		width:600px;
+		margin:40px auto;
+		nav{
+			ul li label {
+						img{
+							width:80px;
+							height:80px;
+						}
+			}
+			
+		}
+
+		article{
+			ul li{
+					position:absolute;
+					img{
+						display:none;
+						width:400px;
+						height:400px;
+					}
+					input[type=radio] {
+								display:none;
+								&:checked + img {
+								display:block;
+								}
+					}
+
+
+			}
+		}
+	}
+}
+
