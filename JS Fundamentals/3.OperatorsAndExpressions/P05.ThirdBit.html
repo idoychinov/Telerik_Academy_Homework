@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Third Bit</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-number">Number:</label>
+    <input id="input-number" />
+    <input type="button" onclick="onCheckButtonClick()" value="Check"/>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* 5. Write a boolean expression for finding if the bit 3 (counting from 0) of a given integer is 1 or 0.*/
+        function onCheckButtonClick() {
+            var number = jsConsole.readInteger("#input-number");
+            if (!isNaN(number)) {
+                var isOne = (number>>3)&1;
+                if (isOne)   
+                {
+                    jsConsole.writeLine("The third bit of the number " + number + " is 1");
+                }
+                else
+                {
+                    jsConsole.writeLine("The third bit of the number " + number + " is 0");
+
+                }
+            }
+            else {
+                jsConsole.writeLine("The input is not a number");
+            }
+        }
+    </script>
+</body>
+</html>

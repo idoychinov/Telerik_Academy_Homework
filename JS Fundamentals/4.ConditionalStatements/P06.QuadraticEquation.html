@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Quadratic Equation</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-first-number">a:</label>
+    <input id="input-first-number" />
+    <label for="input-second-number">b:</label>
+    <input id="input-second-number" />
+    <label for="input-third-number">c:</label>
+    <input id="input-third-number" />
+    <input type="button" onclick="onCheckButtonClick()" value="Check"/>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* 6. Write a script that enters the coefficients a, b and c of a quadratic equation
+		a*x2 + b*x + c = 0
+		and calculates and prints its real roots. Note that quadratic equations may have 0, 1 or 2 real roots.*/
+        function onCheckButtonClick() {
+            var a = jsConsole.readFloat("#input-first-number");
+            var b = jsConsole.readFloat("#input-second-number");
+            var c = jsConsole.readFloat("#input-third-number");
+            if (!isNaN(a) && !isNaN(b) && !isNaN(c)) {
+                if (a === 0)
+                {
+                    jsConsole.writeLine("This is not a quadratic equation: a is 0");
+                }
+                else
+                {
+                    var discriminant = (b * b) - (4 * a * c);
+
+                    if(discriminant<0)
+                    {
+                        jsConsole.writeLine("The equation has no real roots");
+                    }
+                    else if(discriminant===0)
+                    {
+                        var x = (-b/(2*a));
+                        jsConsole.writeLine("The equation has one real root x="+ x);
+                    }
+                    else
+                    {
+                        var x1 = (-b - Math.sqrt(discriminant)) / (2 * a);
+                        var x2 = (-b + Math.sqrt(discriminant)) / (2 * a);
+                        jsConsole.writeLine("The equation has two real roots x1=" +x1 + " and x2="+x2);
+
+                    }
+                }
+            }
+            else {
+                jsConsole.writeLine("One or more inputs are not numbers");
+            }
+        }
+    </script>
+</body>
+</html>

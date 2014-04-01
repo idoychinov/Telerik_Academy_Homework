@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Third Digit</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-number">Number:</label>
+    <input id="input-number" />
+    <input type="button" onclick="onCheckButtonClick()" value="Check"/>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* 4. Write an expression that checks for given integer if its third digit (right-to-left) is 7. E. g. 1732  true.*/
+        function onCheckButtonClick() {
+            var number = jsConsole.readInteger("#input-number");
+            if (!isNaN(number)) {
+                var calculation = Math.floor(number / 100);
+                if (calculation % 10===7)
+                {
+                    jsConsole.writeLine("The third digit of the number " + number + " is 7");
+                }
+                else
+                {
+                    jsConsole.writeLine("The third digit of the number " + number + " is NOT 7");
+
+                }
+            }
+            else {
+                jsConsole.writeLine("The input is not a number");
+            }
+        }
+    </script>
+</body>
+</html>

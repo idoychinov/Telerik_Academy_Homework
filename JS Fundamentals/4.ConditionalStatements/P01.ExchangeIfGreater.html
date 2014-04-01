@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Exchange if greater</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-first-number">First Number:</label>
+    <input id="input-first-number" />
+    <label for="input-second-number">Second Number:</label>
+    <input id="input-second-number" />
+    <input type="button" onclick="onCheckButtonClick()" value="Check"/>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* 1. Write an if statement that examines two integer variables and exchanges their values if the first one is greater than the second one.*/
+        function onCheckButtonClick() {
+            var firstNumber = jsConsole.readInteger("#input-first-number");
+            var secondNumber = jsConsole.readInteger("#input-second-number");
+            if (!isNaN(firstNumber) && !isNaN(secondNumber)) {
+                if (firstNumber>secondNumber) {
+                    var temp = secondNumber;
+                    secondNumber = firstNumber;
+                    firstNumber = temp;
+                }
+                jsConsole.writeLine("First number: " + firstNumber);
+                jsConsole.writeLine("Second number: " + secondNumber);
+            }
+            else {
+                jsConsole.writeLine("One or more inputs are not numbers");
+            }
+        }
+    </script>
+</body>
+</html>

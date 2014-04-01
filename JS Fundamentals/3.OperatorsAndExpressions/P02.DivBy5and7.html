@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Division by 5 and 7</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-number">Number:</label>
+    <input id="input-number" />
+    <input type="button" onclick="onDivisionButtonClick()" value="Division"/>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* 2.Write a boolean expression that checks for given integer if it can be divided (without remainder) by 7 and 5 in the same time.*/
+        function onDivisionButtonClick() {
+            var number = jsConsole.readInteger("#input-number");
+            if (!isNaN(number)) {
+                if ((number % 5) || (number % 7)) {
+                    jsConsole.writeLine("The number " + number + " is NOT divisible by 5 and 7 in the same time");
+                }
+                else {
+                    jsConsole.writeLine("The number " + number + " is divisible by 5 and 7 in the same time");
+
+                }
+            }
+            else {
+                jsConsole.writeLine("The input is not a number");
+            }
+        }
+    </script>
+</body>
+</html>

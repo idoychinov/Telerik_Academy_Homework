@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Point in circle</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-x">X:</label>
+    <input id="input-x" />
+    <label for="input-y">Y:</label>
+    <input id="input-y" />
+    <input type="button" onclick="onCheckButtonClick()" value="Check" />
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* 6. Write an expression that checks if given print (x,  y) is within a circle K(O, 5).*/
+        function onCheckButtonClick() {
+            var CENTER_X = 0;
+            var CENTER_Y = 0;
+            var RADIUS = 5;
+            var x = jsConsole.readFloat("#input-x");
+            var y = jsConsole.readFloat("#input-y");
+            if (!isNaN(x) && !isNaN(y)) {
+                var isInCircle = (((x-CENTER_X)*(x-CENTER_X)) + ((y-CENTER_Y)*(y-CENTER_Y)))<=(RADIUS*RADIUS);
+                if (isInCircle)
+                {
+                    jsConsole.writeLine("The point is within the circle");
+                }
+                else
+                {
+                    jsConsole.writeLine("The point is outside the circle");
+
+                }
+            }
+            else {
+                jsConsole.writeLine("One or more of the inputs are not numbers");
+            }
+        }
+    </script>
+</body>
+</html>

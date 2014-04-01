@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Greatest of Five Numbers</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-first-number">First Number:</label>
+    <input id="input-first-number" />
+    <label for="input-second-number">Second Number:</label>
+    <input id="input-second-number" />
+    <label for="input-third-number">Third Number:</label>
+    <input id="input-third-number" />
+    <label for="input-fourth-number">Fourth Number:</label>
+    <input id="input-fourth-number" />
+    <label for="input-fifth-number">Fifth Number:</label>
+    <input id="input-fifth-number" />
+    <input type="button" onclick="onCheckButtonClick()" value="Check"/>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* 7. Write a script that finds the greatest of given 5 variables.*/
+        function onCheckButtonClick() {
+            var firstNumber = jsConsole.readFloat("#input-first-number");
+            var secondNumber = jsConsole.readFloat("#input-second-number");
+            var thirdNumber = jsConsole.readFloat("#input-third-number");
+            var fourthNumber = jsConsole.readFloat("#input-fourth-number");
+            var fifthNumber = jsConsole.readFloat("#input-fifth-number");
+            if (!isNaN(firstNumber) && !isNaN(secondNumber) && !isNaN(thirdNumber) && !isNaN(fourthNumber) && !isNaN(fifthNumber)) {
+                var greatest=firstNumber;
+                
+                if(secondNumber>greatest)
+                {
+                    greatest = secondNumber;
+                }
+                if (thirdNumber > greatest) {
+                    greatest = thirdNumber;
+                }
+                if (fourthNumber > greatest) {
+                    greatest = fourthNumber;
+                }
+                if (fifthNumber > greatest) {
+                    greatest = fifthNumber;
+                }
+
+                jsConsole.writeLine("The greatest number is "+greatest);
+
+            }
+            else {
+                jsConsole.writeLine("One or more inputs are not numbers");
+            }
+        }
+    </script>
+</body>
+</html>

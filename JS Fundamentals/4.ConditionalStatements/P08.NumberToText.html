@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Digit Name</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-number">Number:</label>
+    <input id="input-number" />
+    <input type="button" onclick="onCheckButtonClick()" value="Check"/>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* 8. Write a script that converts a number in the range [0...999] to a text corresponding to its English pronunciation. Examples:
+	          0  "Zero"
+	          273  "Two hundred seventy three"
+	          400  "Four hundred"
+	          501  "Five hundred and one"
+	          711  "Seven hundred and eleven"
+        */
+        function onCheckButtonClick() {
+            var number = jsConsole.readInteger("#input-number");
+            if (!isNaN(number) && number >= 0 && number <= 999)
+            {
+                var numberAsText="";
+                var hundreds = Math.floor(number / 100);
+                if(hundreds!==0)
+                {
+                    numberAsText += DigitName(hundreds) + " hundred ";
+                }
+
+                var tens = Math.floor(number / 10);
+                tens = tens % 10;
+                if (tens > 1)
+                {
+                    var tensAsText = TensName(tens);
+                    if(hundreds>0)
+                    {
+                        tensAsText = tensAsText.toLowerCase();
+                    }
+                    numberAsText += tensAsText;
+                }
+                
+                var ones = number % 10;
+
+                if (hundreds === 0)
+                {
+                    if(tens===0)
+                    {
+                        numberAsText = DigitName(ones);
+                        if(ones===0)
+                        {
+                            numberAsText="Zero";
+                        }
+                    }
+                    else if(tens===1)
+                    {
+                        numberAsText = ElevenToNinteenName(ones);
+                    }
+                    else if(ones!==0)
+                    {
+                        numberAsText += " "+DigitName(ones).toLowerCase();
+                    }
+                }
+                else
+                {
+                    if(tens===0)
+                    {
+                        if(ones!==0)
+                        {
+                            numberAsText+= " and "+DigitName(ones).toLowerCase();
+                        }
+                    }
+                    else if(tens===1)
+                    {
+                        numberAsText += " and " + ElevenToNinteenName(ones).toLowerCase();
+                    }
+                    else 
+                    {
+                        numberAsText+=" "+DigitName(ones).toLowerCase();
+                    }
+                }
+
+                jsConsole.writeLine(number + " => "+numberAsText);
+
+            }
+            else
+            {
+                jsConsole.writeLine("The input is not a number in the range 0...999");
+            }
+
+            
+        }
+
+        function DigitName(digit)
+        {
+            var digitName;
+            switch(digit)
+            {
+                case 1: digitName="One"; break;
+                case 2: digitName="Two"; break;
+                case 3: digitName="Three"; break;
+                case 4: digitName="Four"; break;
+                case 5: digitName="Five"; break;
+                case 6: digitName="Six"; break;
+                case 7: digitName="Seven"; break;
+                case 8: digitName="Eight"; break;
+                case 9: digitName="Nine"; break;
+                default: digitName=""; break;
+            }
+            return digitName;
+        }
+
+        function TensName(digit) {
+            var digitName;
+            switch (digit) {
+                case 2: digitName = "Twenty"; break;
+                case 3: digitName = "Thirty"; break;
+                case 4: digitName = "Forty"; break;
+                case 5: digitName = "Fifty"; break;
+                case 6: digitName = "Sixty"; break;
+                case 7: digitName = "Seventy"; break;
+                case 8: digitName = "Eighty"; break;
+                case 9: digitName = "Ninety"; break;
+                default: digitName = ""; break;
+            }
+            return digitName;
+        }
+
+        function ElevenToNinteenName(digit) {
+            var digitName;
+            switch (digit) {
+                case 0: digitName = "Ten"; break;
+                case 1: digitName = "Eleven"; break;
+                case 2: digitName = "Twelve"; break;
+                case 3: digitName = "Thirteen"; break;
+                case 4: digitName = "Fourteen"; break;
+                case 5: digitName = "Fifteen"; break;
+                case 6: digitName = "Sixteen"; break;
+                case 7: digitName = "Seventeen"; break;
+                case 8: digitName = "Eighteen"; break;
+                case 9: digitName = "Nineteen"; break;
+                default: digitName = ""; break;
+            }
+            return digitName;
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Sort three numbers</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-first-number">First Number:</label>
+    <input id="input-first-number" />
+    <label for="input-second-number">Second Number:</label>
+    <input id="input-second-number" />
+    <label for="input-third-number">Third Number:</label>
+    <input id="input-third-number" />
+    <input type="button" onclick="onCheckButtonClick()" value="Check"/>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* 4. Sort 3 real values in descending order using nested if statements.*/
+        function onCheckButtonClick() {
+            var firstNumber = jsConsole.readFloat("#input-first-number");
+            var secondNumber = jsConsole.readFloat("#input-second-number");
+            var thirdNumber = jsConsole.readFloat("#input-third-number");
+            if (!isNaN(firstNumber) && !isNaN(secondNumber) && !isNaN(thirdNumber)) {
+                var temp;
+                if (firstNumber < secondNumber)
+                {
+                    temp = firstNumber;
+                    firstNumber = secondNumber;
+                    secondNumber = temp;
+
+                    if(secondNumber<thirdNumber)
+                    {
+                        temp = secondNumber;
+                        secondNumber = thirdNumber;
+                        thirdNumber = temp;
+
+                        if(firstNumber<secondNumber)
+                        {
+                            temp = firstNumber;
+                            firstNumber = secondNumber;
+                            secondNumber = temp;
+                        }
+                    }
+                }
+                else
+                {
+                    if(secondNumber<thirdNumber)
+                    {
+                        temp = secondNumber;
+                        secondNumber = thirdNumber;
+                        thirdNumber = temp;
+
+                        if (firstNumber < secondNumber) {
+                            temp = firstNumber;
+                            firstNumber = secondNumber;
+                            secondNumber = temp;
+                        }
+                    }
+                }
+                jsConsole.writeLine("First Number:" + firstNumber);
+                jsConsole.writeLine("Second Number:" + secondNumber);
+                jsConsole.writeLine("Third Number:" + thirdNumber);
+            }
+            else {
+                jsConsole.writeLine("One or more inputs are not numbers");
+            }
+        }
+    </script>
+</body>
+</html>
