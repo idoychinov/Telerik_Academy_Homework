@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Char array compare</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="array1">Array 1:</label>
+    <input type="text" id="array1"/>
+    <label for="array2">Array 2:</label>
+    <input type="text" id="array2" />
+    <input type="button" onclick="onButtonClick()" value="Print" />
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* 2. Write a script that compares two char arrays lexicographically (letter by letter).*/
+        function onButtonClick() {
+            var array1 = document.getElementById("array1").value;
+            var array2 = document.getElementById("array2").value;   
+            length = Math.min(array1.length, array2.length);
+            var equal = true;
+            for (var i = 0; i < length; i++) {
+                var comparison=compareChar(array1[i],array2[i]);
+                if (comparison)
+                {
+                    if(comparison<0)
+                    {
+                        jsConsole.writeLine("Array 1 is lexicographically before Array 2");
+                    }
+                    else
+                    {
+                        jsConsole.writeLine("Array 1 is lexicographically after Array 2");
+
+                    }
+                    equal = false;
+                    break;
+                }
+            }
+
+            if (equal)
+            {
+                if (array1.length < array2.length)
+                {
+                    jsConsole.writeLine("Array 1 is lexicographically before Array 2");
+                }
+                else if (array1.length > array2.length) {
+                    jsConsole.writeLine("Array 1 is lexicographically after Array 2");
+                }
+                else {
+                    jsConsole.writeLine("Array 1 is lexicographically equal to Array 2");
+                }
+            }
+        }
+
+        function compareChar(a, b)
+        {
+            return a < b ? -1 : (a === b ? 0 : 1);
+        }
+    </script>
+</body>
+</html>

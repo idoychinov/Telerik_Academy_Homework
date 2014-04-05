@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Print numbers 1 to N</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-number">N:</label>
+    <input id="input-number" />
+    <input type="button" onclick="onButtonClick()" value="Print"/>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* 1. Write a script that prints all the numbers from 1 to N.*/
+        function onButtonClick() {
+            var n = jsConsole.readInteger("#input-number");
+            if (!isNaN(n) && n>0) {
+                for (var i = 1; i <= n; i++) {
+                    jsConsole.writeLine(i);
+                }
+            }
+            else {
+                jsConsole.writeLine("N must be a number greater or equal to 1");
+            }
+        }
+    </script>
+</body>
+</html>

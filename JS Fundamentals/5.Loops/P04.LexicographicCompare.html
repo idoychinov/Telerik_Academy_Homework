@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Smallest and largest property</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <input type="button" onclick="onButtonClick()" value="Check"/>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* 4. Write a script that finds the lexicographically smallest and largest property in document, window and navigator objects. */
+        
+        function onButtonClick() {
+            LexCompare(document);
+            LexCompare(window);
+            LexCompare(navigator);
+
+        }
+
+        function LexCompare(element)
+        {
+            var firstIteration = true;
+            for (var prop in element) {
+                if (firstIteration) {
+                    min = prop;
+                    max = prop;
+                    firstIteration = false;
+                }
+                if (prop < min) {
+                    min = prop;
+                }
+                if (prop > max) {
+                    max = prop;
+                }
+            }
+
+            jsConsole.writeLine("Smallest Property in "+element+" is " + min);
+            jsConsole.writeLine("Biggest Property in "+element+" is " + max);
+        }
+
+    </script>
+</body>
+</html>
