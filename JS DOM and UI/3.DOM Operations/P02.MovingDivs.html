@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Moving Divs</title>
+    <style>
+        /*
+            center point of the circle is x=500 y=300 and radiius is 200px
+            */
+        div{
+            position:absolute;
+            width:100px;
+            height:100px;
+            background-color:red;
+        }
+
+        #el1{
+            top:200px;
+            left:500px;
+        }
+    </style>
+</head>
+<body>
+    <div id="el1"></div>
+    <div id="el2"></div>
+    <div id="el3"></div>
+    <div id="el4"></div>
+    <div id="el5"></div>
+    <script>
+        /* 2.Write a script that creates 5 div elements and moves them in circular path with 
+        interval of 100 milliseconds*/
+        function MoveDivs() {
+            var numberOfDivs = ((Math.random() * 9) | 0)+1;
+            for(var i=1;i<=numberOfDivs;i++)
+            {
+                document.body.appendChild(CreateDiv());
+            }
+
+        }
+
+        function CreateDiv() {
+            var currentDiv = document.createElement("div");
+            var height = Random(80, 20);
+            currentDiv.style.height = height + "px";
+            var width = Random(80, 20);
+            currentDiv.style.width = width + "px";
+            var red = Random(255);
+            var green = Random(255);
+            var blue = Random(255);
+            currentDiv.style.backgroundColor = "rgb(" + red + "," + green + "," + blue + ")";
+            red = Random(255);
+            green = Random(255);
+            blue = Random(255);
+            currentDiv.style.color = "rgb(" + red + "," + green + "," + blue + ")";
+            currentDiv.style.position = "absolute";
+            var top = Random(window.innerHeight - height);
+            currentDiv.style.top = top + "px";
+            var left = Random(window.innerWidth-width);
+            currentDiv.style.left = left + "px";
+            var strongElement = document.createElement("strong");
+            strongElement.innerHTML = "div";
+            currentDiv.appendChild(strongElement);
+            currentDiv.style.borderStyle = "solid";
+            var borderRadius = Random(20);
+            currentDiv.style.borderRadius = borderRadius + "px";
+            red = Random(255);
+            green = Random(255);
+            blue = Random(255);
+            currentDiv.style.borderColor = "rgb(" + red + "," + green + "," + blue + ")";
+            var borderWidth = Random(19, 1);
+            currentDiv.style.borderWidth = borderWidth + "px";
+
+            return currentDiv;
+        }
+
+        MoveDivs();
+    </script>
+</body>
+</html>

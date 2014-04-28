@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Input Text</title>
+</head>
+<body>
+    <input type="text" id="text-input"/>
+    <input type="button" onclick="onClickFunction()" value="Print"/>
+    
+    <script>
+        /* 2. Create a function that gets the value of <input type="text"> ands prints its value to the console*/
+        function onClickFunction() {
+            console.log(document.getElementById("text-input").value);
+            alert("Look in the Console for the result.");
+            }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Change color</title>
+</head>
+<body>
+    <input type="color" id="color-input"/>
+    <input type="button" onclick="onClickFunction()" value="Change Color"/>
+    
+    <script>
+        /* 3. Crate a function that gets a the value of <input type="color">
+        and sets the background of the body to this value*/
+        function onClickFunction() {
+            var color = document.getElementById("color-input").value;
+            document.body.style.backgroundColor = color;
+            }
+        
+    </script>
+</body>
+</html>

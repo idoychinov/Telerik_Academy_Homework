@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Select Divs</title>
+    <style>
+        div > div {
+            background-color:yellow;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        Main Div
+        <div>Direct child Div 1</div>
+        <nav>
+            <div>Indirect child Div 1</div>
+        </nav>
+        <section>
+            <div>
+                Indirect child Div 2
+                <div>Direct child div 2</div>
+                <div>Direct child div 3</div>
+            </div>
+        </section>
+        <p>
+            Look in the Console for the result of the script!
+        </p>
+    </div>
+    <script>
+        /* 1. Write a script that selects all the div nodes that are directly inside other div elements
+Create a function using querySelectorAll()
+Create a function using getElementsByTagName()
+*/
+        function SelectedDivs() {
+            var selectedDivs = document.querySelectorAll("div > div");
+            console.log("Divs selected by querySelectorAll");
+            for (var i = 0, len = selectedDivs.length; i < len; i++) {
+                
+                console.log("divs[" + i + "]= " + selectedDivs[i].innerHTML);
+            }
+            
+
+            selectedDivs = document.getElementsByTagName("div");
+            console.log("Divs selected by getElementsByTagName");
+            for (var i = 0, len = selectedDivs.length; i < len; i++) {
+                var currentDiv = selectedDivs[i].getElementsByTagName("div");
+                for (var j = 0, newLen = currentDiv.length; j < newLen; j++)
+                console.log("divs[" + j + "]= " + currentDiv[j].innerHTML);
+            }
+
+        }
+        SelectedDivs();
+    </script>
+</body>
+</html>
