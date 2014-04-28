@@ -1,0 +1,30 @@
+.reset-base {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+.reset-html5 {
+  display: block;
+}
+.reset-links {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+.clearfix {
+  zoom: 1;
+}
+.clearfix:after {
+  display: block;
+  content: "";
+  height: 0;
+  clear: both;
+}
+/*# sourceMappingURL=general.css.map */

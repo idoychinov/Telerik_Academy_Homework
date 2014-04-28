@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Last Digit Name</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-number">Number:</label>
+    <input id="input-number" />
+    <input type="button" onclick="onCheckButtonClick()" value="Check" />
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* 1. Write a function that returns the last digit of given integer as an English word. Examples: 512  "two", 1024  "four", 12309  "nine" */
+        function onCheckButtonClick() {
+            var number = jsConsole.readInteger("#input-number");
+            if (!isNaN(number)) {
+                var digitName = DigitName(number % 10);
+                jsConsole.writeLine("The last digit of the number " + number + " is " + digitName);
+            }
+            else {
+                jsConsole.writeLine("The input is not a number");
+            }
+        }
+
+        function DigitName(digit) {
+            var digitName;
+            switch (digit) {
+                case 0: digitName = "Zero"; break;
+                case 1: digitName = "One"; break;
+                case 2: digitName = "Two"; break;
+                case 3: digitName = "Three"; break;
+                case 4: digitName = "Four"; break;
+                case 5: digitName = "Five"; break;
+                case 6: digitName = "Six"; break;
+                case 7: digitName = "Seven"; break;
+                case 8: digitName = "Eight"; break;
+                case 9: digitName = "Nine"; break;
+                default: digitName = ""; break;
+            }
+            return digitName;
+        }
+
+    </script>
+</body>
+</html>

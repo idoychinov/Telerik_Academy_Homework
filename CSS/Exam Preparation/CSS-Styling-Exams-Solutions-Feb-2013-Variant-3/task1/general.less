@@ -1,0 +1,50 @@
+﻿
+.reset-base {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+.reset-html5{
+    display:block;
+}
+
+.reset-links{
+    margin:0;
+    padding:0;
+    text-decoration:none;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+    }
+
+.clearfix {
+    zoom: 1;
+    &:after {
+        display:block;
+        content:"";
+        height:0;
+        clear:both;
+    }
+}
+
+.round-border()
+{
+
+}
+
+
+.gradient-two-colors(@first-color,@second-color,@from-pos,@to-pos) {
+		background: @second-color; /* Old browsers */
+        background: -moz-linear-gradient(top,  @first-color @from-pos, @second-color @to-pos); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(@from-pos,@first-color), color-stop(@to-pos,@second-color)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  @first-color @from-pos,@second-color @to-pos); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  @first-color @from-pos,@second-color @to-pos); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  @first-color @from-pos,@second-color @to-pos); /* IE10+ */
+        background: linear-gradient(to bottom,  @first-color @from-pos,@second-color @to-pos); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@{first-color}', endColorstr='@{second-color}',GradientType=0 ); /* IE6-8 */
+}

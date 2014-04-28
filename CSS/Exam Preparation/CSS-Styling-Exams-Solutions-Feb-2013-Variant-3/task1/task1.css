@@ -1,0 +1,100 @@
+.reset-base {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+.reset-html5 {
+  display: block;
+}
+.reset-links {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  color: #3694ff;
+}
+.reset-links:hover {
+  color: #008000;
+}
+.reset-links:visited {
+  color: #3694ff;
+}
+.clearfix {
+  zoom: 1;
+}
+.clearfix:after {
+  display: block;
+  content: "";
+  height: 0;
+  clear: both;
+}
+body #wrapper {
+  width: 960px;
+  font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'DejaVu Sans Condensed', sans-serif;
+  font-size: 16px;
+}
+body #wrapper .msg-bar {
+  list-style-type: none;
+  position: relative;
+  display: inline-block;
+  margin-top: 200px;
+  width: 560px;
+}
+body #wrapper .msg-bar li {
+  display: inline-block;
+}
+body #wrapper .msg-bar li .msg-bar-btn {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  color: #3694ff;
+  background: #13ffd2;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #aaffef 0, #13ffd2 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #aaffef), color-stop(100%, #13ffd2));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #aaffef 0, #13ffd2 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #aaffef 0, #13ffd2 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #aaffef 0, #13ffd2 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #aaffef 0, #13ffd2 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#aaffef', endColorstr='#13ffd2', GradientType=0);
+  /* IE6-8 */
+  border: 2px solid black;
+  padding: 10px 16px;
+}
+body #wrapper .msg-bar li .msg-bar-btn:hover {
+  color: #008000;
+}
+body #wrapper .msg-bar li .msg-bar-btn:visited {
+  color: #3694ff;
+}
+body #wrapper .msg-bar li:hover .msg-bar-btn {
+  background: #00DDB3;
+  border-top: none;
+}
+body #wrapper .msg-bar li:hover .msg-bar-content {
+  display: block;
+}
+body #wrapper .msg-bar li .msg-bar-content {
+  display: none;
+  position: absolute;
+  height: 160px;
+  width: 460px;
+  bottom: 35px;
+  left: 0;
+}
+/*# sourceMappingURL=task1.css.map */
