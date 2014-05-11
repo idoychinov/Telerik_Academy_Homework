@@ -22,22 +22,17 @@
             var thirdNumber = jsConsole.readFloat("#input-third-number");
             if (!isNaN(firstNumber) && !isNaN(secondNumber) && !isNaN(thirdNumber)) {
                 var isPositive=true;
-                if (firstNumber===0 || secondNumber ===0 || thirdNumber ===0)
-                {
+                if (firstNumber===0 || secondNumber ===0 || thirdNumber ===0){
                     jsConsole.writeLine("The product of the three numbers is 0")
                 }
-                else
-                {
-                    if(firstNumber<0)
-                    {
+                else{
+                    if(firstNumber<0){
                         isPositive = !isPositive;
                     }
-                    if(secondNumber<0)
-                    {
+                    if(secondNumber<0){
                         isPositive = !isPositive;
                     }
-                    if(thirdNumber<0)
-                    {
+                    if(thirdNumber<0){
                         isPositive = !isPositive;
                     }
                     jsConsole.writeLine("The product of the three numbers is " + (isPositive ? "positive" : "negative"));

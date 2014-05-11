@@ -22,23 +22,18 @@
             var thirdNumber = jsConsole.readInteger("#input-third-number");
             if (!isNaN(firstNumber) && !isNaN(secondNumber) && !isNaN(thirdNumber)) {
                 /* If two or more numbers are equal it will state one of them as the biggest*/
-                if (firstNumber > secondNumber)
-                {
-                    if(firstNumber>thirdNumber)
-                    {
+                if (firstNumber > secondNumber){
+                    if(firstNumber>thirdNumber){
                         jsConsole.writeLine("First Number is the biggest");
                     }
-                    else
-                    {
+                    else{
                         jsConsole.writeLine("Third Number is the biggest");
                     }
                 }
-                else if (secondNumber > thirdNumber)
-                {
+                else if (secondNumber > thirdNumber){
                     jsConsole.writeLine("Second Number is the biggest");
                 }
-                else 
-                {
+                else {
                     jsConsole.writeLine("Third Number is the biggest");
 
                 }

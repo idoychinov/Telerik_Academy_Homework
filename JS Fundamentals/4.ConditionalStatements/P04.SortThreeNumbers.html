@@ -22,20 +22,17 @@
             var thirdNumber = jsConsole.readFloat("#input-third-number");
             if (!isNaN(firstNumber) && !isNaN(secondNumber) && !isNaN(thirdNumber)) {
                 var temp;
-                if (firstNumber < secondNumber)
-                {
+                if (firstNumber < secondNumber){
                     temp = firstNumber;
                     firstNumber = secondNumber;
                     secondNumber = temp;
 
-                    if(secondNumber<thirdNumber)
-                    {
+                    if(secondNumber<thirdNumber){
                         temp = secondNumber;
                         secondNumber = thirdNumber;
                         thirdNumber = temp;
 
-                        if(firstNumber<secondNumber)
-                        {
+                        if(firstNumber<secondNumber){
                             temp = firstNumber;
                             firstNumber = secondNumber;
                             secondNumber = temp;
@@ -44,8 +41,7 @@
                 }
                 else
                 {
-                    if(secondNumber<thirdNumber)
-                    {
+                    if(secondNumber<thirdNumber){
                         temp = secondNumber;
                         secondNumber = thirdNumber;
                         thirdNumber = temp;

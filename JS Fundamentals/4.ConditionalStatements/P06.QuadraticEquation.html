@@ -23,25 +23,20 @@
             var b = jsConsole.readFloat("#input-second-number");
             var c = jsConsole.readFloat("#input-third-number");
             if (!isNaN(a) && !isNaN(b) && !isNaN(c)) {
-                if (a === 0)
-                {
+                if (a === 0){
                     jsConsole.writeLine("This is not a quadratic equation: a is 0");
                 }
-                else
-                {
+                else{
                     var discriminant = (b * b) - (4 * a * c);
 
-                    if(discriminant<0)
-                    {
+                    if(discriminant<0){
                         jsConsole.writeLine("The equation has no real roots");
                     }
-                    else if(discriminant===0)
-                    {
+                    else if(discriminant===0){
                         var x = (-b/(2*a));
                         jsConsole.writeLine("The equation has one real root x="+ x);
                     }
-                    else
-                    {
+                    else{
                         var x1 = (-b - Math.sqrt(discriminant)) / (2 * a);
                         var x2 = (-b + Math.sqrt(discriminant)) / (2 * a);
                         jsConsole.writeLine("The equation has two real roots x1=" +x1 + " and x2="+x2);
