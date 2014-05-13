@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Index of Bigger Element in Array</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <p>Enter the array as numbers separated by a single interval. <em>Example (1 4 5.3 7 -4)</em></p>
+    <label for="input-array">Array:</label>
+    <input type="text" id="input-array" />
+    <input type="button" onclick="onButtonClick()" value="Find" />
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* 7.  Write a function that returns the index of the first element in array that is bigger than its neighbors, or -1, if there’s no such element.
+               Use the function from the previous exercise.*/
+        function onButtonClick() {
+            var array = jsConsole.read("#input-array").split(" ");
+            jsConsole.writeLine("The position of the first bigger element in the array is " + BiggerElementPosition(array));
+        }
+
+        function BiggerElementPosition(array)
+        {
+            var i,
+                len;
+
+            for (i = 0, len = array.length; i < len; i += 1) {
+                if (BiggerElement(array, i)) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        function BiggerElement(array, position) {
+            var isBigger = false;
+
+            if (position > 0) {
+                if(parseInt(array[position])>parseInt(array[position-1])){
+                    isBigger = true;
+                } else {
+                    isBigger = false;
+                }
+            } else {
+                isBigger = true;
+            }
+
+            if (position < array.length - 1) {
+                if (parseInt(array[position]) > parseInt(array[position + 1])) {
+                    isBigger = isBigger && true;
+                }
+                else{
+                    isBigger = false;
+                }
+            } else {
+                isBigger = isBigger && true;
+            }
+            return isBigger;
+        }
+
+        
+    </script>
+</body>
+
+</html>

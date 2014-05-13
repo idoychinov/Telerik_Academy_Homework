@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Bigger Element in Array</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <p>Enter the array as numbers separated by a single interval. <em>Example (1 4 5.3 7 -4)</em></p>
+    <label for="input-array">Array:</label>
+    <input type="text"  id="input-array" />
+    <label for="input-number">Position:</label>
+    <input type="text" id="input-position" />
+    <input type="button" onclick="onButtonClick()" value="Find" />
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* 6. Write a function that checks if the element at given position in given array of integers is bigger than its two neighbors (when such exist). */
+        function onButtonClick() {
+            var array = jsConsole.read("#input-array").split(" ");
+            var position = jsConsole.readInteger("#input-position");
+            jsConsole.writeLine("The element in position " + position + " is " + (BiggerElement(array, position) ? "" : "not ") + "bigger than it's neighbors");
+        }
+
+        function BiggerElement(array, position) {
+            var isBigger = false,
+                i,
+                len;
+
+            if (position > 0) {
+                if(parseInt(array[position])>parseInt(array[position-1])){
+                    isBigger = true;
+                } else {
+                    isBigger = false;
+                }
+            } else {
+                isBigger = true;
+            }
+
+            if (position < array.length - 1) {
+                if (parseInt(array[position]) > parseInt(array[position + 1])) {
+                    isBigger = isBigger && true;
+                }
+                else{
+                    isBigger = false;
+                }
+            } else {
+                isBigger = isBigger && true;
+            }
+            return isBigger;
+        }
+
+        
+    </script>
+</body>
+
+</html>

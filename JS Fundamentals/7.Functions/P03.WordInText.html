@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Word in text</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-text">Text:</label>
+    <textarea id="input-text"></textarea>
+    <label for="input-word">Word:</label>
+    <input type="text" id="input-word" />
+    <label for="case-sensitive">Case sensitive search:</label>
+    <input type="checkbox" name="case-sensitive" id="case-sensitive" value="case-sensitive" />
+    <input type="button" onclick="onButtonClick()" value="Find" />
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* 3. Write a function that finds all the occurrences of word in a text
+              The search can case sensitive or case insensitive
+              Use function overloading*/
+        function onButtonClick() {
+            var text = jsConsole.read("#input-text");
+            var word = jsConsole.read("#input-word");
+            var caseSensitive = document.getElementById("case-sensitive").checked;
+            jsConsole.writeLine("The number of occurrences of the word "+word+" in the text is "+FindOccurencess(text,word,caseSensitive));
+        }
+
+        function FindOccurencess(text, word, caseSensitive) {
+            var occurencess = 0;
+            var currentIndex = 0;
+            if (!caseSensitive) {
+                text = text.toLowerCase();
+                word = word.toLowerCase();
+            }
+
+            do {
+                currentIndex = text.indexOf(word, currentIndex);
+                if (currentIndex > -1) {
+                    occurencess += 1;
+                    currentIndex += word.length;
+                }
+            } while (currentIndex > -1);
+
+            return occurencess;
+        }
+
+    </script>
+</body>
+
+</html>

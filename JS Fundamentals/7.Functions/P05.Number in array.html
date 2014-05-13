@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Number in array</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <p>Enter the array as numbers separated by a single interval. <em>Example (1 4 5.3 7 -4)</em></p>
+    <label for="input-array">Array:</label>
+    <input type="text"  id="input-array" />
+    <label for="input-number">Number:</label>
+    <input type="text" id="input-number" />
+    <input type="button" onclick="onButtonClick()" value="Find" />
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* 5.  Write a function that counts how many times given number appears in given array. Write a test function to check if the function is working correctly. */
+        function onButtonClick() {
+            var array = jsConsole.read("#input-array").split(" ");
+            var number = jsConsole.readFloat("#input-number");
+            jsConsole.writeLine("The number of occurrences of the number " + number + " in the array is " + CountNumber(array, number));
+            jsConsole.writeLine(TestFunction() ? "Test Passed Successfuly" : "Test Not Passed");
+        }
+
+        function CountNumber(array, number) {
+            var occurencess = 0,
+                i,
+                len;
+
+            for (i = 0, len = array.length; i < len; i+=1) {
+                if (number === parseFloat(array[i]))
+                {
+                    occurencess += 1;
+                }
+            }
+
+            return occurencess;
+        }
+
+        function TestFunction() {
+            var testArray1,
+                testArray2,
+                testArray3,
+                number1,
+                number2,
+                number3,
+                test1CorrectResult,
+                test2CorrectResult,
+                test3CorrectResult,
+                testResult1,
+                testResult2,
+                testResult3;
+
+
+            testArray1 = [2, 4, -6, 34, 6.3, 0, 65, 34, 4];
+            number1 = 34;
+            test1CorrectResult = 2;
+            testResult1 = (test1CorrectResult === CountNumber(testArray1, number1));
+
+            testArray2 = [0 , 1, -43.5, 13, 53];
+            number2 = -43.5;
+            test2CorrectResult = 1;
+            testResult2 = (test2CorrectResult === CountNumber(testArray2, number2));
+
+            testArray3 = [3, 5, 6, 8];
+            number3 = 7;
+            test3CorrectResult = 0;
+            testResult3 = (test3CorrectResult === CountNumber(testArray3, number3));
+
+            if (testResult1 && testResult2 && testResult3) {
+                return true;
+            } else {
+                return false;
+
+            }
+        }
+    </script>
+</body>
+
+</html>

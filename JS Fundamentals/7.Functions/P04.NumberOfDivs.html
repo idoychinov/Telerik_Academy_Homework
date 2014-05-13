@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Word in text</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <style>
+        div {
+            background-color:yellow;
+        }
+    </style>
+</head>
+<body>
+    <div>This is div</div>
+    <div>So is this <div>And this is nested div</div></div>
+    <p>This is not a div</p>
+    <section><div>This is another div</div></section>
+    <span>This is span</span>
+    <p id="div-count">Result</p>
+    <script>
+        /* 4.  Write a function to count the number of divs on the web page */
+        (function CountDivs() {
+            var divs = document.getElementsByTagName("div").length;
+            document.getElementById("div-count").innerHTML = "Number of divs on the page = " + divs;
+        })();
+
+    </script>
+</body>
+
+</html>
