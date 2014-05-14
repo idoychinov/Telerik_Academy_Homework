@@ -23,27 +23,27 @@
                 var distance = Math.sqrt((xDifference * xDifference) + (yDifference * yDifference));
                 return distance;
             }
-        }
+        };
 
         function Line(startPoint, endPoint) {
             this.start = startPoint;
             this.end = endPoint;
             this.length = startPoint.distanceTo(endPoint);
             this.canFormTriangle = function (line2, line3) {
-                if (this.length > line2.length && this.length >line3.length)
-                {
-                    return (this.length<(line2.length+line3.length))
-                } else if (line2.length > this.length && line2.length > line3.length)
-                {
+                if (this.length > line2.length && this.length > line3.length) {
+                    return (this.length < (line2.length + line3.length))
+                } else if (line2.length > this.length && line2.length > line3.length) {
                     return (line2.length < (this.length + line3.length))
                 } else {
                     return (line3.length < (this.length + line2.length))
                 }
             }
-        }
+        };
 
+        
 
         (function () {
+
             var pointA = new Point(3, 5);
             var pointB = new Point(1, 7);
             console.log(pointA.distanceTo(pointB));  // should be 2.8284...
@@ -55,6 +55,7 @@
 
             console.log(lineA.canFormTriangle(lineB, lineC)); // true - can form triangle
             console.log(lineA.canFormTriangle(lineB, lineD)); // false - can form triangle
+            
         })();
 
     </script>

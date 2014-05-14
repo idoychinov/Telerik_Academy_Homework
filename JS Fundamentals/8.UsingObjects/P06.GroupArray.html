@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Group Array</title>
+</head>
+<body>
+    <p>The test results are in the Java Script Console in the browser.</p>
+    <script>
+        /* 6. Write a function that groups an array of persons by age, first or last name. The function must return an associative array, with keys - the groups, and values -arrays with persons in this groups
+              Use function overloading (i.e. just one function)
+                var persons = {…};
+                var groupedByFname = group(persons, 'firstname');
+                var groupedByAge= group(persons, 'age');
+        */
+        
+
+        (function () {
+
+            function group(array, property) {
+                var groupedArray = [],
+                    currenyElementProperty;
+
+                for (var element in array) {
+                    currenyElementProperty = array[element][property];
+                    if (!groupedArray[currenyElementProperty]) {
+                        groupedArray[currenyElementProperty] = [];
+                    }
+                    groupedArray[currenyElementProperty].push(array[element]); // TODO : should be deep copy
+                }
+                return groupedArray;
+            }
+
+            function printGroupedPersons(groupedPersons) {
+                for (var group in groupedPersons) {
+                    var personsInGroup = groupedPersons[group];
+                    for (var person in personsInGroup) {
+                        console.log(personsInGroup[person].firstname + ' ' + personsInGroup[person].lastname + ' Age: ' + personsInGroup[person].age)
+                    }
+                    console.log("------------------------------------------------------");
+                }
+            }
+
+            var persons = [
+                { firstname: 'Gosho', lastname: 'Petrov', age: 32 },
+                { firstname: 'Bay', lastname: 'Ivan', age: 81 },
+                { firstname: 'Misho', lastname: 'Mihailov', age: 22 },
+                { firstname: 'Milka', lastname: 'Dimitrova', age: 45 },
+                { firstname: 'Gosho', lastname: 'Penchev', age: 33 },
+                { firstname: 'Ani', lastname: 'Radeva', age: 22 },
+                { firstname: 'Metodi', lastname: 'Kirilov', age: 32 },
+            ];
+            console.log('BY AGE\n');
+            var groupedPersonsByAge = group(persons, 'age');
+            printGroupedPersons(groupedPersonsByAge);
+            console.log('\nBY FIRSTNAME\n');
+            var groupedPersonsByLastName = group(persons, 'firstname');
+            printGroupedPersons(groupedPersonsByLastName);
+        })();
+
+    </script>
+</body>
+</html>

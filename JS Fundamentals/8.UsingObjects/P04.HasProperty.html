@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Has Property</title>
+</head>
+<body>
+    <p>The test results are in the Java Script Console in the browser.</p>
+    <script>
+        /* 4. Write a function that checks if a given object contains a given property
+              Write a function that makes a deep copy of an object
+                var obj  = …;
+                var hasProp = hasProperty(obj, 'length');
+
+              */
+        if(!Object.prototype.hasProperty){
+            Object.prototype.hasProperty = function (propertyName) {
+                for (var property in this) {
+                    if (property === propertyName) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
+
+        (function () {
+            var line = {
+                start: {
+                    x: 3,
+                    y: 6
+                },
+                end: {
+                    x: 1,
+                    y: 4
+                },
+                name: "First Line",
+                print: function () {
+                    console.log("Point '" + this.name + "' Start[" + this.start.x + ", " + this.start.y + "]; End[" + this.end.x + ", " + this.end.y + "];");
+                }
+            };
+
+            console.log("Line has property 'end' :", line.hasProperty('end'));
+            console.log("Line has property 'begining' :", line.hasProperty('begining'));
+        })();
+
+    </script>
+</body>
+</html>
