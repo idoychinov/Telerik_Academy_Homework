@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Count Substring</title>
+</head>
+<body>
+    <p>The test results are in the Java Script Console in the browser.</p>
+    <script>
+        /* 3. Write a JavaScript function that finds how many times
+        a substring is contained in a given text (perform case insensitive search).
+		Example: The target substring is "in". The text is as follows:
+
+        We are living in an yellow submarine. We don't have anything else.
+        Inside the submarine is very tight. So we are drinking all the day. We will move out of it in 5 days.
+
+        The result is: 9.*/
+
+        var text = 'We are living in an yellow submarine. We don\'t have anything else.Inside the submarine is very tight. So we are drinking all the day. We will move out of it in 5 days.';
+        var toSearch = 'in';
+        console.log('The substring "' + toSearch + '" is found in the text ' + countSubstring(text, toSearch) + ' times');
+
+        function countSubstring(text, substring) {
+            var count = 0,
+                currentIndex = 0,
+                len = substring.length,
+                text = text.toLowerCase(),
+                substring = substring.toLowerCase();
+
+            do {
+                currentIndex = text.indexOf(substring, currentIndex);
+                if (currentIndex > -1) {
+                    count += 1;
+                    currentIndex += len;
+                }
+            } while (currentIndex > -1)
+
+            return count;
+        }
+
+    </script>
+</body>
+</html>

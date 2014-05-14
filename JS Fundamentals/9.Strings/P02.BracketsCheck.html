@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Brackets Check</title>
+</head>
+<body>
+    <p>The test results are in the Java Script Console in the browser.</p>
+    <script>
+        /* 2. Write a JavaScript function to check if in a given expression the brackets are put correctly.
+            Example of correct expression: ((a+b)/5-d).
+            Example of incorrect expression: )(a+b)).*/
+
+        var correctExpression = '((a+b)/5-d)';
+        var incorrectExpression = ')(a+b))';
+        console.log(correctExpression + ' is ' + (checkBrakets(correctExpression) ? ' correct' : 'incorect'));
+        console.log(correctExpression + ' is ' + (checkBrakets(incorrectExpression) ? ' correct' : 'incorect'));
+
+        function checkBrakets(expression) {
+            var openingBracketsCount = 0,
+                closingBracketsCount = 0,
+                i,
+                len;
+
+            for (i = 0, len = expression.length; i < len; i += 1) {
+                if (expression[i] === '(') {
+                    openingBracketsCount += 1;
+                }else if(expression[i]===')')
+                {
+                    closingBracketsCount += 1;
+                }
+
+                if (closingBracketsCount > openingBracketsCount) {
+                    return false;
+                }
+            }
+
+            if(closingBracketsCount !== openingBracketsCount)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+    </script>
+</body>
+</html>
