@@ -1,14 +1,4 @@
-﻿var firstTest = [
-    '(+ 1 2)', 
-'(+ 5 2 7 1)',
-'(- 4 2)',
-'(- 4)',
-'(/ 2)'
-
-
-];
-
-
+﻿//Unfinished
 
 function Solve(input) {
     var operator;
@@ -64,4 +54,16 @@ function Solve(input) {
     }
 }
 
-console.log(Solve(firstTest));
+
+
+//var firstTest = [
+//    '(+ 1 2)',
+//'(+ 5 2 7 1)',
+//'(- 4 2)',
+//'(- 4)',
+//'(/ 2)'
+
+
+//];
+
+//console.log(Solve(firstTest));

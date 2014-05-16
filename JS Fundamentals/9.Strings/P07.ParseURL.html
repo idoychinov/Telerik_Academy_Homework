@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Parse URL</title>
+</head>
+<body>
+    <p>The test results are in the Java Script Console in the browser.</p>
+    <script>
+        /* 7. Write a script that parses an URL address given in the format:
+            [protocol]://[server]/[resource]
+		and extracts from it the [protocol], [server] and [resource] elements. Return the elements in a JSON object.
+        For example from the URL http://www.devbg.org/forum/index.php the following information should be extracted:
+            {protocol: "http", server: "www.devbg.org", resource: "/forum/index.php"}
+
+*/
+
+        var url = 'http://www.devbg.org/forum/index.php';
+        console.log(extractURL(url));
+
+        function extractURL(url) {
+            var protocol,
+                server,
+                resource,
+                protocolEnd,
+                serverEnd;
+
+            protocolEnd = url.indexOf('://', 0);
+            protocol = url.substring(0, protocolEnd);
+            serverEnd = url.indexOf('/', protocolEnd + 3);
+            server = url.substring(protocolEnd + 3, serverEnd);
+            resource = url.substring(serverEnd);
+
+            return {
+                protocol: protocol,
+                server: server,
+                resource: resource
+            };
+        }
+
+        
+        
+
+    </script>
+</body>
+</html>

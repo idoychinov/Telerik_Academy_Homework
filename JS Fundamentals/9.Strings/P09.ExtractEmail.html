@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Extract Email</title>
+</head>
+<body>
+    <p>The test results are in the Java Script Console in the browser.</p>
+    <script>
+        /* 9. Write a function for extracting all email addresses from given text. All substrings that match the format <identifier>@<host>…<domain> should be recognized as emails.
+        Return the emails as array of strings. */
+
+        var text = 'My email is mail@aaa.com and your mail is m@b_c.bg right.';
+        console.log(extractEmails(text));
+
+        function extractEmails(text) {
+            var output = [],
+                atIndex,
+                idStart,
+                mailEnd,
+                identifier,
+                serverPart,
+                domainDot,
+                host,
+                domain,
+                email;
+
+            atIndex = text.indexOf('@', 0);
+
+            while (atIndex > -1) {
+                idStart = text.lastIndexOf(' ', atIndex);
+                if (idStart !== atIndex) {
+                    identifier = text.substring(idStart+1, atIndex);
+                    mailEnd = text.indexOf(' ', atIndex);
+                    if(mailEnd>atIndex+3){
+                        serverPart = text.substring(atIndex + 1, mailEnd);
+                        domainDot = serverPart.lastIndexOf('.')
+                        if(domainDot >-1)
+                        {
+                            host = serverPart.substring(0, domainDot);
+                            domain = serverPart.substring(domainDot + 1);
+                            email = identifier + '@' + host + '.' + domain;
+                            output.push(email);
+                        }
+                    }
+                }
+
+                atIndex = text.indexOf('@', atIndex + 1);
+            }
+
+            return output;
+        }
+
+    </script>
+</body>
+</html>

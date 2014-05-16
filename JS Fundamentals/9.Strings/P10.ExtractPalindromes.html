@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Extract Palindromes</title>
+</head>
+<body>
+    <p>The test results are in the Java Script Console in the browser.</p>
+    <script>
+        /* 10. Write a program that extracts from a given text all palindromes, e.g. "ABBA", "lamal", "exe". */
+
+        var text = 'this is not a palindrome abccab but this. is lamal! and this is also ABBA, so is this exe. a';
+        console.log(findPalindromes(text));
+
+        function findPalindromes(text) {
+            var words=[],
+                separators,
+                i,
+                j,
+                isPalindrome,
+                currentWord,
+                output = [];
+
+            separators = [' ', '\\\+', '-', '\\\(', '\\\)', '\\*', '/', ':', '\\\?', '\\\!', '\\\.', '\\\,']
+            words = text.split(new RegExp(separators.join('|'),'g'));
+
+            for (var i = 0; i < words.length; i++) {
+                currentWord = words[i];
+                isPalindrome = true;
+                for (var j = 0, len =currentWord.length; j < len/2; j++) {
+                    if (currentWord[j] !== currentWord[len - 1 - j]) {
+                        isPalindrome = false;
+                        break;
+                    }
+                }
+
+                if (isPalindrome&&currentWord.length>1) {
+                    output.push(currentWord);
+                }
+            }
+            return output;
+        }
+
+    </script>
+</body>
+</html>

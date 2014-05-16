@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Replace Non breaking spaces</title>
+</head>
+<body>
+    <p>The test results are in the Java Script Console in the browser.</p>
+    <script>
+        /* 5. Write a function that replaces non breaking white-spaces in a text with &nbsp; */
+
+        var text = "We are  living in an   yellow submarine. We     don't have anything else.    Inside the submarine is very tight. So we are drinking all   the day. We will move out of it in 5 days.";
+        console.log(replaseSpacesWithSearch(text));
+        console.log('');
+        console.log(replaseSpacesWithAutomaton(text));
+
+
+        // With indexOf search and replace function. 
+        function replaseSpacesWithSearch(text) {
+            while (text.indexOf(' ', 0) > -1) {
+                text = text.replace(' ', '&nbsp;');
+            }
+            return text;
+        }
+
+        // With automaton crawl and stringBuilding
+        function replaseSpacesWithAutomaton(text) {
+            var output = '';
+            for (var i = 0; i < text.length; i++) {
+                if (text[i] === ' ') {
+                    output += '&nbsp;';
+                } else {
+                    output += text[i];
+                }
+            }
+            return output;
+        }
+
+    </script>
+</body>
+</html>

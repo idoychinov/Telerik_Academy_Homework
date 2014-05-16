@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Change Regions</title>
+</head>
+<body>
+    <p>The test results are in the Java Script Console in the browser.</p>
+    <script>
+        /* 4. You are given a text. Write a function that changes the text in all regions:
+            <upcase>text</upcase> to uppercase.
+            <lowcase>text</lowcase> to lowercase
+            <mixcase>text</mixcase> to mix casing(random)
+            We are <mixcase>living</mixcase> in a <upcase>yellow submarine</upcase>.
+            We <mixcase>don't</mixcase> have <lowcase>anything</lowcase> else.
+            The expected result:
+            We are LiVinG in a YELLOW SUBMARINE. We dOn'T have anything else.
+            Regions can be nested
+        */
+
+        var text = "We are <mixcase>living</mixcase> in a <upcase>yellow submarine</upcase>. We <mixcase>don't</mixcase> have <lowcase>Anything</lowcase> else.";
+        console.log(changeText(text));
+
+        function changeText(text) {
+            var outputText = '';
+            var closingTagIndex;
+            var openingTagIndex;
+            closingTagIndex=text.indexOf('</', 0);
+            while (closingTagIndex > -1) {
+                var tagStart= text[closingTagIndex+2]
+                switch (tagStart) {
+                    case 'u':
+                        text = transformText(text, '<upcase>', closingTagIndex);
+                        break;
+                    case 'l':
+                        text = transformText(text, '<lowcase>', closingTagIndex);
+                        break;
+                    case 'm':
+                        text = transformText(text, '<mixcase>', closingTagIndex);
+                        break;
+                }
+
+                closingTagIndex = text.indexOf('</', 0);
+            }
+            
+
+            return text;
+        }
+
+        function executeTag(text, tag) {
+            switch (tag) {
+                case '<upcase>': return text.toUpperCase();
+                case '<lowcase>': return text.toLowerCase();
+                case '<mixcase>':
+                    var mixedText = '';
+                    for (var i = 0; i < text.length; i++) {
+                        if(Math.random()<0.5){
+                            mixedText += text[i].toLowerCase();
+                        } else {
+                            mixedText += text[i].toUpperCase();
+                        }
+                    }
+                    return mixedText;
+            }
+        }
+
+        function transformText(text, tag, closingTagIndex) {
+            var oppeningTagIndex = text.lastIndexOf(tag, closingTagIndex);
+            var textStart = text.substring(0, oppeningTagIndex);
+            var textInTag = executeTag(text.substring(oppeningTagIndex+tag.length,closingTagIndex),tag);
+            var textEnd = text.substring(closingTagIndex + tag.length+1, text.length);
+            return textStart + textInTag + textEnd;
+        }
+
+    </script>
+</body>
+</html>

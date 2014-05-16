@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>HTML UL</title>
+</head>
+<body>
+    <div data-type="template" id="list-item">
+        <strong>-{name}-</strong> <span>-{age}-</span>
+    </div>
+
+    <script>
+        /* 12. Write a function that creates a HTML UL using a template for every HTML LI. The source of the list should an array of elements.
+               Replace all placeholders marked with –{…}–   with the value of the corresponding property of the object. Example:
+                    <div data-type="template" id="list-item">
+                     <strong>-{name}-</strong> <span>-{age}-</span>
+                    /div>
+                    var people = [{name: "Peter", age: 14},…];
+                    var tmpl = document.getElementById("list-item").innerHtml;
+                    var peopleList = generateList(people,template);
+                    //peopleList = "<ul><li><strong>Peter</strong> <span>14</span></li><li>…</li>…</ul>"*/
+
+        if (!String.prototype.replaceAll) {
+            String.prototype.replaceAll = function (find, replace) {
+                var currentIndex,
+                    text;
+                text = this;
+                currentIndex = text.indexOf(find, 0);
+                while (currentIndex > -1) {
+                    text = text.substring(0, currentIndex) + replace + text.substring(currentIndex + find.length);
+                    currentIndex = text.indexOf(find, currentIndex + replace.length);
+                }
+
+                return text;
+            }
+        }
+
+        var people = [{ name: 'Peter', age: 14 }, { name: 'Ivan', age: 16 }, { name: 'Elena', age: 15 }]
+        var template = document.getElementById("list-item").innerHTML;
+        var peopleList = document.createElement('div');
+        peopleList.innerHTML = generateList(people, template);
+        document.body.appendChild(peopleList);
+
+        function generateList(people, template) {
+            var output,
+                i,
+                len,
+                currentLI;
+
+            output = '<ul>';
+            for (var i = 0, len = people.length; i < len; i++) {
+                output += '<li>';
+                currentLI = template;
+                for (var property in people[i]) {
+                    currentLI = currentLI.replaceAll('-{' + property + '}-', people[i][property]);
+                }
+
+                output += currentLI;
+                output += '</li>';
+            }
+
+            output += '</ul>';
+
+            return output;
+        }
+
+    </script>
+</body>
+</html>
