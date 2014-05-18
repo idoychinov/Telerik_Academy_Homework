@@ -31,43 +31,95 @@
         /// <summary>
         /// Checks if the string is equal to one of the values that are considered as true.
         /// </summary>
-        /// <param name="input">Input string to be converted to boolean value</param>
+        /// <param name="input">Input string to be converted</param>
         /// <returns>Boolean value representing the input string</returns>  
-        
         public static bool ToBoolean(this string input)
         {
             var stringTrueValues = new[] { "true", "ok", "yes", "1", "да" };
             return stringTrueValues.Contains(input.ToLower());
         }
         
+        /// <summary>
+        /// Converts the string value to short if able.
+        /// </summary>
+        /// <param name="input">Input string to be converted</param>
+        /// <returns>Short value parsed from the string</returns>
+        /// <exception cref="ArgumentException">Input value cannot be converted to short</exception>
         public static short ToShort(this string input)
         {
             short shortValue;
-            short.TryParse(input, out shortValue);
-            return shortValue;
+            if (short.TryParse(input, out shortValue))
+            {
+                return shortValue;
+            } else
+            {
+                throw new ArgumentException();
+            }
+            
         }
 
+        /// <summary>
+        /// Converts the string value to integer.
+        /// </summary>
+        /// <param name="input">Input string to be converted</param>
+        /// <returns>Integer value parsed from the string</returns>
+        /// <exception cref="ArgumentException">Input value cannot be converted to integer</exception>
         public static int ToInteger(this string input)
         {
             int integerValue;
-            int.TryParse(input, out integerValue);
-            return integerValue;
+            if (int.TryParse(input, out integerValue))
+            {
+                return integerValue;
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
         }
 
+        /// <summary>
+        /// Converts the string value to long.
+        /// </summary>
+        /// <param name="input">Input string to be converted</param>
+        /// <returns>Long value parsed from the string</returns>
+        /// /// <exception cref="ArgumentException">Input value cannot be converted to long</exception>
         public static long ToLong(this string input)
         {
             long longValue;
-            long.TryParse(input, out longValue);
-            return longValue;
+            if (long.TryParse(input, out longValue))
+            {
+                return longValue;
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
         }
 
+        /// <summary>
+        /// Converts the string value to DateTime.
+        /// </summary>
+        /// <param name="input">Input string to be converted</param>
+        /// <returns>DateTime value parsed from the string</returns>
+        /// <exception cref="ArgumentException">Input value cannot be converted to DateTime</exception>       
         public static DateTime ToDateTime(this string input)
         {
             DateTime dateTimeValue;
-            DateTime.TryParse(input, out dateTimeValue);
-            return dateTimeValue;
+            if (DateTime.TryParse(input, out dateTimeValue))
+            {
+                return dateTimeValue;
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
         }
 
+        /// <summary>
+        /// Makes the first letter in a string a capital letter.
+        /// </summary>
+        /// <param name="input">Input string</param>
+        /// <returns>The input string with capitalized first letter</returns>
         public static string CapitalizeFirstLetter(this string input)
         {
             if (string.IsNullOrEmpty(input))
@@ -78,6 +130,14 @@
             return input.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + input.Substring(1, input.Length - 1);
         }
 
+        /// <summary>
+        /// Extracts substring that is between two other strings.
+        /// </summary>
+        /// <param name="input">Input string</param>
+        /// <param name="startString">The string from which the extraction should start</param>
+        /// <param name="endString">The string to which the extraction should end</param>
+        /// <param name="startFrom">Position from which to start the search for the startString</param>
+        /// <returns>Extracted string</returns>
         public static string GetStringBetween(this string input, string startString, string endString, int startFrom = 0)
         {
             input = input.Substring(startFrom);
@@ -102,6 +162,11 @@
             return input.Substring(startPosition, endPosition - startPosition);
         }
 
+        /// <summary>
+        /// Converts Cyrillic letters to Latin based on phonetic transliteration.
+        /// </summary>
+        /// <param name="input">Input string for translation</param>
+        /// <returns>Translated string</returns>
         public static string ConvertCyrillicToLatinLetters(this string input)
         {
             var bulgarianLetters = new[]
@@ -124,7 +189,12 @@
             return input;
         }
 
-        public static string ConvertLatinToCyrillicKeyboard(this string input)
+        /// <summary>
+        /// Converts Latin letters to Cyrillic based on phonetic transliteration.
+        /// </summary>
+        /// <param name="input">Input string for translation</param>
+        /// <returns>Translated string</returns>
+        public static string ConvertLatinToCyrillicLetters(this string input)
         {
             var latinLetters = new[]
                                    {
@@ -148,23 +218,45 @@
             return input;
         }
 
+        /// <summary>
+        /// Escapes user name to valid only symbols
+        /// </summary>
+        /// <param name="input">User name</param>
+        /// <returns>Escaped user name string</returns>
         public static string ToValidUsername(this string input)
         {
             input = input.ConvertCyrillicToLatinLetters();
             return Regex.Replace(input, @"[^a-zA-z0-9_\.]+", string.Empty);
         }
 
+        /// <summary>
+        /// Escapes file name to valid only symbols
+        /// </summary>
+        /// <param name="input">File name</param>
+        /// <returns>Escaped file name</returns>
         public static string ToValidLatinFileName(this string input)
         {
             input = input.Replace(" ", "-").ConvertCyrillicToLatinLetters();
             return Regex.Replace(input, @"[^a-zA-z0-9_\.\-]+", string.Empty);
         }
 
+        /// <summary>
+        /// Returns only the first n characters from a string
+        /// </summary>
+        /// <param name="input">Input string</param>
+        /// <param name="charsCount">number of characters to return</param>
+        /// <returns>Output string</returns>
         public static string GetFirstCharacters(this string input, int charsCount)
         {
             return input.Substring(0, Math.Min(input.Length, charsCount));
         }
 
+
+        /// <summary>
+        /// Returns the file extention part from a file name
+        /// </summary>
+        /// <param name="fileName">File Name</param>
+        /// <returns>File Extension</returns>
         public static string GetFileExtension(this string fileName)
         {
             if (string.IsNullOrWhiteSpace(fileName))
@@ -181,6 +273,11 @@
             return fileParts.Last().Trim().ToLower();
         }
 
+        /// <summary>
+        /// Returns the content type of file based on it's extension, for easy use in html/xml type descriptions
+        /// </summary>
+        /// <param name="fileExtension">File extension</param>
+        /// <returns>File content type</returns>
         public static string ToContentType(this string fileExtension)
         {
             var fileExtensionToContentType = new Dictionary<string, string>
@@ -205,6 +302,12 @@
             return "application/octet-stream";
         }
 
+
+        /// <summary>
+        /// Converts string to byte array
+        /// </summary>
+        /// <param name="input">String</param>
+        /// <returns>Byte array</returns>
         public static byte[] ToByteArray(this string input)
         {
             var bytesArray = new byte[input.Length * sizeof(char)];
