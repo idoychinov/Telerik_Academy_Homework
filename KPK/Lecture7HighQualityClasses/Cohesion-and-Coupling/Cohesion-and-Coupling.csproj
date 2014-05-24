@@ -41,8 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DistanceUtilities.cs" />
+    <Compile Include="FileUtilities.cs" />
+    <Compile Include="I2Dimensional.cs" />
+    <Compile Include="I3Dimensional.cs" />
+    <Compile Include="Object2D.cs" />
+    <Compile Include="Object3D.cs" />
     <Compile Include="UtilsExamples.cs" />
-    <Compile Include="Utils.cs" />
+    <Compile Include="ObjectDimensionUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

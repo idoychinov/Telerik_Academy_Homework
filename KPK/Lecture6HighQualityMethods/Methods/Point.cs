@@ -5,7 +5,7 @@
 //-----------------------------------------------------------------------
 namespace Methods
 {
-    /// <summary>
+    /// <summary>B
     /// Represents point in Cartesian coordinate system
     /// </summary>
     public struct Point

@@ -13,22 +13,30 @@ namespace Methods
     public class Student
     {
         /// <summary>
-        /// First name of the student
+        /// Gets or sets the first name of the student
         /// </summary>
         public string FirstName { get; set; }
 
         /// <summary>
-        /// Last name of the student
+        /// Gets or sets the last name of the student
         /// </summary>
         public string LastName { get; set; }
 
         /// <summary>
-        /// Birth date of the student
+        /// Gets or sets the birth date of the student
         /// </summary>
         public DateTime BirthDate { get; set; }
 
+        /// <summary>
+        /// Gets or sets the other information about student
+        /// </summary>
         public string OtherInfo { get; set; }
 
+        /// <summary>
+        /// Compares this student's age with another.
+        /// </summary>
+        /// <param name="otherStudent">Student to compare the current student</param>
+        /// <returns>True if this student is older than the one passed as parameter</returns>
         public bool IsOlderThan(Student otherStudent)
         {
             if (this.BirthDate == null)
