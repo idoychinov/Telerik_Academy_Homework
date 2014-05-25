@@ -62,10 +62,12 @@
             {
                 throw new ArgumentNullException("The student argument cannot be null.");
             }
+
             if (this.students.Count >= MaximumStudentsInCourse)
             {
                 throw new InvalidOperationException("The student argument cannot be null.");
             }
+
             this.students.Add(student);
         }
 

@@ -1,10 +1,9 @@
 ﻿namespace TestSchool
 {
-    using School;
     using System;
     using System.Collections.Generic;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+    using School;
 
     /// <summary>
     /// Only ordered test of students and courses should be run and analyzed for code coverage. It contains all other tests for both
@@ -17,7 +16,6 @@
         private const string CourseName = "Test_Course123";
         private const string StudentName = "Pesho";
         private const int MaxStudentsInCourse = 30;
-
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
@@ -91,7 +89,6 @@
             Assert.AreEqual(0, course.Students.Count, "Student has not been removed");
         }
 
-
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestCourseErrorRemoveNonExistingStudent()
@@ -111,10 +108,9 @@
             {
                 course.AddStudent(new Student(StudentName + i));
             }
-            Assert.AreEqual(MaxStudentsInCourse,course.Students.Count,"Students in course have not reached maximum value");
-            course.AddStudent(new Student(StudentName +MaxStudentsInCourse));
+
+            Assert.AreEqual(MaxStudentsInCourse, course.Students.Count, "Students in course have not reached maximum value");
+            course.AddStudent(new Student(StudentName + MaxStudentsInCourse));
         }
-
-
     }
 }
