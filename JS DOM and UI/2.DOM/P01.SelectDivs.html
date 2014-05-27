@@ -28,28 +28,28 @@
     </div>
     <script>
         /* 1. Write a script that selects all the div nodes that are directly inside other div elements
-Create a function using querySelectorAll()
-Create a function using getElementsByTagName()
+                Create a function using querySelectorAll()
+                Create a function using getElementsByTagName()
 */
-        function SelectedDivs() {
+        (function () {
             var selectedDivs = document.querySelectorAll("div > div");
             console.log("Divs selected by querySelectorAll");
             for (var i = 0, len = selectedDivs.length; i < len; i++) {
-                
+
                 console.log("divs[" + i + "]= " + selectedDivs[i].innerHTML);
             }
-            
+
 
             selectedDivs = document.getElementsByTagName("div");
             console.log("Divs selected by getElementsByTagName");
             for (var i = 0, len = selectedDivs.length; i < len; i++) {
-                var currentDiv = selectedDivs[i].getElementsByTagName("div");
-                for (var j = 0, newLen = currentDiv.length; j < newLen; j++)
-                console.log("divs[" + j + "]= " + currentDiv[j].innerHTML);
+                if(selectedDivs[i].parentNode.tagName.toLowerCase() === "div")
+                {
+                    console.log("divs[" + i + "]= " + selectedDivs[i].innerHTML);
+                }
             }
 
-        }
-        SelectedDivs();
+        })();
     </script>
 </body>
 </html>

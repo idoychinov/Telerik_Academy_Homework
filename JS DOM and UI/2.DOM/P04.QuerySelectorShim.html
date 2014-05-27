@@ -4,16 +4,36 @@
     <title>Query selector Shim</title>
 </head>
 <body>
-    <input type="color" id="color-input"/>
-    <input type="button" onclick="onClickFunction()" value="Change Color"/>
-    
     <script>
         /* 4. Write a script that shims querySelector and querySelectorAll in older browsers*/
-        if(!document.querySelectorAll)
-        {
-            document.querySelectorAll = function(selector){}
-        }
-        
+        (function () {
+            if (!document.querySelectorAll) {
+
+            }
+
+            if (!Element.prototype.querySelectorAll) {
+                Element.prototype.querySelectorAll = querySelectorAllShim(selector);
+            }
+
+            if (!Element.prototype.querySelector) {
+                Element.prototype.querySelector = querySelectorShim(selector);
+            }
+
+            if (!Element.prototype.querySelector) {
+                Element.prototype.querySelector = function (selector) {
+                    this.getElementsByTagName
+                }
+            }
+
+            //function querySelectorAllShim(selector) {
+            //    this.ge
+            //}
+
+            //function querySelectorShim(selector) {
+
+            //}
+            console.log(document instanceof HTMLElement)
+        })();
     </script>
 </body>
 </html>
