@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <textarea placeholder="Placeholder Text" id="area">Sample Text</textarea>
+    <input type="color" id="font-color"/>
+    <input type="color" id="background-color"/>
+
+    <script>
+        (function(){
+            document.getElementById("font-color").addEventListener("change", ChangeFontColor);
+            document.getElementById("background-color").addEventListener("change", ChangebackgroundColor);
+
+            function ChangeFontColor(){
+                var value = document.getElementById("font-color").value;
+                document.getElementById("area").style.color = value;
+            }
+
+            function ChangebackgroundColor() {
+                var value = document.getElementById("background-color").value;
+                document.getElementById("area").style.backgroundColor = value;
+            }
+        })()
+    </script>
+</body>
+</html>
