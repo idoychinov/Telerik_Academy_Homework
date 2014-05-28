@@ -3,29 +3,34 @@
 <head>
     <title>Random Divs</title>
     <style>
-        body{
-            position:relative;
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        div {
+            padding: 0;
+            margin: 0;
         }
     </style>
 </head>
 <body>
-    
     <script>
         /* 1. Write a script that creates a number of div elements. Each div element must have the following
-Random width and height between 20px and 100px
-Random background color
-Random font color
-Random position on the screen (position:absolute)
-A strong element with text "div" inside the div
-Random border radius
-Random border color
-Random border width between 1px and 20px
+            Random width and height between 20px and 100px
+            Random background color
+            Random font color
+            Random position on the screen (position:absolute)
+            A strong element with text "div" inside the div
+            Random border radius
+            Random border color
+            Random border width between 1px and 20px
 
-*/
+            */
+
         function CreateAllDivs() {
-            var numberOfDivs = ((Math.random() * 9) | 0)+1;
-            for(var i=1;i<=numberOfDivs;i++)
-            {
+            var numberOfDivs = ((Math.random() * 9) | 0) + 1;
+            for (var i = 1; i <= numberOfDivs; i++) {
                 document.body.appendChild(CreateDiv());
             }
 
@@ -46,9 +51,9 @@ Random border width between 1px and 20px
             blue = Random(255);
             currentDiv.style.color = "rgb(" + red + "," + green + "," + blue + ")";
             currentDiv.style.position = "absolute";
-            var top = Random(window.innerHeight - height);
+            var top = Random(window.innerHeight - height - 40);
             currentDiv.style.top = top + "px";
-            var left = Random(window.innerWidth-width);
+            var left = Random(window.innerWidth - width - 40);
             currentDiv.style.left = left + "px";
             var strongElement = document.createElement("strong");
             strongElement.innerHTML = "div";
@@ -66,16 +71,13 @@ Random border width between 1px and 20px
             return currentDiv;
         }
 
-        function Random(interval,offset)
-        {
+        function Random(interval, offset) {
             var randomNumber = Math.random();
-            if(typeof(interval)!=="undefined" && !isNaN(interval))
-            {
-                randomNumber=(randomNumber*interval) | 0;
+            if (typeof (interval) !== "undefined" && !isNaN(interval)) {
+                randomNumber = (randomNumber * interval) | 0;
             }
-            if (typeof (offset) !== "undefined" && !isNaN(offset))
-            {
-                randomNumber+=offset;
+            if (typeof (offset) !== "undefined" && !isNaN(offset)) {
+                randomNumber += offset;
             }
 
             return randomNumber;
