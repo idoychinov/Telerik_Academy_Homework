@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Canvas Draw Graphics</title>
+    <style>
+        #the-canvas {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="the-canvas" width="800" height="600">
+        This is not supported for your browser! Get some modern browser.
+    </canvas>
+    <script>
+        (function () {
+            var canvas = document.getElementById("the-canvas");
+            var ctx = canvas.getContext('2d');
+
+            drawHead(150, 200);
+            drawBike(150, 500);
+            drawHouse(500, 150);
+
+
+
+
+            //x,y are coordinates for center of the head
+            function drawHead(x, y) {
+                ctx.fillStyle = 'rgb(144,202,215)';
+                ctx.strokeStyle = 'rgb(57,102,147)';
+                ctx.lineWidth = 2;
+                
+                //drawing the the head
+                ctx.save();
+                ctx.scale(1, 0.8);
+                ctx.beginPath();
+                ctx.arc(x, y, 70, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.restore();
+
+                //drawing the eyes
+                ctx.save();
+                ctx.scale(1, 0.6);
+
+                ctx.beginPath();
+                ctx.arc(x - 40, y + 50, 10, 0, 2 * Math.PI);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.arc(x + 20, y + 50, 10, 0, 2 * Math.PI);
+                ctx.stroke();
+                ctx.restore();
+
+                ctx.save();
+                ctx.fillStyle = 'rgb(57,102,147)';
+                ctx.scale(0.6, 1);
+                ctx.beginPath();
+                ctx.arc(x + 30, y - 50, 5, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(x + 130, y - 50, 5, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(x + 130, y - 50, 0, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.restore();
+
+
+                //drawing the nose
+
+                ctx.moveTo(x - 10, y - 50);
+                ctx.lineTo(x - 20, y - 20);
+                ctx.lineTo(x - 10, y - 20);
+                ctx.stroke();
+
+
+            }
+
+            //x,y are coordinates for center of back tire
+            function drawBike(x, y) {
+                ctx.fillStyle = 'rgb(144,202,215)';
+                ctx.strokeStyle = 'rgb(57,102,147)';
+                ctx.lineWidth = 2;
+                //drawing the back tire
+                ctx.beginPath();
+                ctx.arc(x, y, 60, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.stroke();
+
+                //drawing the front tire
+                ctx.beginPath();
+                ctx.arc(x + 220, y, 60, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.stroke();
+
+                //drawing the gear
+                ctx.beginPath();
+                ctx.arc(x + 100, y, 15, 0, 2 * Math.PI);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.moveTo(x + 90, y - 12);
+                ctx.lineTo(x + 82, y - 22);
+                ctx.moveTo(x + 110, y + 12);
+                ctx.lineTo(x + 118, y + 22);
+                ctx.stroke();
+
+                //drawing the frame
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(x + 100, y);
+                ctx.lineTo(x + 215, y - 75);
+                ctx.lineTo(x + 70, y - 75);
+                ctx.closePath();
+                ctx.moveTo(x + 100, y);
+                ctx.lineTo(x + 50, y - 100);
+                ctx.moveTo(x + 25, y - 100);
+                ctx.lineTo(x + 75, y - 100);
+                ctx.moveTo(x + 225, y);
+                ctx.lineTo(x + 210, y - 115);
+                ctx.moveTo(x + 160, y - 95);
+                ctx.lineTo(x + 210, y - 115);
+                ctx.lineTo(x + 240, y - 150);
+                ctx.stroke();
+
+            }
+
+            //x,y are coordinates for roofs center
+            function drawHouse(x, y) {
+
+            }
+
+        })()
+    </script>
+</body>
+</html>
