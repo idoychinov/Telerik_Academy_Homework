@@ -9,30 +9,6 @@
     [TestClass]
     public class TestCard
     {
-        private Dictionary<int, CardFace> faces = new Dictionary<int, CardFace>()
-        {
-            {2,CardFace.Two},
-            {3,CardFace.Three},
-            {4,CardFace.Four},
-            {5,CardFace.Five},
-            {6,CardFace.Six},
-            {7,CardFace.Seven},
-            {8,CardFace.Eight},
-            {9,CardFace.Nine},
-            {10,CardFace.Ten},
-            {11,CardFace.Jack},
-            {12,CardFace.Queen},
-            {13,CardFace.King},
-            {14,CardFace.Ace},
-        };
-
-        private Dictionary<int, CardSuit> suits = new Dictionary<int, CardSuit>()
-        {
-            {1,CardSuit.Clubs},
-            {2,CardSuit.Diamonds},
-            {3,CardSuit.Hearts},
-            {4,CardSuit.Spades},
-        };
 
         [TestMethod]
         public void TestCardCreation()
@@ -43,8 +19,8 @@
                 for (int j = (int)CardSuit.Clubs; j <= (int)CardSuit.Spades; j++)
                 {
                     card = new Card((CardFace)i, (CardSuit)j);
-                    Assert.AreEqual(faces[i], card.Face, "Card face of the new card is not correct");
-                    Assert.AreEqual(suits[j], card.Suit, "Card suit of the new card is not correct");
+                    Assert.AreEqual(TestUtilities.Faces[i], card.Face, "Card face of the new card is not correct");
+                    Assert.AreEqual(TestUtilities.Suits[j], card.Suit, "Card suit of the new card is not correct");
                 }
             }
         }

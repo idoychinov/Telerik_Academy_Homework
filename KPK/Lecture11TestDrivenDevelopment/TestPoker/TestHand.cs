@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using Poker;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.Text;
 
     [TestClass]
     public class TestHand
@@ -17,26 +18,6 @@
                 };
 
             Hand hand = new Hand(cards);
-        }
-
-
-        /// <summary>
-        /// Testing if the object we get from the getter is new object and the private
-        /// property cards is encapsulated corectly. 
-        /// </summary>
-        [TestMethod]
-        public void TestGetHandAsNewObject()
-        {
-            IList<ICard> cards = new List<ICard>()
-                {
-                    new Card(CardFace.Two, CardSuit.Clubs)
-                };
-
-            Hand hand = new Hand(cards);
-            IList<ICard> testCard = hand.Cards;
-            Assert.AreEqual(false, object.ReferenceEquals(hand.Cards, testCard), 
-                "The getter returns the private object cards, not a new object.");
-
         }
 
         /// <summary>
@@ -53,9 +34,102 @@
                 };
 
             Hand hand = new Hand(cards);
-            ICard testCard = hand.Cards[0];
-            Assert.AreEqual(false, object.ReferenceEquals(hand.Cards[0], cards), 
+            cards.Clear();
+            Assert.AreEqual(1, hand.Cards.Count,
+                "The constructor does not creat new object but assigns the value passed to the setter by refference" +
+                ", exposing the privet member cards, and breaking encapsulation");
+        }
+
+        /// <summary>
+        /// Testing if the object we get from the getter is new object and the private
+        /// property cards is encapsulated corectly. 
+        /// </summary>
+        [TestMethod]
+        public void TestGetHandAsNewObject()
+        {
+            IList<ICard> cards = new List<ICard>()
+                {
+                    new Card(CardFace.Two, CardSuit.Clubs)
+                };
+
+            Hand hand = new Hand(cards);
+            IList<ICard> testCard = hand.Cards;
+            Assert.AreEqual(false, object.ReferenceEquals(hand.Cards, testCard),
                 "The getter returns the private object cards, not a new object.");
+
+        }
+
+        /// <summary>
+        /// Testing assigning null to the card parameter of the constructor
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException),"The Cards property setter allows null value.")]
+        public void TestHandConstructorErrorForNullParameter()
+        {
+            Hand hand = new Hand(null);
+        }
+
+        /// <summary>
+        /// Testing if the output string is correct when the hand is empty
+        /// </summary>
+        [TestMethod]
+        public void TestHandToStringForEmptyHand()
+        {
+            IList<ICard> cards = new List<ICard>();
+
+            Hand hand = new Hand(cards);
+            Assert.AreEqual("Hand is empty.", hand.ToString(), "Incorect ToString value for empty hand");
+        }
+
+        /// <summary>
+        /// Testing if the output string is corect for one card in the hand for all hand types
+        /// </summary>
+        [TestMethod]
+        public void TestHandToStringForOneCardInHand()
+        {
+            Hand hand;
+            IList<ICard> cards;
+
+            foreach (var cardFace in TestUtilities.Faces)
+            {
+                foreach (var cardSuit in TestUtilities.Suits)
+                {
+                    cards = new List<ICard>()
+                    {
+                        new Card(cardFace.Value,cardSuit.Value),
+                    };
+
+                    hand = new Hand(cards);
+                    Assert.AreEqual("Hand: "+cardFace.Value.ToString()+" of "+cardSuit.Value.ToString(),
+                        hand.ToString(),string.Format("Incorect ToString return value for one card in hand."));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Testing if the output string is corect for all cards in the hand
+        /// </summary>
+        [TestMethod]
+        public void TestHandToStringForAllCardsInOneHand()
+        {
+            Hand hand;
+            IList<ICard> cards=new List<ICard>();
+            StringBuilder outputString = new StringBuilder();
+            outputString.Append("Hand: ");
+
+            foreach (var cardFace in TestUtilities.Faces)
+            {
+                foreach (var cardSuit in TestUtilities.Suits)
+                {
+                    cards.Add(new Card(cardFace.Value,cardSuit.Value));
+                    outputString.Append(cardFace.Value.ToString() + " of " + cardSuit.Value.ToString() + ", ");
+                }
+            }
+
+            outputString.Length = outputString.Length - 2;
+
+            hand = new Hand(cards);
+                    Assert.AreEqual(outputString.ToString(),hand.ToString(),"Incorect ToString return value for all cards in hand.");
         }
     }
 }

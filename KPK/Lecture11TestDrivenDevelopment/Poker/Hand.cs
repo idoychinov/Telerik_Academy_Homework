@@ -53,13 +53,14 @@
             }
             else
             {
+                hand.Append(": ");
                 foreach (var card in this.cards)
                 {
-                    hand.Append(" | ");
                     hand.Append(card);
+                    hand.Append(", ");
                 }
 
-                hand.Append(" |");
+                hand.Length = hand.Length - 2;
             }
 
             return hand.ToString();

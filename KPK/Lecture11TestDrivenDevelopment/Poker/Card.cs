@@ -17,14 +17,14 @@
             {
                 if (2 > (int)value || (int)value > 14)
                 {
-                    throw new ArgumentOutOfRangeException(string.Format("Value for card face {0} is invalid.",value));
+                    throw new ArgumentOutOfRangeException(string.Format("Value for card face {0} is invalid.", value));
                 }
 
                 this.face = value;
             }
         }
 
-        public CardSuit Suit 
+        public CardSuit Suit
         {
             get
             {
@@ -34,7 +34,7 @@
             {
                 if (1 > (int)value || (int)value > 4)
                 {
-                    throw new ArgumentOutOfRangeException(string.Format("Value for card suit {0} is invalid.",value));
+                    throw new ArgumentOutOfRangeException(string.Format("Value for card suit {0} is invalid.", value));
                 }
 
                 this.suit = value;
@@ -50,6 +50,47 @@
         public override string ToString()
         {
             return this.face + " of " + this.suit;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            ICard card = obj as ICard;
+            if ((Object)card == null)
+            {
+                return false;
+            }
+
+            return (this.Face == card.Face && this.Suit == card.Suit);
+        }
+
+        public bool Equals(Card card)
+        {
+            if (card == null)
+            {
+                return false;
+            }
+
+            return (this.Face == card.Face && this.Suit == card.Suit);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode() ^ (int)this.Face ^ (int)this.Suit;
+        }
+
+        public static bool operator ==(Card firstCard, Card secondCard)
+        {
+            return firstCard.Equals(secondCard);
+        }
+
+        public static bool operator !=(Card firstCard, Card secondCard)
+        {
+            return !firstCard.Equals(secondCard);
         }
     }
 }
