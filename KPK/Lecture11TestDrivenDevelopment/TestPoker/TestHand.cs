@@ -90,9 +90,9 @@
             Hand hand;
             IList<ICard> cards;
 
-            foreach (var cardFace in TestUtilities.Faces)
+            foreach (var cardFace in CardTestUtilities.Faces)
             {
-                foreach (var cardSuit in TestUtilities.Suits)
+                foreach (var cardSuit in CardTestUtilities.Suits)
                 {
                     cards = new List<ICard>()
                     {
@@ -117,9 +117,9 @@
             StringBuilder outputString = new StringBuilder();
             outputString.Append("Hand: ");
 
-            foreach (var cardFace in TestUtilities.Faces)
+            foreach (var cardFace in CardTestUtilities.Faces)
             {
-                foreach (var cardSuit in TestUtilities.Suits)
+                foreach (var cardSuit in CardTestUtilities.Suits)
                 {
                     cards.Add(new Card(cardFace.Value,cardSuit.Value));
                     outputString.Append(cardFace.Value.ToString() + " of " + cardSuit.Value.ToString() + ", ");

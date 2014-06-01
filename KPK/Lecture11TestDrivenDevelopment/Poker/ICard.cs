@@ -5,5 +5,6 @@ namespace Poker
         CardFace Face { get; }
         CardSuit Suit { get; }
         string ToString();
+
     }
 }

@@ -47,6 +47,12 @@
             this.Suit = suit;
         }
 
+        public Card(ICard card)
+        {
+            this.Face = card.Face;
+            this.Suit = card.Suit;
+        }
+
         public override string ToString()
         {
             return this.face + " of " + this.suit;
@@ -70,7 +76,7 @@
 
         public bool Equals(Card card)
         {
-            if (card == null)
+            if ((Object)card == null)
             {
                 return false;
             }
@@ -80,17 +86,11 @@
 
         public override int GetHashCode()
         {
-            return base.GetHashCode() ^ (int)this.Face ^ (int)this.Suit;
-        }
-
-        public static bool operator ==(Card firstCard, Card secondCard)
-        {
-            return firstCard.Equals(secondCard);
-        }
-
-        public static bool operator !=(Card firstCard, Card secondCard)
-        {
-            return !firstCard.Equals(secondCard);
+            int prime = 31;
+            int result = 1;
+            result = prime * result + ((int)this.Face).GetHashCode();
+            result = prime * result + ((int)this.Suit).GetHashCode();
+            return result;
         }
     }
 }
