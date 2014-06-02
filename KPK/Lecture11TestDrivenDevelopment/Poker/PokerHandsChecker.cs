@@ -113,7 +113,7 @@
 
         public bool IsStraight(IHand hand)
         {
-            if (!this.IsValidHand(hand) || this.IsFlush(hand))
+            if (!this.IsValidHand(hand))
             {
                 return false;
             }
@@ -122,6 +122,10 @@
 
             for (int i = 0; i < ValidHandLength; i++)
             {
+                if((int)hand.Cards[i].Face == 14)
+                {
+                    count[1] += 1;
+                }
                 count[(int)hand.Cards[i].Face] += 1;
             }
 
@@ -132,7 +136,7 @@
 
             bool startFound=false;
             int currentLength=0;
-            for (int i = 0; i < count.Length; i++)
+            for (int i = 1; i < count.Length; i++)
             {
                 if(count[i]==1)
                 {
