@@ -1,10 +1,34 @@
-﻿namespace Poker
+﻿//-----------------------------------------------------------------------
+// <copyright file="CardSuit.cs" company="PokerCo">
+//     PokerCo.
+// </copyright>
+// <summary>This is the CardSuit enumeration.</summary>
+//-----------------------------------------------------------------------
+namespace Poker
 {
+    /// <summary>
+    /// Enumeration for the card suits.
+    /// </summary>
     public enum CardSuit
     {
-        Clubs = 1,    // ♣
-        Diamonds = 2, // ♦
-        Hearts = 3,   // ♥
-        Spades = 4    // ♠
+        /// <summary>
+        /// Card suit Clubs - ♣.
+        /// </summary>
+        Clubs = 1,
+
+        /// <summary>
+        /// Card suit Diamonds - ♦.
+        /// </summary>
+        Diamonds = 2,
+
+        /// <summary>
+        /// Card suit Hearts - ♥.
+        /// </summary>
+        Hearts = 3,
+
+        /// <summary>
+        /// Card suit Spades - ♠.
+        /// </summary>
+        Spades = 4
     }
 }

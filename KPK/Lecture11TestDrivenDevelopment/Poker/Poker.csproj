@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Poker.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -44,7 +45,7 @@
     <Compile Include="Card.cs" />
     <Compile Include="CardFace.cs" />
     <Compile Include="CardSuit.cs" />
-    <Compile Include="HandTypeEnumeration.cs" />
+    <Compile Include="HandCategory.cs" />
     <Compile Include="PokerHandsChecker.cs" />
     <Compile Include="Hand.cs" />
     <Compile Include="ICard.cs" />
