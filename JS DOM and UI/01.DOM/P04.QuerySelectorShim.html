@@ -4,36 +4,46 @@
     <title>Query selector Shim</title>
 </head>
 <body>
+    <div>
+        <p>
+            <a>First</a>
+            <a>Second</a>
+        </p>
+    </div>
     <script>
         /* 4. Write a script that shims querySelector and querySelectorAll in older browsers*/
+        // Unfinished
         (function () {
             if (!document.querySelectorAll) {
+                document.querySelectorAll = function (selector) {
 
-            }
+                    var documentHead = document.documentElement.firstChild;
+                    var styleTag = document.createElement("style");
+                    documentHead.appendChild(styleTag);
+                    document.querySelectorResult = [];
+                   
+                    styleTag.style.cssText = selector + "{x:expression(document.querySelectorResult.push(this))}";
+                    window.scrollBy(0, 0);
+                    documentHead.removeChild(styleTag);
 
-            if (!Element.prototype.querySelectorAll) {
-                Element.prototype.querySelectorAll = querySelectorAllShim(selector);
-            }
+                    var result = [];
 
-            if (!Element.prototype.querySelector) {
-                Element.prototype.querySelector = querySelectorShim(selector);
-            }
+                    for (var element in document.querySelectorResult) {
+                        result.push(document.querySelectorResult[i]);
+                    }
 
-            if (!Element.prototype.querySelector) {
-                Element.prototype.querySelector = function (selector) {
-                    this.getElementsByTagName
+                    return result;
                 }
             }
 
-            //function querySelectorAllShim(selector) {
-            //    this.ge
-            //}
-
-            //function querySelectorShim(selector) {
-
-            //}
-            console.log(document instanceof HTMLElement)
+            if (!document.querySelector) {
+                document.querySelector = function (selector) {
+                    return document.querySelectorAll(selector)[0];
+                }
+            }           
         })();
+        var element = document.querySelector("div p a:last-child");
+        console.log(element.innerHTML);
     </script>
 </body>
 </html>

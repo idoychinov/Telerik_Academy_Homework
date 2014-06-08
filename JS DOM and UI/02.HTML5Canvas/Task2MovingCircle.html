@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Canvas Moving circle</title>
+    <style>
+        #the-canvas {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="the-canvas" width="800" height="600">
+        This is not supported for your browser! Get some modern browser.
+    </canvas>
+    <script>
+        (function () {
+            var canvas = document.getElementById("the-canvas");
+            var ctx = canvas.getContext('2d');
+            ctx.fillStyle = 'red';
+            ctx.strokeStyle = 'black';
+
+            function Circle(x, y, directionX, directionY, speed) {
+                var radius = 10;
+                this.x = x || 10;
+                this.y = y || 10;
+                this.speed = speed || 5;
+                this.directionX = directionX || 1;
+                this.directionY = directionY || 1;
+                this.move = function () {
+                    var nextX = this.x + (this.directionX * speed);
+                    var nextY = this.y + (this.directionY * speed);
+                    var radiusAdjustment = (radius / 2) + 1;
+
+                    if (nextX >= (canvas.width - radiusAdjustment) || nextX <= radiusAdjustment) {
+                        this.directionX = -this.directionX;
+                    }
+
+                    if (nextY >= (canvas.height - radiusAdjustment) || nextY <= radiusAdjustment) {
+                        this.directionY = -this.directionY;
+                    }
+
+                    this.x = this.x + (this.directionX * speed);
+                    this.y = this.y + (this.directionY * speed);
+                };
+                this.draw = function () {
+                    ctx.clearRect(this.x - (radius * 2), this.y - (radius * 2), radius * 4, radius * 4);
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, radius, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.stroke();
+                };
+            }
+
+            function moveCircle() {
+                circle.move();
+                circle.draw();
+                requestAnimationFrame(moveCircle);
+            }
+
+            var circle = new Circle(10, 10 , 1 , 1, 5);
+
+            requestAnimationFrame(moveCircle);
+        })()
+    </script>
+</body>
+</html>

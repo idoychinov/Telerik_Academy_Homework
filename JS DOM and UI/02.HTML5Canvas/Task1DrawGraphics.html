@@ -19,7 +19,7 @@
 
             drawHead(150, 200);
             drawBike(150, 500);
-            drawHouse(500, 150);
+            drawHouse(600, 50);
 
 
 
@@ -29,7 +29,7 @@
                 ctx.fillStyle = 'rgb(144,202,215)';
                 ctx.strokeStyle = 'rgb(57,102,147)';
                 ctx.lineWidth = 2;
-                
+
                 //drawing the the head
                 ctx.save();
                 ctx.scale(1, 0.8);
@@ -43,11 +43,11 @@
                 ctx.scale(1, 0.6);
 
                 ctx.beginPath();
-                ctx.arc(x - 40, y + 50, 10, 0, 2 * Math.PI);
+                ctx.arc(x - 40, y + 40, 10, 0, 2 * Math.PI);
                 ctx.stroke();
 
                 ctx.beginPath();
-                ctx.arc(x + 20, y + 50, 10, 0, 2 * Math.PI);
+                ctx.arc(x + 20, y + 40, 10, 0, 2 * Math.PI);
                 ctx.stroke();
                 ctx.restore();
 
@@ -55,24 +55,57 @@
                 ctx.fillStyle = 'rgb(57,102,147)';
                 ctx.scale(0.6, 1);
                 ctx.beginPath();
-                ctx.arc(x + 30, y - 50, 5, 0, 2 * Math.PI);
+                ctx.arc(x + 30, y - 56, 5, 0, 2 * Math.PI);
                 ctx.fill();
                 ctx.beginPath();
-                ctx.arc(x + 130, y - 50, 5, 0, 2 * Math.PI);
+                ctx.arc(x + 130, y - 56, 5, 0, 2 * Math.PI);
                 ctx.fill();
                 ctx.beginPath();
-                ctx.arc(x + 130, y - 50, 0, 0, 2 * Math.PI);
+                ctx.arc(x + 130, y - 56, 0, 0, 2 * Math.PI);
                 ctx.fill();
                 ctx.restore();
 
+                //drawing the mouth
+
+                ctx.save();
+                ctx.strokeStyle = 'rgb(57,102,147)';
+                ctx.rotate((Math.PI * 5) / 180);
+                ctx.scale(1, 0.3);
+                ctx.beginPath();
+                ctx.arc(x, y + 390, 25, 0, 2 * Math.PI);
+                ctx.stroke();
+                ctx.restore();
 
                 //drawing the nose
 
-                ctx.moveTo(x - 10, y - 50);
-                ctx.lineTo(x - 20, y - 20);
-                ctx.lineTo(x - 10, y - 20);
+                ctx.moveTo(x - 10, y - 60);
+                ctx.lineTo(x - 20, y - 30);
+                ctx.lineTo(x - 10, y - 30);
                 ctx.stroke();
 
+                // drawing the hat
+                ctx.fillStyle = 'rgb(57,102,147)';
+                ctx.strokeStyle = 'rgb(35,32,29)';
+                ctx.save();
+                ctx.scale(1, 0.2);
+                ctx.beginPath();
+                ctx.arc(x, y + 340, 70, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.stroke();
+                ctx.restore();
+
+                ctx.beginPath();
+                ctx.moveTo(x - 30, y - 100);
+                //ctx.lineTo(x + 30, y - 100);
+                ctx.quadraticCurveTo(x + 10, y - 80, x + 50, y - 100);
+                ctx.lineTo(x + 50, y - 180);
+                ctx.quadraticCurveTo(x + 10, y - 160, x - 30, y - 180);
+                ctx.closePath();
+                ctx.moveTo(x - 30, y - 180);
+                ctx.quadraticCurveTo(x + 10, y - 200, x + 50, y - 180);
+                ctx.quadraticCurveTo(x + 10, y - 160, x - 30, y - 180);
+                ctx.fill();
+                ctx.stroke();
 
             }
 
@@ -127,7 +160,75 @@
 
             //x,y are coordinates for roofs center
             function drawHouse(x, y) {
+                ctx.fillStyle = 'rgb(151,91,91)';
+                ctx.strokeStyle = 'rgb(0,0,0)';
+                ctx.lineWidth = 2;
 
+                // drawing the outline
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(x + 145, y + 160);
+                ctx.lineTo(x + 145, y + 375);
+                ctx.lineTo(x - 145, y + 375);
+                ctx.lineTo(x - 145, y + 160);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+
+                // drawing the roof line
+                ctx.beginPath();
+                ctx.moveTo(x - 145, y + 160);
+                ctx.lineTo(x + 145, y + 160);
+                ctx.stroke();
+
+                // drawing the chimney
+                ctx.beginPath();
+                ctx.moveTo(x + 55, y + 120);
+                ctx.lineTo(x + 55, y + 40);
+                ctx.quadraticCurveTo(x + 55 + 17.5, y + 50, x + 90, y + 40);
+                ctx.lineTo(x + 90, y + 120);
+                ctx.moveTo(x + 55, y + 40);
+                ctx.quadraticCurveTo(x + 55 + 17.5, y + 50, x + 90, y + 40);
+                ctx.quadraticCurveTo(x + 55 + 17.5, y + 30, x + 55, y + 40);
+                ctx.fill();
+                ctx.stroke();
+
+                //drawing the door
+                ctx.beginPath();
+                ctx.moveTo(x - 115, y + 375);
+                ctx.lineTo(x - 115, y + 300);
+                ctx.quadraticCurveTo(x - 115 + 40, y + 280, x - 115 + 80, y + 300);
+                ctx.lineTo(x - 115 + 80, y + 375);
+                ctx.moveTo(x - 115 + 40, y + 375);
+                ctx.lineTo(x - 115 + 40, y + 290);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.arc(x - 85, y + 345, 5, 0, 2 * Math.PI)
+                ctx.stroke();
+                ctx.beginPath();
+
+                ctx.arc(x - 65, y + 345, 5, 0, 2 * Math.PI)
+                ctx.stroke();
+
+                //drawing the windows
+                ctx.fillStyle = 'rgb(0,0,0)';
+                ctx.beginPath();
+
+                ctx.fillRect(x - 125, y + 185, 50, 35);
+                ctx.fillRect(x - 125, y + 221, 50, 35);
+                ctx.fillRect(x - 74, y + 185, 50, 35);
+                ctx.fillRect(x - 74, y + 221, 50, 35);
+
+                ctx.fillRect(x + 25, y + 185, 50, 35);
+                ctx.fillRect(x + 76, y + 185, 50, 35);
+                ctx.fillRect(x + 25, y + 221, 50, 35);
+                ctx.fillRect(x + 76, y + 221, 50, 35);
+
+                ctx.fillRect(x + 25, y + 275, 50, 35);
+                ctx.fillRect(x + 76, y + 275, 50, 35);
+                ctx.fillRect(x + 25, y + 311, 50, 35);
+                ctx.fillRect(x + 76, y + 311, 50, 35);
             }
 
         })()
