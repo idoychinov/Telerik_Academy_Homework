@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Drop Down</title>
+    <script src="handlebars-v1.3.0.js"></script>
+    
+</head>
+<body>
+    <div id="drop-down-menu">
+    </div>
+    <script id="drop-down" type="text/x-handlebars-template">
+        <select>
+            {{#each items}}
+                <option value={{value}}>{{text}}</option>
+            {{/each}}
+        </select>
+    </script>
+
+    <script>
+        var items = [{
+            value: 1,
+            text: 'One'
+        }, {
+            value: 2,
+            text: 'Two'
+        }, {
+            value: 3,
+            text: 'Three'
+        }];
+
+        var dropDownTemplateHtml = document.getElementById('drop-down').innerHTML;
+        dropDownTemplate = Handlebars.compile(dropDownTemplateHtml);
+        document.getElementById("drop-down-menu").innerHTML = dropDownTemplate({ items: items });
+    </script>
+
+</body>
+</html>

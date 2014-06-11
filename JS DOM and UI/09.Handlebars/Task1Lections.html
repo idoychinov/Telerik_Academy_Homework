@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Lections</title>
+    <script src="handlebars-v1.3.0.js"></script>
+    <style>
+        table, td, th {
+            border-collapse: collapse;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        th {
+            color: white;
+            background-color: #A6A6A6;
+        }
+
+        tr:nth-child(2n) {
+            background-color: #D9D9D9;
+        }
+
+        tr:nth-child(2n+1) {
+            background-color: white;
+        }
+        td:nth-child(2) {
+            text-align:left;
+        }
+    </style>
+</head>
+<body>
+    <div id="lections">
+    </div>
+    <script id="lections-template" type="text/x-handlebars-template">
+        <table>
+            <colgroup>
+                <col />
+                <col />
+                <col span="2"/>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>&#x2116</th>
+                    <th>Title</th>
+                    <th>Date #1</th>
+                    <th>Date #2</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each lection}}
+                <tr>
+                    <td>{{@index}}</td>
+                    <td>{{name}}</td>
+                    <td>{{startDate}}</td>
+                    <td>{{endDate}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </script>
+
+    <script>
+        function Lection(name, startDate, endDate) {
+            this.name = name;
+            this.startDate = getDateString(startDate);
+            this.endDate = getDateString(endDate);
+        }
+
+        function getDateString(date) {
+            var dateString = "";
+            var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            dateString += days[date.getDay()] + " ";
+            dateString += date.getHours() + ":";
+            dateString += (date.getMinutes() < 10 ? date.getMinutes() + "0" : date.getMinutes()) + ", ";
+            dateString += date.getUTCDate() + "-";
+            dateString += months[date.getUTCMonth()] + "-";
+            dateString += date.getUTCFullYear();
+
+            return dateString;
+        }
+        var lectionsData = [
+            new Lection("Course Introduction", new Date("2014/5/28 18:00"), new Date("2014/5/29 14:00")),
+            new Lection("Document Object Model", new Date("2014/5/28 18:00"), new Date("2014/5/29 14:00")),
+            new Lection("HTML5 Canvas", new Date("2014/5/29 18:00"), new Date("2014/5/30 14:00")),
+            new Lection("Kinetic JS Overview", new Date("2014/5/29 18:00"), new Date("2014/5/30 14:00")),
+            new Lection("SVG and Raphael JS", new Date("2014/6/4 18:00"), new Date("2014/6/5 14:00")),
+            new Lection("Animations with Canvas and SVG", new Date("2014/6/4 18:00"), new Date("2014/6/5 14:00")),
+            new Lection("DOM Operations", new Date("2014/6/5 18:00"), new Date("2014/6/6 14:00")),
+            new Lection("Event model", new Date("2014/6/5 18:00"), new Date("2014/6/6 14:00")),
+            new Lection("jQueri overview", new Date("2014/6/11 18:00"), new Date("2014/6/12 14:00")),
+            new Lection("HTML Templates", new Date("2014/6/11 18:00"), new Date("2014/6/12 14:00")),
+            new Lection("Exam preperation", new Date("2014/6/12 18:00"), new Date("2014/6/13 14:00")),
+            new Lection("Exam", new Date("2014/6/17 10:00"), new Date("2014/6/17 16:30")),
+            new Lection("Teamwork Defense", new Date("2014/6/19 10:00"), new Date("2014/6/19 10:00")),
+        ];
+        var lectionsTemplateHtml = document.getElementById('lections-template').innerHTML;
+        lectionsTemplate = Handlebars.compile(lectionsTemplateHtml);
+        document.getElementById("lections").innerHTML = lectionsTemplate({ lection: lectionsData });
+    </script>
+
+</body>
+</html>
