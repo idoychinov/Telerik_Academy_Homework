@@ -3,39 +3,47 @@ window.onload = function () {
     (function ($) {
 
         $.fn.dropdown = function () {
-            var $this = $(this),
+            var $originalDropdown = $(this),
                 $listContainer,
                 $listOptions,
                 $option;
 
-            //$this.hide();
+            $originalDropdown.hide();
 
             $listContainer = $("<div />")
                 .addClass("dropdown-list-container")
 
             $listOptions = $("<ul />")
                 .addClass("dropdown-list-options")
-                .css("list-style-type","none")
+                .css("list-style-type", "none")
+                .css("border", "1px solid black")
+                .css("padding", "2px")
+                .css("display","inline-block")
                 .on("click", "li", onOptionSelect)
                 .appendTo($listContainer);
 
-            $this.children().each(function () {
+            $originalDropdown.children().each(function () {
                 $option = $(this);
                 $("<li />")
                 .addClass("dropdown-list-option")
                 .attr("data-value", $option.val())
                 .html($option.html())
+                .hide()
                 .appendTo($listOptions);
             })
 
-            $this.after($listContainer);
+            $listOptions.children().first().show();
+            $originalDropdown.after($listContainer);
 
             function onOptionSelect() {
-                $this.children("option[value=" + $(this).attr("data-value") + "]")
+                $originalDropdown.children().removeAttr("selected");
+                $originalDropdown.children("option[value=" + $(this).attr("data-value") + "]")
                     .attr("selected", "selected");
+                $listOptions.find(".dropdown-list-option").toggle();
+                $(this).show();
             }
 
-            return $this;
+            return $originalDropdown;
         }
 
         $("#dropdown").dropdown();
