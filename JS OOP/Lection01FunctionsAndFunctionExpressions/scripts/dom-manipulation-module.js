@@ -1,31 +1,42 @@
 var DomManipulation;
 DomManipulation = function () {
     var buffer = [],
-        BUFFER_APPEND_TRESHHOLD = 100,
-        $fragment = $(document.createDocumentFragment());
+        BUFFER_APPEND_TRESHHOLD = 100;
 
     function appendChild(element, selector) {
-        var $parent = $(selector);
+        var parent = document.querySelector(selector);
 
-        $parent.append(element);
+        parent.appendChild(element);
     }
 
     function removeChild(parentElement, selector){
-        var $parent = $(parentElement);
-        //console.log($parent.html());
-        //console.log($(selector).html());
+        var parent,
+            children,
+            i;
+        parent =  document.querySelector(parentElement);
+        children = parent.querySelectorAll(selector);
 
-        $parent.find(selector).remove();
+        for(i=children.length-1; i>=0; i--){
+            children[i].remove();
+        }
     }
 
-    function addHandler(target,eventType,eventHandler){
-        var $target = $(target);
-        $target.on(eventType,eventHandler);
+    function addHandler(selector,eventType,eventHandler){
+        var listOfTargets,
+            i;
+        listOfTargets = document.querySelectorAll(selector);
+
+        for(i=0; i< listOfTargets.length;i++){
+            listOfTargets[i].addEventListener(eventType,eventHandler);
+        }
     }
 
     function appendToBuffer(selector, element){
         if(buffer[selector]){
-            addElementToBuffer(selector,element);
+            buffer[selector].push(element);
+            if(buffer[selector].length >=BUFFER_APPEND_TRESHHOLD){
+                emptyBuffer();
+            }
         } else{
             buffer[selector] = [];
             buffer[selector].push(element);
@@ -33,18 +44,24 @@ DomManipulation = function () {
 
     }
 
-    function addElementToBuffer(selector, element){
-        buffer[selector].push(element);
-        if(buffer[selector].length >=BUFFER_APPEND_TRESHHOLD){
-            $.each(buffer[selector], function(){
-                $fragment.append(this)
-            });
-            $(selector).append($fragment);
+    function emptyBuffer(){
+        var selector,
+            element,
+            fragment;
+
+        for(selector in buffer){
+            fragment = document.createDocumentFragment();
+            for(element in buffer[selector]){
+                fragment.appendChild(buffer[selector][element]);
+            }
+            document.querySelector(selector).appendChild(fragment);
         }
+
+        buffer = [];
     }
 
     function getElements(selector){
-        return $(selector);
+        return document.querySelectorAll(selector);
     }
 
     return{

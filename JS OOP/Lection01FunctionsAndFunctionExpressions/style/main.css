@@ -1,9 +1,24 @@
+body, html{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 section {
     width: 30%;
-    display: inline-block;
+    /*display: inline-block;vertical-align:top;*/
     border: 1px solid black;
     padding: 5px;
+    margin: 5px;
     position: relative;
+    float: left;
+}
+
+section:last-child:after{
+    clear:both;
+    content: "";
+    display: none;
+    zoom: 1;
 }
 
 section header h3{
@@ -19,13 +34,37 @@ section span em{
 
 }
 section div{
-    background-color: green;
     width: 100px;
     height: 100px;
     margin: 5px;
 }
 
 div.moving{
-    width: 20px;
-    height: 20px;
+    margin: 0;
+    width: 30px;
+    height: 30px;
+    background-color: lightgray;
+    border: 5px solid;
+    position: absolute;
+}
+
+#moving-divs-section {
+    height: 98%;
+    display: table;
+}
+
+#moving-divs-section article {
+    display: table-row;
+    height: 100%;
+    position: relative;
+}
+#moving-divs-section article>div.moving-divs-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+#console-section input[type=text]{
+    display: block;
+    width:100%;
 }
