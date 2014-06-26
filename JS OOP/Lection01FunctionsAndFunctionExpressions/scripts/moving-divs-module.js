@@ -53,19 +53,21 @@ MovingDivs = function () {
 
         createdDiv.style.backgroundColor = "rgb("+ getRandom(0,255) + ", " +getRandom(0,255)+", " +getRandom(0,255)+")";
         createdDiv.style.borderColor = "rgb("+ getRandom(0,255) + ", " +getRandom(0,255)+", " +getRandom(0,255)+")";
-        createdDiv.style.fontSize = getRandom(12,24)+"px";
+        createdDiv.style.fontSize = getRandom(12,30)+"px";
         parentWidth = parseInt(window.getComputedStyle(parent).width);
         parentHeight = parseInt(window.getComputedStyle(parent).height);
         createdDiv.style.top = getRandom(0,parentHeight-50-MOVEMENT_DEVIATION)+"px";
         createdDiv.style.left = getRandom(0,parentWidth-50-MOVEMENT_DEVIATION)+"px";
         parent.appendChild(createdDiv);
         if(movementType==="rect"){
+            createdDiv.innerText="R";
             parameters = {
                 div: createdDiv,
                 movementType:"rect",
                 currentPosition:0
             }
         } else if(movementType==="ellipse"){
+            createdDiv.innerText="C";
             parameters = {
                 div: createdDiv,
                 movementType:"ellipse",

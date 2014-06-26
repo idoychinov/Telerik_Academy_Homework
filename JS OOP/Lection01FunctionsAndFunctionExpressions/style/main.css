@@ -46,6 +46,7 @@ div.moving{
     background-color: lightgray;
     border: 5px solid;
     position: absolute;
+    text-align: center;
 }
 
 #moving-divs-section {
