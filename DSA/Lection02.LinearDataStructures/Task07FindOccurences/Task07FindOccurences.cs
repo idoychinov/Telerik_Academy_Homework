@@ -2,11 +2,10 @@
 {
     using System;
 
-    class Task07FindOccurences
+    public class Task07FindOccurences
     {
-        static void Main()
+        public static void Main()
         {
-
             int[] array = new int[]
             {
                 3, 4, 4, 2, 3, 3, 4, 3, 2

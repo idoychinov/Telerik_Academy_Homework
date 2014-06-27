@@ -3,9 +3,9 @@
     using System;
     using System.Collections.Generic;
 
-    class Task03ListSort
+    public class Task03ListSort
     {
-        static void Main()
+        public static void Main()
         {
             List<int> sequence = new List<int>();
             string line;
@@ -13,7 +13,7 @@
             Console.WriteLine("Enter sequence of integers each on new line. End the sequence with empty line");
 
             line = Console.ReadLine();
-            while (line != String.Empty)
+            while (line != string.Empty)
             {
                 sequence.Add(int.Parse(line));
                 line = Console.ReadLine();

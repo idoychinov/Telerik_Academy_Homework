@@ -3,9 +3,9 @@
     using System;
     using System.Collections.Generic;
 
-    class Task02StackReverse
+    public class Task02StackReverse
     {
-        static void Main()
+        public static void Main()
         {
             Stack<int> sequence = new Stack<int>();
             string line;
@@ -13,7 +13,7 @@
             Console.WriteLine("Enter sequence of integers each on new line. End the sequence with empty line");
 
             line = Console.ReadLine();
-            while (line != String.Empty)
+            while (line != string.Empty)
             {
                 sequence.Push(int.Parse(line));
                 line = Console.ReadLine();

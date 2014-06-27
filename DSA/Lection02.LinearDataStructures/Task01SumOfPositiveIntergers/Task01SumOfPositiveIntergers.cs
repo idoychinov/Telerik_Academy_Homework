@@ -3,9 +3,9 @@
     using System;
     using System.Collections.Generic;
 
-    class Task01SumOfPositiveIntergers
+    public class Task01SumOfPositiveIntergers
     {
-        static void Main()
+        public static void Main()
         {
             List<int> sequence = new List<int>();
             string line;
@@ -16,7 +16,7 @@
 
             line = Console.ReadLine();
             sum = 0;
-            while (line != String.Empty)
+            while (line != string.Empty)
             {
                 current = int.Parse(line);
                 sum += current;
