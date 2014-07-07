@@ -66,6 +66,25 @@ define(['snake/snake-objects'],function(Objects) {
             this._objectsToDelete=[];
         }
 
+        Renderer.prototype.drawStats = function(size,lives,points){
+            this.ctx.fillStyle = 'blue';
+            //to refactor with parameters not fixed values
+            this.ctx.fillRect(0,500,1000,100);
+            this.ctx.fillStyle = 'yellow';
+            this.ctx.font="30px Georgia";
+            this.ctx.fillText("Snake Size: "+size,50,540);
+            this.ctx.fillText("Lives: "+lives,450,540);
+            this.ctx.fillText("Points: "+points,750,540);
+            this.ctx.font="18px Georgia";
+            this.ctx.fillText("Esc for Pause",450,590);
+        }
+
+        Renderer.prototype.drawGameOver = function(){
+            this.ctx.fillStyle = 'yellow';
+            this.ctx.font="80px Georgia";
+            this.ctx.fillText("Game Over",300,300);
+        }
+
         return Renderer;
     }())
     return Renderer;

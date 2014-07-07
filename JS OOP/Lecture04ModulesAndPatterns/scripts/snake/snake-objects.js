@@ -12,24 +12,17 @@ define(function() {
         function GameObject(x, y) {
             this.x = x;
             this.y = y;
+            this.color = 'white';
         }
 
         function SnakeBodyPart(x,y) {
             GameObject.call(this,x,y);
             this.next = null;
+            this.prev = null;
             this.color = 'black';
         }
 
         SnakeBodyPart.prototype = new GameObject();
-
-        function SnakeHeadPart(x,y) {
-            GameObject.call(this,x,y);
-
-            this.next = null;
-            this.color = 'red';
-        }
-
-        SnakeHeadPart.prototype = new GameObject();
 
         function Snake(x,y,size,direction) {
             var previous,
@@ -37,42 +30,38 @@ define(function() {
                 i;
             GameObject.call(this,x,y);
             this.direction = direction;
-            this.head = new SnakeHeadPart(x,y);
+            this.head = new SnakeBodyPart(x,y);
+            this.head.color ='red';
             previous = this.head;
             for ( i = 1; i<size; i++){
                 current = new SnakeBodyPart(x-i,y);
                 previous.next = current;
+                current.prev = previous;
                 previous = current;
             }
             this.tail = previous;
+            this.size = size;
         }
 
         Snake.prototype = new GameObject();
 
         Snake.prototype.move = function(){
             var next = this.head.next,
-                prev =this.head;
-            this.head.next= new SnakeBodyPart(this.head.x,this.head.y);
-            this.head.next.next = next;
+                newPart;
+
+            newPart = new SnakeBodyPart(this.head.x,this.head.y);
+            next.prev = newPart;
+            newPart.next = next;
+            newPart.prev = this.head;
+            this.head.next = newPart;
+
             this.head.x += directions[this.direction].x;
             this.head.y += directions[this.direction].y;
-
-
-            if(next){
-                if(next.next) {
-                    prev = next;
-                    next = next.next;
-                } else
-                {
-                    prev.next=null;
-                }
-            }
-
-
         }
 
-        function Food() {
-
+        function Food(x,y) {
+            GameObject.call(this,x,y);
+            this.color = 'white';
         }
 
         Food.prototype = new GameObject();
