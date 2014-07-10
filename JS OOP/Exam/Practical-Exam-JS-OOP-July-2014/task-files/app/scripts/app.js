@@ -62,10 +62,10 @@
         }));
 
         /* returns 10 items (type = 'accessory' */
-        console.log(store.filterItemsByType('accessory'));
+        console.log(store.filterItemsByType('accessorys'));
 
         /* returns 5 items, that have the word 'note' in their name. The search is case-insensitive */
-        console.log(store.filterItemsByName('note'));
+        console.log(store.filterItemsByName('dsas'));
 
         /* returns an associative array. The value of each key is one of the types, and the value is the number of items with the type */
         console.log(store.countItemsByType());
