@@ -1,0 +1,33 @@
+h1 {
+    text-align: center;
+}
+
+section article {
+    border: 1px solid black;
+    margin: 10px;
+}
+
+section article table,th,td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+section article table thead th:first-letter {
+    text-transform: capitalize;
+}
+
+section article table thead th {
+    background-color: lightgray;
+}
+
+section article table tbody tr:nth-child(2n) {
+    background-color: lightgreen;
+}
+
+section article table tbody tr:nth-child(2n+1) {
+    background-color: lightblue;
+}
+
+section article .data-container {
+    display: inline-block;
+    margin: 0 20px;
+}
