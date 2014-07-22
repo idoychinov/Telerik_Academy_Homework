@@ -61,7 +61,6 @@
                 'legs': arr[0].legs
             }
         })
-
         allTasks.push({
             name: 'Task 4',
             description: 'Write a function that by a given array of animals, groups them by species and sorts them by number of legs',
@@ -86,35 +85,27 @@
         })
 
         //Task 6
-        console.log(Tasks.mostPopularAuthor(Data.books));
-        singleElementResult= [];
-        singleElementResult.push(Tasks.mostPopularAuthor(Data.books));
 
         allTasks.push({
             name: 'Task 6',
             description: 'By a given collection of books, find the most popular author (the author with the highest number of books)',
             input: Data.books,
-            output: singleElementResult
+            output: Tasks.mostPopularAuthor(Data.books)
 
         })
 
         //Task 7
-        singleElementResult= [];
-        singleElementResult.push({
-            totalLegs: Tasks.mostCommonNames(Data.people)
-        });
 
         allTasks.push({
             name: 'Task 7',
             description: 'By an array of people find the most common first and last name. Use underscore.',
             input: Data.people,
-            output: singleElementResult
+            output: Tasks.mostCommonNames(Data.people)
 
         })
 
         template = Handlebars.compile($('#tasks-template').html());
         $('#all-tasks').append(template({tasks: allTasks}));
-
 
     })
 }())

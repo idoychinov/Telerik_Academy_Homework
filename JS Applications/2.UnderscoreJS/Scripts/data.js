@@ -65,11 +65,15 @@ define(function(){
         ];
 
         var people = [
-            new Student('Petur', 'Ivanov'),
-            new Student('Mariq', 'Nikolaeva'),
-            new Student('Dimitar', 'Vasilev'),
-            new Student('Raia', 'Petrova'),
-            new Student('Haralampi', 'Haralampiev')
+            new Person('Petur', 'Ivanov'),
+            new Person('Mariq', 'Nikolaeva'),
+            new Person('Dimitar', 'Vasilev'),
+            new Person('Raia', 'Petrova'),
+            new Person('Haralampi', 'Haralampiev'),
+            new Person('Nikolai', 'Ivanov'),
+            new Person('Georgi', 'Donchev'),
+            new Person('Petur', 'Mihailev'),
+            new Person('Georgi', 'Georgiev')
         ];
 
         return {
