@@ -1,0 +1,12 @@
+#wrapper {
+    width: 800px;
+    margin: 0 auto;
+}
+
+#wrapper header h1 {
+    text-align: center;
+}
+
+#wrapper #main {
+    text-align: center;
+}

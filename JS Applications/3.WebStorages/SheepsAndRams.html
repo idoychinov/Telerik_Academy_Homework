@@ -4,15 +4,23 @@
     <meta charset="UTF-8">
     <title>Rams and Sheep</title>
     <link href="styles/main.css" rel="stylesheet" type="text/css">
-    <script src="Scripts/Libs/require.js" data-main="Scripts/app"></script>
 </head>
 <body>
 <header>
     <h1>Rams and Sheep</h1>
+    <em>Sorry no time for pretty graphics :)</em>
+
 </header>
 <section>
     <input type="text" id="number-input" maxlength="4"/>
+    <p>Press enter to check the number.</p>
+    <p id="display-message"></p>
+    <div id="turn-history">
+        <h3>Turn history:</h3>
+        <ul></ul>
+    </div>
 </section>
 
+<script src="Scripts/Libs/require.js" data-main="Scripts/app"></script>
 </body>
 </html>
