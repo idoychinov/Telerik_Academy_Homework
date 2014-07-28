@@ -1,0 +1,16 @@
+#wrapper {
+    width: 800px;
+    margin: 0 auto;
+}
+
+#wrapper header h1 {
+    text-align: center;
+}
+
+#wrapper #main-container {
+    text-align: center;
+}
+
+#wrapper textarea#chat-history {
+    resize: none;
+}
