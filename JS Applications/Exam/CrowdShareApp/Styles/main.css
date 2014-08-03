@@ -1,0 +1,46 @@
+#wrapper {
+    width: 800px;
+    margin: 0 auto;
+}
+
+#wrapper header h1 {
+    text-align: center;
+}
+
+#wrapper nav ul{
+    list-style-type: none;
+}
+
+#wrapper nav ul li{
+    display: inline-block;
+}
+
+#wrapper #main-container {
+}
+
+#wrapper #main-container #not-found{
+    margin: 100px;
+    text-align: center;
+}
+/*
+#user-control{
+    float:right;
+}
+
+#user-control:after{
+    display: block;
+    content: '';
+    zoom: 1;
+    clear:both;
+}
+*/
+
+#posts {
+    text-align: center;
+}
+form {
+    text-align: center;
+}
+.error-message{
+    color: red;
+}

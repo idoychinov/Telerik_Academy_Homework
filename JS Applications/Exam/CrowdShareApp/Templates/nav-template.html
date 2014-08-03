@@ -1,0 +1,15 @@
+<nav>
+    {{#isLogged}}
+    <a id="add-post" href="#/addPost">Add Post</a>
+    {{/isLogged}}
+    <div id="user-control">
+        {{#isLogged}}
+        <span>Hello, {{userName}}</span>
+        <a id="logout" href="#/home">Log out</a>
+        {{/isLogged}}
+        {{^isLogged}}
+        <a id="login" href = "#/login">Log in</a>
+        <a id="register" href = "#/register">Register</a>
+        {{/isLogged}}
+    </div>
+</nav>
