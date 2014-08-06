@@ -5,6 +5,5 @@
         int Amount { get; }
 
         int CurrentValue { get; set; }
-
     }
 }

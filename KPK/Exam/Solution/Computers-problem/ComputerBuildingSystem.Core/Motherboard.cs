@@ -2,9 +2,9 @@
 {
     using System;
     using ComputerBuildingSystem.Core.Interfaces;
+
     public class Motherboard : IMotherboard
     {
-        
         private IRamMemory ram;
         private IHardDrive hardDriveComponent;
         private IVideoCard videoCard;
@@ -30,6 +30,5 @@
         {
             this.videoCard.DrawText(data);
         }
-
     }
 }

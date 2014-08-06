@@ -17,18 +17,19 @@
 
         private void Process(int parameter)
         {
-            this.motherboard.SaveRamValue(parameter);
+            this.Motherboard.SaveRamValue(parameter);
             string message;
             try
             {
-               var number = this.cpu.SquareNumber(this.motherboard.LoadRamValue());
+               var number = this.Cpu.SquareNumber(this.Motherboard.LoadRamValue());
                message = number.ToString();
             }
             catch (ArgumentOutOfRangeException e)
             {
                 message = e.Message;
             }
-            this.motherboard.DrawOnVideoCard(message);
+
+            this.Motherboard.DrawOnVideoCard(message);
         }
     }
 }

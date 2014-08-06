@@ -11,10 +11,9 @@
         private const int LaptopHddCapacity = 1000;
         private const int NumberOfDisksInServerRaid = 2;
 
-
         public override PC ManifacturePC()
         {
-            var cpu = new Cpu64Bit(NumberOfCores, this.randomProvider);
+            var cpu = new Cpu64Bit(NumberOfCores, this.RandomGenerator);
             var ramMemory = new RamMemory(PcRamCapacity);
             var hardDisk = new Hdd(PcHddCapacity);
             var videoCard = new MonochromeVideoCard();
@@ -25,7 +24,7 @@
 
         public override Server ManifactureServer()
         {
-            var cpu = new Cpu128Bit(NumberOfCores, this.randomProvider);
+            var cpu = new Cpu128Bit(NumberOfCores, this.RandomGenerator);
             var ramMemory = new RamMemory(ServerRamCapacity);
             var hardDisk = new RaidArray(ServerHddCapacity, NumberOfDisksInServerRaid);
             var videoCard = new MonochromeVideoCard();
@@ -36,7 +35,7 @@
 
         public override Laptop ManifactureLaptop()
         {
-            var cpu = new Cpu64Bit(NumberOfCores, this.randomProvider);
+            var cpu = new Cpu64Bit(NumberOfCores, this.RandomGenerator);
             var ramMemory = new RamMemory(LaptopRamCapacity);
             var hardDisk = new Hdd(LaptopHddCapacity);
             var videoCard = new ColorfulVideoCard();

@@ -4,7 +4,20 @@
 
     public abstract class ComputerManifacturer
     {
-        protected IRandomProvider randomProvider = RandomProvider.GetInstance();
+        private IRandomProvider randomProvider;
+
+        public ComputerManifacturer()
+        {
+            this.randomProvider = RandomProvider.GetInstance();
+        }
+
+        protected IRandomProvider RandomGenerator
+        {
+            get
+            {
+                return this.randomProvider;
+            }
+        }
 
         public abstract PC ManifacturePC();
 

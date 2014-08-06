@@ -14,7 +14,7 @@
 
         public override PC ManifacturePC()
         {
-            var cpu = new Cpu64Bit(PcAndLaptopCores, this.randomProvider);
+            var cpu = new Cpu64Bit(PcAndLaptopCores, this.RandomGenerator);
             var ramMemory = new RamMemory(PcAndLaptopRamCapacity);
             var hardDisk = new Hdd(PcAndLaptopHddCapacity);
             var videoCard = new ColorfulVideoCard();
@@ -25,7 +25,7 @@
 
         public override Server ManifactureServer()
         {
-            var cpu = new Cpu64Bit(ServerCores, this.randomProvider);
+            var cpu = new Cpu64Bit(ServerCores, this.RandomGenerator);
             var ramMemory = new RamMemory(ServerRamCapacity);
             var hardDisk = new RaidArray(ServerHddCapacity, NumberOfDisksInServerRaid);
             var videoCard = new MonochromeVideoCard();
@@ -36,7 +36,7 @@
 
         public override Laptop ManifactureLaptop()
         {
-            var cpu = new Cpu32Bit(PcAndLaptopCores, this.randomProvider);
+            var cpu = new Cpu32Bit(PcAndLaptopCores, this.RandomGenerator);
             var ramMemory = new RamMemory(PcAndLaptopRamCapacity);
             var hardDisk = new Hdd(PcAndLaptopHddCapacity);
             var videoCard = new ColorfulVideoCard();

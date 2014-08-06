@@ -6,18 +6,15 @@
 
     internal class Computers
     {
-        private readonly IComputer pc, laptop, server;
-
         public static void Main()
         {
             ComputerManifacturer computerManifacturerFactory;
-            Computer pc, laptop, server;
+            IComputer pc, laptop, server;
             var manufacturer = Console.ReadLine();
 
             if (manufacturer == "HP")
             {
                 computerManifacturerFactory = new HPFactory();
-
             }
             else if (manufacturer == "Dell")
             {

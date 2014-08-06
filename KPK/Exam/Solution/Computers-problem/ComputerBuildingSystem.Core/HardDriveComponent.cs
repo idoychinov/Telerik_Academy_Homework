@@ -28,6 +28,5 @@
         public abstract void SaveData(string data, int addres);
 
         public abstract string GetData(int addres);
-
     }
 }

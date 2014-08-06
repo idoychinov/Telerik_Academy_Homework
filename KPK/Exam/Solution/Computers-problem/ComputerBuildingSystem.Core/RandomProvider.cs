@@ -5,22 +5,23 @@
 
     public class RandomProvider : IRandomProvider
     {
-        private static RandomProvider instance;
+        private static IRandomProvider instance;
 
         private readonly Random randomGenerator;
+
         private RandomProvider()
         {
             this.randomGenerator = new Random();
         }
 
-        public static RandomProvider GetInstance()
+        public static IRandomProvider GetInstance()
         {
             // not a trade safe singleton but works for this task
             if (instance == null)
             {
                 instance = new RandomProvider();
             }
-
+            
             return instance;
         }
 
@@ -30,6 +31,7 @@
             {
                 throw new ArgumentOutOfRangeException("Min value must be less then max value");
             }
+
             int randomNumber = this.randomGenerator.Next(minNumber, maxNumber + 1);
             return randomNumber;
         }

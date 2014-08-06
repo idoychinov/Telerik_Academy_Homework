@@ -19,6 +19,5 @@
         /// </summary>
         /// <param name="data">Text that will be passed to the Video Card for visualization</param>
         void DrawOnVideoCard(string data);
-
     }
 }

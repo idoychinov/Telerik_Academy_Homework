@@ -2,6 +2,7 @@
 {
     using System;
     using ComputerBuildingSystem.Core.Interfaces;
+
     public abstract class VideoCard : IVideoCard
     {
         private readonly ConsoleColor textColor;
