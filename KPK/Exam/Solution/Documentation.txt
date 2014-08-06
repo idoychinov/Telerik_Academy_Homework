@@ -1,0 +1,41 @@
+Design pattern: Simple Factory
+	* raid?
+
+Design pattern: Strategy
+	* 
+
+Design pattern: Template Method
+	* 
+
+Design pattern: Abstract factory
+	* ComputerManifacturers: HP,Dell,Lenovo
+
+Design pattern: Composite
+	HardDriveComponent, RaidArray,Hdd
+
+Design pattern: Mediator
+	*  motherboard to cpu?
+
+Found bottlenecks:
+	* In SquareNumber32 and SquareNumber64 unnecessary loop for generating the square number instead of just doing data*data
+	* ?Random used in cpu is created with every new CPU. This can lead to giving same numbers if multiple instances of Cpu are instantiated simultaneously, also the upper bond of the range generated in the provided code is exclusive Random.Next(0,1000) for the case with 64bit CPU.
+
+Found bugs:
+	Build errors: Missing ; after this.capacity = capacity in HardDrive.cs file. Missing closing > for the Dictionary declaration in row this.data = new Dictionary<int, string(capacity); in HardDrive.cs file.
+	Missing videoCard initialization in CPU constructor - this.videoCard = videoCard;  resulting in nullRefferenceException when videoCard.Draw is called.
+	? Unneeded main call from from Class Laptop in CPU.cs that calls Computers.main. Removed the Laptop class and  changed Computers main method to Main (capital letter)  
+
+Single responsibility principle
+	* 
+
+Open/closed principle
+	* 
+
+Liskov substitution principle
+	* 
+
+Interface segregation principle
+	* 
+
+Dependency inversion principle
+	* 

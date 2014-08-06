@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{075AD1E7-C01D-4203-85E5-65720759F91C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ComputerBuildingSystem.Core</RootNamespace>
+    <AssemblyName>ComputerBuildingSystem.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\ComputerBuildingSystem.Core.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ColorfulVideoCard.cs" />
+    <Compile Include="Computer.cs" />
+    <Compile Include="ComputerManifacturer.cs" />
+    <Compile Include="Cpu.cs" />
+    <Compile Include="Cpu128Bit.cs" />
+    <Compile Include="Cpu32Bit.cs" />
+    <Compile Include="Cpu64Bit.cs" />
+    <Compile Include="DellFactory.cs" />
+    <Compile Include="HardDriveComponent.cs" />
+    <Compile Include="Hdd.cs" />
+    <Compile Include="HPFactory.cs" />
+    <Compile Include="Interfaces\IBattery.cs" />
+    <Compile Include="Interfaces\IComputer.cs" />
+    <Compile Include="Interfaces\ICpu.cs" />
+    <Compile Include="Interfaces\IHardDrive.cs" />
+    <Compile Include="Interfaces\IRamMemory.cs" />
+    <Compile Include="Interfaces\IRandomProvider.cs" />
+    <Compile Include="Interfaces\IVideoCard.cs" />
+    <Compile Include="Laptop.cs" />
+    <Compile Include="LaptopBattery.cs" />
+    <Compile Include="LenovoFactory.cs" />
+    <Compile Include="MonochromeVideoCard.cs" />
+    <Compile Include="Motherboard.cs" />
+    <Compile Include="Interfaces\IMotherboard.cs" />
+    <Compile Include="PC.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RaidArray.cs" />
+    <Compile Include="RamMemory.cs" />
+    <Compile Include="RandomProvider.cs" />
+    <Compile Include="Server.cs" />
+    <Compile Include="VideoCard.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
