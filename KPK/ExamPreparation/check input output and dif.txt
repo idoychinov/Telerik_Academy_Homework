@@ -1,0 +1,5 @@
+cmd
+run file with redirected console     file <testinput.in.txt >testoutput.out.txt
+compare the two files   fc testinput.in.txt testoutput.out.txt
+
+
