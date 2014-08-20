@@ -1,0 +1,14 @@
+add loop through the test files with input and execute the whole solution for each of the input cases. Print the result to output files. (redirect console input output only if files exist).
+Compare input output files and print to the  console if they are the same.
+
+Check performance with StopWatch (start stop elapsed)   and memory with GC.GetTotalMemory (true)
+
+
+requirements 
+plan solution
+write on paper
+test solutions on paper
+calculate complexity
+chose data structure
+
+split solution in testable methods
