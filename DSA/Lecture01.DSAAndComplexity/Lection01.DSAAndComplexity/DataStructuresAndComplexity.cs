@@ -8,7 +8,7 @@
 
         // Task 1. What is the expected running time of the following C# code? Explain why. Assume the array's size is n.
 
-        // Answer: The expected runing time is O(n*n) or Quadratic complexity, since the outher loop will run n times and the inner loop will also run n times for each iteration of the outer.
+        // Answer: The expected running time is O(n*n) or Quadratic complexity, since the outer loop will run n times and the inner loop will also run n times for each iteration of the outer.
         // The inner loop runs from 0 to n with each iteration moving either the start or the end by one. This means that the inner loop will execute n*n times.
         static long Compute(int[] arr)
         {
@@ -27,7 +27,7 @@
 
         // Task 2. What is the expected running time of the following C# code? Explain why.
 
-        // Answer: The expected runing time is O(n*m) or Quadratic complexity for worst case scenario. The outher loop runs n times and the inner loop runs m times if each first element of each row
+        // Answer: The expected running time is O(n*m) or Quadratic complexity for worst case scenario. The outer loop runs n times and the inner loop runs m times if each first element of each row
         // is odd. The best case is if each first element on each row is even in which case the only the outer loop will execute.
         static long CalcCount(int[,] matrix)
         {
@@ -42,7 +42,9 @@
 
         // Task 3. What is the expected running time of the following C# code? Explain why.
 
-        // Answer: The algorithm is recursive and the comlexity of the algorithm is O(n*m) since this is recursive suming of the matrix cells.
+        // Answer: The algorithm is recursive and also if n>m the program will crash since col is checked against row length and gives index out of range exception. If n<m the loop will execute n
+        // times each time calling the same method which will execute n times or O(n*n) - n Square.
+        // If the change is made to compare col to matrix.GetLenght(1) and row to matrix.GetLenght(0) the complexity of the algorithm is O(n*m) since this is recursive summing of the matrix cells.
 
         static long CalcSum(int[,] matrix, int row)
         {
