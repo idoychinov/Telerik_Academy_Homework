@@ -1,0 +1,1 @@
+Sorry, no E/R diagram functunality in the latest version of MySQL Workbench community edition
