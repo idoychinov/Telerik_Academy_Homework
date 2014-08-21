@@ -42,9 +42,7 @@
 
         // Task 3. What is the expected running time of the following C# code? Explain why.
 
-        // Answer: The algorithm is recursive and also if n>m the program will crash since col is checked against row lenght and gives index out of range exeption. If n<m the loop will executre n
-        // times each time calling the same method wich will executre n times or O(n*n) - n Square.
-        // If the change is made to compare col to matrix.GetLenght(1) and row to matrix.GetLenght(0) the comlexity of the algorithm is O(n*m) since this is recursive suming of the matrix cells.
+        // Answer: The algorithm is recursive and the comlexity of the algorithm is O(n*m) since this is recursive suming of the matrix cells.
 
         static long CalcSum(int[,] matrix, int row)
         {
