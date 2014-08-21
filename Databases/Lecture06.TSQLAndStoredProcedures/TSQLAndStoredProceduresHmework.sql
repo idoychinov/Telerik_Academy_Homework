@@ -88,12 +88,12 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Accounts](
-	[id] [int] IDENTITY(1,1) NOT NULL,
-	[balance] [decimal](18, 0) NOT NULL,
-	[person_id] [int] NOT NULL,
+	[AccountID] [int] IDENTITY(1,1) NOT NULL,
+	[Balance] [money] NOT NULL,
+	[PersonID] [int] NOT NULL,
  CONSTRAINT [PK_Accounts] PRIMARY KEY CLUSTERED 
 (
-	[id] ASC
+	[AccountID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
@@ -104,13 +104,13 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Persons](
-	[id] [int] IDENTITY(1,1) NOT NULL,
+	[PersonID] [int] IDENTITY(1,1) NOT NULL,
 	[FirstName] [nvarchar](50) NOT NULL,
 	[LastName] [nvarchar](50) NOT NULL,
 	[SSN] [nvarchar](9) NOT NULL,
  CONSTRAINT [PK_Persons] PRIMARY KEY CLUSTERED 
 (
-	[id] ASC
+	[PersonID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
@@ -118,27 +118,27 @@ GO
 SET IDENTITY_INSERT [dbo].[Accounts] ON 
 
 GO
-INSERT [dbo].[Accounts] ([id], [balance], [person_id]) VALUES (1, CAST(123 AS Decimal(18, 0)), 1)
+INSERT [dbo].[Accounts] ([AccountID], [balance], [PersonID]) VALUES (1, CAST(123 AS Decimal(18, 0)), 1)
 GO
-INSERT [dbo].[Accounts] ([id], [balance], [person_id]) VALUES (2, CAST(0 AS Decimal(18, 0)), 2)
+INSERT [dbo].[Accounts] ([AccountID], [balance], [PersonID]) VALUES (2, CAST(0 AS Decimal(18, 0)), 2)
 GO
-INSERT [dbo].[Accounts] ([id], [balance], [person_id]) VALUES (3, CAST(1000 AS Decimal(18, 0)), 3)
+INSERT [dbo].[Accounts] ([AccountID], [balance], [PersonID]) VALUES (3, CAST(1000 AS Decimal(18, 0)), 3)
 GO
 SET IDENTITY_INSERT [dbo].[Accounts] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Persons] ON 
 
 GO
-INSERT [dbo].[Persons] ([id], [FirstName], [LastName], [SSN]) VALUES (1, N'John', N'Doe', N'123456789')
+INSERT [dbo].[Persons] ([PersonID], [FirstName], [LastName], [SSN]) VALUES (1, N'John', N'Doe', N'123456789')
 GO
-INSERT [dbo].[Persons] ([id], [FirstName], [LastName], [SSN]) VALUES (2, N'Peter', N'Griffin', N'000000000')
+INSERT [dbo].[Persons] ([PersonID], [FirstName], [LastName], [SSN]) VALUES (2, N'Peter', N'Griffin', N'000000000')
 GO
-INSERT [dbo].[Persons] ([id], [FirstName], [LastName], [SSN]) VALUES (3, N'Aeryn', N'Sun', N'344522345')
+INSERT [dbo].[Persons] ([PersonID], [FirstName], [LastName], [SSN]) VALUES (3, N'Aeryn', N'Sun', N'344522345')
 GO
 SET IDENTITY_INSERT [dbo].[Persons] OFF
 GO
-ALTER TABLE [dbo].[Accounts]  WITH CHECK ADD  CONSTRAINT [FK_Accounts_Persons] FOREIGN KEY([person_id])
-REFERENCES [dbo].[Persons] ([id])
+ALTER TABLE [dbo].[Accounts]  WITH CHECK ADD  CONSTRAINT [FK_Accounts_Persons] FOREIGN KEY([PersonID])
+REFERENCES [dbo].[Persons] ([PersonID])
 GO
 ALTER TABLE [dbo].[Accounts] CHECK CONSTRAINT [FK_Accounts_Persons]
 GO
@@ -164,12 +164,12 @@ GO
 ------------------------------------------------------------------------------------------
 CREATE PROC dbo.ups_SelectPersonsWithMoneyMoreThan(@money int = 0)
 AS
-	SELECT p.id, a.TotalBalance as money
+	SELECT p.PersonID, a.TotalBalance as money
 	FROM Persons p INNER JOIN 
-	(SELECT acc.person_id, SUM (acc.balance) as TotalBalance
+	(SELECT acc.PersonID, SUM (acc.Balance) as TotalBalance
 	FROM Accounts acc 
-	GROUP BY acc.person_id
-	) as a on p.id=a.person_id
+	GROUP BY acc.PersonID
+	) as a on p.PersonID=a.PersonID
 	where a.TotalBalance >= @money
 GO
 
@@ -182,13 +182,105 @@ GO
 -- test whether the function works as expected.											--
 ------------------------------------------------------------------------------------------
 
-CREATE FUNCTION dbo.ufn_CalcInterest(@sum money, @interest_rate int, @months int)
+CREATE FUNCTION dbo.ufn_CalcInterest(@sum money, @interestRate decimal, @months decimal)
   RETURNS money
 AS
 BEGIN
-  RETURN @sum--*((@interest_rate*@months/12)/100)
+  RETURN @sum+@sum*((@interestRate*@months/12)/100)
 END
 GO
 
-SELECT dbo.ufn_CalcInterest(100, 20, 6) as NewSum
+SELECT dbo.ufn_CalcInterest(100, 30, 6) as NewSum
 GO
+
+------------------------------------------------------------------------------------------
+-- Task 4. Create a stored procedure that uses the function from the previous example	--
+-- to give an interest to a person's account for one month. It should take the AccountId--
+-- and the interest rate as parameters.													--
+------------------------------------------------------------------------------------------
+
+CREATE PROC dbo.ups_OneMonthInterest(@AccountID int, @interestRate decimal)
+AS
+	UPDATE Accounts
+	SET Balance = dbo.ufn_CalcInterest(Balance, @interestRate, 1)
+	WHERE AccountID=@AccountID
+GO
+
+EXEC dbo.ups_OneMonthInterest 1, 20.00; 
+GO
+
+------------------------------------------------------------------------------------------
+-- Task 5. Add two more stored procedures WithdrawMoney( AccountId, money) and			--
+-- DepositMoney (AccountId, money) that operate in transactions.						--
+------------------------------------------------------------------------------------------
+
+CREATE PROC dbo.ups_WithdrawMoney(@AccountID int, @money decimal)
+AS
+	BEGIN TRAN
+	DECLARE @newBalance money
+
+	IF NOT EXISTS(SELECT 1 FROM Accounts WHERE AccountID = @AccountID)
+		BEGIN
+			ROLLBACK TRAN
+			RAISERROR('Incorrect AccountID', 16, 1)
+		END
+	ELSE
+		BEGIN 
+		SELECT @newBalance = Balance - @money
+		FROM Accounts 
+		WHERE AccountID=@AccountID
+		IF(@newBalance<0)
+			BEGIN
+				ROLLBACK TRAN
+				RAISERROR('Not enough money in account', 16, 1)
+			END
+		ELSE
+			BEGIN
+				UPDATE Accounts
+				SET Balance = @newBalance
+				WHERE AccountID=@AccountID
+				COMMIT
+			END
+		END
+GO
+
+CREATE PROC dbo.ups_DepositMoney(@AccountID int, @money decimal)
+AS
+	BEGIN TRAN
+	DECLARE @newBalance money
+
+	IF NOT EXISTS(SELECT 1 FROM Accounts WHERE AccountID = @AccountID)
+		BEGIN
+			ROLLBACK TRAN
+			RAISERROR('Incorrect AccountID', 16, 1)
+		END
+	ELSE
+		BEGIN 
+		SELECT @newBalance = Balance + @money
+		FROM Accounts 
+		WHERE AccountID=@AccountID
+			UPDATE Accounts
+			SET Balance = @newBalance
+			WHERE AccountID=@AccountID
+			COMMIT
+		END
+GO
+
+EXEC dbo.ups_WithdrawMoney 12, 100.00; 
+GO
+
+EXEC dbo.ups_WithdrawMoney 1, 100.00; 
+GO
+
+EXEC dbo.ups_WithdrawMoney 1, 200.00; 
+GO
+
+EXEC dbo.ups_DepositMoney 1, 100.00; 
+GO
+
+
+------------------------------------------------------------------------------------------
+-- Task 6. Create another table – Logs(LogID, AccountID, OldSum, NewSum).				--
+-- Add a trigger to the Accounts table that enters a new entry into the Logs table every--
+-- time the sum on an account changes.													--
+------------------------------------------------------------------------------------------
