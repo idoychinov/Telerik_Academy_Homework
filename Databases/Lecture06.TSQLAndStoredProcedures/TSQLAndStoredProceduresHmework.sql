@@ -266,14 +266,20 @@ AS
 		END
 GO
 
+-- This statment producess error
+/*
 EXEC dbo.ups_WithdrawMoney 12, 100.00; 
 GO
+*/
 
 EXEC dbo.ups_WithdrawMoney 1, 100.00; 
 GO
 
+-- This statment producess error
+/*
 EXEC dbo.ups_WithdrawMoney 1, 200.00; 
 GO
+*/
 
 EXEC dbo.ups_DepositMoney 1, 100.00; 
 GO
@@ -283,4 +289,150 @@ GO
 -- Task 6. Create another table – Logs(LogID, AccountID, OldSum, NewSum).				--
 -- Add a trigger to the Accounts table that enters a new entry into the Logs table every--
 -- time the sum on an account changes.													--
+------------------------------------------------------------------------------------------
+
+CREATE TABLE Logs
+(
+  LogID int IDENTITY,
+  AccountID int NOT NULL,
+  OldSum money,
+  NewSum money,
+  ChangeDate datetime,
+  CONSTRAINT PK_LogID PRIMARY KEY(LogID)
+)
+GO
+
+ALTER TABLE [dbo].[Logs]  WITH CHECK ADD  CONSTRAINT [FK_Logs_Accounts] FOREIGN KEY([AccountID])
+REFERENCES [dbo].[Accounts] ([AccountID])
+GO
+
+CREATE TRIGGER tr_AccountsUpdate ON Accounts FOR UPDATE
+AS
+  INSERT INTO Logs (AccountID, OldSum, NewSum, ChangeDate)
+  SELECT d.AccountID, d.Balance, i.Balance, GETDATE()
+  FROM deleted d INNER JOIN inserted i on d.AccountID = i.AccountID
+GO
+
+CREATE TRIGGER tr_AccountsInsert ON Accounts FOR INSERT
+AS
+  INSERT INTO Logs (AccountID, OldSum, NewSum, ChangeDate)
+  SELECT i.AccountID, NULL, i.Balance, GETDATE()
+  FROM inserted i 
+GO
+
+CREATE TRIGGER tr_AccountsDelete ON Accounts FOR DELETE
+AS
+  INSERT INTO Logs (AccountID, OldSum, NewSum, ChangeDate)
+  SELECT d.AccountID, d.Balance, NULL, GETDATE()
+  FROM deleted d 
+GO
+
+-- Test account update
+EXEC dbo.ups_DepositMoney 3, 100.00; 
+GO
+
+-- Test account insert
+INSERT INTO Accounts 
+VALUES (2000, 1)
+GO
+
+-- Test account delete. It doesn't work because of the FK constraint for logs.
+-- It should be done with deletedFlag in accounts and using insted of Trigger
+/*
+DELETE FROM Accounts 
+WHERE AccountID = 
+(SELECT AccountID FROM Logs
+WHERE ChangeDate = 
+(SELECT MAX(ChangeDate) FROM Logs))
+*/
+GO
+
+------------------------------------------------------------------------------------------
+-- Task 7. Define a function in the database TelerikAcademy that returns all Employee's	--
+-- names (first or middle or last name) and all town's names that are comprised of		--
+-- given set of letters. Example 'oistmiahf' will return 'Sofia', 'Smith',				--
+-- … but not 'Rob' and 'Guy'.															--
+------------------------------------------------------------------------------------------
+
+USE [TelerikAcademy]
+GO
+-- Not sure if i understood the Task right but here is my take on it
+
+CREATE FUNCTION dbo.ufn_EmployeesAndTownsNameComprisedOf(@letterSet nvarchar(100))
+  RETURNS @reulst_table TABLE (name varchar(50))
+AS
+BEGIN
+
+DECLARE empCursor CURSOR READ_ONLY FOR
+  SELECT FirstName, MiddleName, LastName FROM Employees
+
+OPEN empCursor
+DECLARE @firstName char(50), @middleName char(50), @lastName char(50)
+FETCH NEXT FROM empCursor INTO @firstName, @middleName, @lastName
+
+DECLARE @nameLen int, @currentIndex int
+
+WHILE @@FETCH_STATUS = 0
+  BEGIN
+	SET @nameLen = LEN(@firstName)
+	SET @currentIndex = 0
+
+	WHILE @currentIndex < @nameLen
+	  BEGIN
+		--todo
+		SET @currentIndex = @currentIndex +1
+	  END
+
+    FETCH NEXT FROM empCursor 
+    INTO @firstName, @middleName, @lastName
+  END
+
+CLOSE empCursor
+DEALLOCATE empCursor
+
+
+  RETURN
+END
+GO
+
+
+SELECT dbo.ufn_EmployeesAndTownsNameComprisedOf('oistmiahf') as Names
+GO
+------------------------------------------------------------------------------------------
+-- Task 8. Using database cursor write a T-SQL script that scans all employees and		-- 
+-- their addresses and prints all pairs of employees that live in the same town.		--
+------------------------------------------------------------------------------------------
+
+DECLARE empCursor CURSOR READ_ONLY FOR
+  SELECT e.FirstName + ISNULL(' '+ e.MiddleName, '') + ' ' + e.LastName AS EmployeeName, 
+  t.Name AS TownName
+  FROM Employees e
+  INNER JOIN Addresses a ON e.AddressID = a.AddressID
+  INNER JOIN Towns t ON t.TownID = a.TownID
+
+OPEN empCursor
+DECLARE @employeeName char(150), @townName char(50)
+FETCH NEXT FROM empCursor INTO @employeeName, @townName
+
+WHILE @@FETCH_STATUS = 0
+  BEGIN
+    PRINT @firstName + ' ' + @lastName
+    FETCH NEXT FROM empCursor 
+    INTO @firstName, @lastName
+  END
+
+CLOSE empCursor
+DEALLOCATE empCursor
+
+------------------------------------------------------------------------------------------
+-- Task 9. Write a T-SQL script that shows for each town a list of all employees		--
+-- that live in it. Sample output: Sofia -> Svetlin Nakov, Martin Kulov, George Denchev	--
+-- Ottawa -> Jose Saraiva																--
+------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------
+-- Task 10. Define a .NET aggregate function StrConcat that takes as input a sequence of--
+-- strings and return a single string that consists of the input strings separated by	--
+-- ','. For example the following SQL statement should return a single string:			--
 ------------------------------------------------------------------------------------------
