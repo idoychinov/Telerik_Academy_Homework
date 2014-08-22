@@ -33,6 +33,10 @@ UNION
 SELECT EmployeeID, FirstName + ' ' + MiddleName + ' ' + LastName as FullName from Employees
 WHERE MiddleName IS NOT NULL
 
+-- Fixed with ISNULL statment change
+
+SELECT EmployeeID, FirstName + ISNULL(' '+MiddleName,'') + ' ' + LastName as FullName from Employees
+
 ------------------------------------------------------------------------------------------
 -- Task 8. Write a SQL query to find the email addresses of each employee				--
 -- (by his first and last name). Consider that the mail domain is telerik.com.			--
