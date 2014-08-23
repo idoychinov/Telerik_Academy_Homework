@@ -78,7 +78,7 @@ GROUP BY d.DepartmentID, d.Name
 -- and for each town.																	--
 ------------------------------------------------------------------------------------------
 
-SELECT d.DepartmentID, d.Name, t.Name, COUNT(e.EmployeeID) AS NumberOfEmployees FROM Employees e
+SELECT d.DepartmentID, d.Name as DepartmentName, t.Name as TownName, COUNT(e.EmployeeID) AS NumberOfEmployees FROM Employees e
 INNER JOIN Departments d ON e.DepartmentID=d.DepartmentID
 INNER JOIN Addresses a ON e.AddressID=a.AddressID
 INNER JOIN Towns t ON a.TownID = t.TownID
@@ -121,7 +121,7 @@ WHEre  LEN(e.LastName) = 5
 -- Search in  Google to find how to format dates in SQL Server.							--
 ------------------------------------------------------------------------------------------
 
-SELECT CONVERT(varchar, getdate(), 113) -- Magic numbers FTW...
+SELECT CONVERT(varchar, getdate(), 113) as CurrentDate -- Magic numbers FTW...
 
 ------------------------------------------------------------------------------------------
 -- Task 15. Write a SQL statement to create a table Users. Users should have username,	--
@@ -344,7 +344,7 @@ GROUP BY t.Name) c)
 -- Task 28. Write a SQL query to display the number of managers from each town.			--
 ------------------------------------------------------------------------------------------
 
-SELECT t.Name, COUNT(DISTINCT(e.ManagerID)) FROM Employees e
+SELECT t.Name, COUNT(DISTINCT(e.ManagerID)) AS ManagerName FROM Employees e
 INNER JOIN Employees m ON m.EmployeeID = e.ManagerID
 INNER JOIN Addresses a ON m.AddressID = a.AddressID
 INNER JOIN Towns t ON a.TownID = t.TownID
