@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="File.cs" />
+    <Compile Include="Folder.cs" />
     <Compile Include="Task03FileStructure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

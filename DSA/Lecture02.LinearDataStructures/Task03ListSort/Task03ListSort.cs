@@ -3,6 +3,9 @@
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Write a program that reads a sequence of integers (List<int>) ending with an empty line and sorts them in an increasing order.
+    /// </summary>
     public class Task03ListSort
     {
         public static void Main()

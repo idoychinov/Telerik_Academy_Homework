@@ -4,6 +4,10 @@
     using System.Collections.Generic;
     using Utilities;
 
+    /// <summary>
+    /// Write a program that removes from given sequence all numbers that occur odd number of times. Example:
+    /// {4, 2, 2, 5, 2, 3, 2, 3, 1, 5, 2}  {5, 3, 3, 5}
+    /// </summary>
     public class Task06RemoveOddOqurrences
     {
         // There are several better ways to do this with dictionary or hashset + array but i tried to find good solution using only List.

@@ -3,6 +3,10 @@
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// * The majorant of an array of size N is a value that occurs in it at least N/2 + 1 times. 
+    /// Write a program to find the majorant of given array (if exists). Example: {2, 2, 3, 3, 2, 3, 4, 3, 3}  3
+    /// </summary>
     public class Task08Majorant
     {
         // Not the best posible solution since it would have been easier with hash set or dictionary, but i wanted to do it with the current material.

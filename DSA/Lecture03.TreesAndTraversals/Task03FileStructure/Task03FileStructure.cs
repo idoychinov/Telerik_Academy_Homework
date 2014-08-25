@@ -1,6 +1,7 @@
 ﻿namespace Task03FileStructure
 {
     using System;
+    using System.IO;
 
     /// <summary>
     /// Define classes File { string name, int size } and Folder { string name, File[] files, Folder[] childFolders }
@@ -12,6 +13,32 @@
     {
         static void Main()
         {
+            const string rootDirectory = @"C:\Windows";
+            TraverseDirectories(rootDirectory);
+            //Directory.GetDirectories();
+        }
+
+        private static void TraverseDirectories(string rootDirectory)
+        {
+            try
+            {
+                var directories = Directory.EnumerateDirectories(rootDirectory);
+
+                foreach (var currentDirectory in directories)
+                {
+                    TraverseDirectories(currentDirectory);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            var files = Directory.EnumerateFiles(rootDirectory);
+            foreach (string currentFile in files)
+            {
+                Console.WriteLine(currentFile);
+            }
         }
     }
 }

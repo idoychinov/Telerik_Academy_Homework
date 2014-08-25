@@ -2,6 +2,9 @@
 {
     using System;
 
+    /// <summary>
+    /// Implement the ADT stack as auto-resizable array. Resize the capacity on demand (when no space is available to add / insert a new element).
+    /// </summary>
     public class Task12Stack
     {
         public static void Main()

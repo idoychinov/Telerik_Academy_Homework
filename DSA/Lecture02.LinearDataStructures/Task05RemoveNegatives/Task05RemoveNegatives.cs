@@ -3,6 +3,9 @@
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Write a program that removes from given sequence all negative numbers
+    /// </summary>
     public class Task05RemoveNegatives
     {
         public static void Main()
@@ -25,13 +28,10 @@
             {
                 if (sequence[i] > 0)
                 {
-                    onlyPositives.Add(sequence[i]);
+                    var current = sequence[i];
+                    onlyPositives.Add(current);
+                    Console.WriteLine(current);
                 }
-            }
-
-            foreach (var item in onlyPositives)
-            {
-                Console.WriteLine(item);
             }
         }
     }

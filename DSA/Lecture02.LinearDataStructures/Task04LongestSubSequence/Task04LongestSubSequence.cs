@@ -4,6 +4,10 @@
     using System.Collections.Generic;
     using Utilities;
 
+    /// <summary>
+    /// Write a method that finds the longest subsequence of equal numbers in given List<int> and returns the result as new List<int>. 
+    /// Write a program to test whether the method works correctly.
+    /// </summary>
     public class Task04LongestSubSequence
     {
         public static void Main()

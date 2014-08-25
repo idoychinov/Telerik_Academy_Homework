@@ -2,6 +2,9 @@
 {
     using System;
 
+    /// <summary>
+    /// Implement the ADT queue as dynamic linked list. Use generics (LinkedQueue<T>) to allow storing different data types in the queue.
+    /// </summary>
     public class Task13Queue
     {
         public static void Main()
