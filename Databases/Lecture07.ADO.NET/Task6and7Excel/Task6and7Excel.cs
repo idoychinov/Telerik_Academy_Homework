@@ -8,9 +8,9 @@
     /// Write a program that reads your MS Excel file through the OLE DB data provider and displays the name and score row by row.
     /// Task 7. Implement appending new rows to the Excel file.
     /// </summary>
-    class Task6and7ReadExcel
+    public class Task6and7ReadExcel
     {
-        static void Main()
+        public static void Main()
         {
             OleDbConnection excelConnection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;" +
                 @"Data Source=..\..\Scores.xlsx; Extended Properties = Excel 12.0");
