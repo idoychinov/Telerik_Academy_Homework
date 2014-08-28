@@ -11,28 +11,28 @@
     {
         static void Main()
         {
-            const string rootDirectory = @"C:\Windows";
+            const string rootFolder = @"C:\Windows";
             const string filesToSearch = @"*.exe";
-            TraverseDirectories(rootDirectory, filesToSearch);
+            TraverseFolders(rootFolder, filesToSearch);
         }
 
-        private static void TraverseDirectories(string rootDirectory, string filesToSearch)
+        private static void TraverseFolders(string rootFolder, string filesToSearch)
         {
             try
             {
-                var directories = Directory.EnumerateDirectories(rootDirectory);
+                var folders = Directory.EnumerateDirectories(rootFolder);
 
-                foreach (var currentDirectory in directories)
+                foreach (var currentDirectory in folders)
                 {
-                    TraverseDirectories(currentDirectory, filesToSearch);
+                    TraverseFolders(currentDirectory, filesToSearch);
                 }
             }
-            catch (Exception e)
+            catch (UnauthorizedAccessException e)
             {
                 Console.WriteLine(e.Message);
             }
 
-            var files = Directory.EnumerateFiles(rootDirectory, filesToSearch);
+            var files = Directory.EnumerateFiles(rootFolder, filesToSearch);
             foreach (string currentFile in files)
             {
                 Console.WriteLine(currentFile);

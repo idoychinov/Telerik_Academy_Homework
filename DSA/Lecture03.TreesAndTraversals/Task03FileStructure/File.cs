@@ -6,9 +6,9 @@
     {
         public string Name { get; set; }
 
-        public int Size { get; set; }
+        public long Size { get; set; }
 
-        public File(string name, int size)
+        public File(string name, long size)
         {
             this.Name = name;
             this.Size = size;
