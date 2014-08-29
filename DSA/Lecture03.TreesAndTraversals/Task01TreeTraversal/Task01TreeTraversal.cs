@@ -25,13 +25,27 @@
     {
         static void Main()
         {
+            const int SumForPaths = 9;
+            const int SumForSubtrees = 6;
+
             // var tree = ParseTreeFromConsole();
             var tree = ParseTreeFromList();
             Console.WriteLine("\nTree root is: {0}", tree.Root.Value);
             Console.WriteLine("\nTree leaf nodes are: {0}", tree.GetAllLeafs());
             Console.WriteLine("\nTree middle nodes are: {0}", tree.GetAllMiddleNodes());
-            Console.WriteLine("\nLongest path: {0}", tree.GetLongestPath());
+            Console.WriteLine("\nLongest path: {0}\n", tree.GetLongestPath());
+            var allPathsWithSumS = tree.GetAllPathsWithGivenSum(SumForPaths);
+            foreach(var path in allPathsWithSumS)
+            {
+                Console.WriteLine("Path in tree with sum {0}: {1}",SumForPaths, path);
+            }
+            Console.WriteLine();
 
+            var allSubTreesWithSumS = tree.GetAllSubTreesWithGivenSum(SumForSubtrees);
+            foreach(var path in allSubTreesWithSumS)
+            {
+                Console.WriteLine("Subtree with sum {0}: {1}",SumForSubtrees, path);
+            }
         }
  
         private static Tree<int> ParseTreeFromConsole()
