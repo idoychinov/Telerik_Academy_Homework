@@ -28,6 +28,8 @@
                     FindAllSales("BC", new DateTime(1997, 5, 1), new DateTime(1998, 4, 15));
                     ConcurrentChanges();
                     NewOrder();
+                    CreateStoredProcedure();
+                    UseStoredProcedure();
                 }
             }
             catch (Exception e)
@@ -133,11 +135,47 @@
                         Quantity = 5
 
                     };
-                db.Order_Details.AddRange(new[] {orderDetail1,orderDetail2});
+                db.Order_Details.AddRange(new[] { orderDetail1, orderDetail2 });
                 db.SaveChanges();
                 transaction.Complete();
                 Console.WriteLine("Transaction completed successfully with ID {0}", order.OrderID);
             }
+        }
+
+        /// <summary>
+        /// Task 10. Create a stored procedures in the Northwind database for finding the total incomes for given supplier 
+        /// name and period (start date, end date). Implement a C# method that calls the stored procedure and returns the retuned record set.
+        /// </summary>
+        private static void CreateStoredProcedure()
+        {
+            const string procedureCreateQuery =
+                @"CREATE PROC [dbo].usp_TotalIncomeOfSupplier @name NVARCHAR(100), @period_start_date DATETIME, 
+                @period_end_date DATETIME AS
+                RETURN SELECT SUM(od.UnitPrice) as [Total Income]
+                FROM Suppliers s JOIN Products p ON p.SupplierID = s.SupplierID
+                JOIN [Order Details] od ON od.ProductID = p.ProductID JOIN Orders o ON o.OrderID = od.OrderID
+                WHERE s.CompanyName = @name AND o.OrderDate BETWEEN @period_start_date AND @period_end_date";
+            db.Database.ExecuteSqlCommand("USE Northwind");
+            try
+            {
+                db.Database.ExecuteSqlCommand(procedureCreateQuery);
+                Console.WriteLine("Procedure created successfully");
+            }
+            catch
+            {
+                Console.WriteLine("Procedure exists in database");
+            }
+        }
+
+        /// <summary>
+        /// Task 10 using the created stored procedure
+        /// You need to update the model from databese before calling the procedure.
+        /// </summary>
+        private static void UseStoredProcedure()
+        {
+            var supplerName = "Tokyo Traders";
+            var supplerIncome = db.usp_TotalIncomeOfSupplier(supplerName, new DateTime(1997, 1, 1), new DateTime(1998, 7, 1)).First();
+            Console.WriteLine("Income of suppler {0} is {1}", supplerName, supplerIncome);
         }
 
         private static void PrintResults(IList resultSet)

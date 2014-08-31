@@ -61,7 +61,19 @@
       <DependentUpon>NorthwindDB.tt</DependentUpon>
     </Compile>
     <Compile Include="CustomersDao.cs" />
+    <Compile Include="CustOrderHist_Result.cs">
+      <DependentUpon>NorthwindDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustOrdersDetail_Result.cs">
+      <DependentUpon>NorthwindDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustOrdersOrders_Result.cs">
+      <DependentUpon>NorthwindDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Employee.cs">
+      <DependentUpon>NorthwindDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee_Sales_by_Country_Result.cs">
       <DependentUpon>NorthwindDB.tt</DependentUpon>
     </Compile>
     <Compile Include="NorthwindApplication.cs" />
@@ -93,10 +105,19 @@
     <Compile Include="Region.cs">
       <DependentUpon>NorthwindDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="SalesByCategory_Result.cs">
+      <DependentUpon>NorthwindDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sales_by_Year_Result.cs">
+      <DependentUpon>NorthwindDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Shipper.cs">
       <DependentUpon>NorthwindDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Supplier.cs">
+      <DependentUpon>NorthwindDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ten_Most_Expensive_Products_Result.cs">
       <DependentUpon>NorthwindDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Territory.cs">
