@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>1a560392-b898-4ec9-9245-c55a86a11d76</ProjectGuid>
+    <ProjectGuid>{12B00D38-2020-41DA-B538-F24294FF199B}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Task3WordsSet</RootNamespace>
@@ -41,8 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Task3WordsSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Trie.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
