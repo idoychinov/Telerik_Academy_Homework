@@ -43,6 +43,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,15 +51,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AtmSystemContext.cs" />
+    <Compile Include="Context\AtmSystemContext.cs" />
+    <Compile Include="Repository\AtmSystemDatabase.cs" />
     <Compile Include="AtmTransactionApplication.cs" />
-    <Compile Include="CardAccounts.cs" />
+    <Compile Include="Model\CardAccount.cs" />
+    <Compile Include="Helpers\ConsoleUtilities.cs" />
+    <Compile Include="Helpers\InputAction.cs" />
+    <Compile Include="Helpers\InputActionWithParameters.cs" />
+    <Compile Include="Helpers\InputActionWithoutParameters.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Model\TransactionsHistory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
