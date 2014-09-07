@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.csproj", "{3445A327-E3B3-4C7B-BB03-E9A5E84F71F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyStoreDatabaseSeedApplication", "ToyStoreDatabaseSeedApplication\ToyStoreDatabaseSeedApplication.csproj", "{784DA570-65DA-4EEA-8999-D95701CE6B74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3445A327-E3B3-4C7B-BB03-E9A5E84F71F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3445A327-E3B3-4C7B-BB03-E9A5E84F71F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3445A327-E3B3-4C7B-BB03-E9A5E84F71F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{784DA570-65DA-4EEA-8999-D95701CE6B74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{784DA570-65DA-4EEA-8999-D95701CE6B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{784DA570-65DA-4EEA-8999-D95701CE6B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{784DA570-65DA-4EEA-8999-D95701CE6B74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
