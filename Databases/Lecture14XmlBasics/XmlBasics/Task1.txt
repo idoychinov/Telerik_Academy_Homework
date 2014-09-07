@@ -1,0 +1,4 @@
+The Extensible Markup Language (XML) is markup language hat defines a set of rules for encoding documents
+in a format that is both human-readable and machine-readable.
+It has many applications such as in program API, storing formated data with meta data. XML documents must be well-formated and also
+can be validated, if the document contains reference to Schema that describes it's structure.

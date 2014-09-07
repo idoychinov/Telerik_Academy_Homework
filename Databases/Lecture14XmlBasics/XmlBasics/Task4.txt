@@ -1,0 +1,8 @@
+Uniform resource identifier (URI) is a string of characters used to identify a name of a resource. 
+Such identification enables interaction with representations of the resource over a network, typically the World Wide Web, using specific protocols. 
+
+A URL is a URI that, in addition to identifying a web resource, specifies the means of acting upon or obtaining the representation, 
+specifying both its primary access mechanism and network location.
+
+A URN is a URI that identifies a resource by name in a particular namespace. 
+A URN can be used to talk about a resource without implying its location or how to access it.

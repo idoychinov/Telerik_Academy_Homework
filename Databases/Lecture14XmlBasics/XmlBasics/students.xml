@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<students name="Students list" xmlns:students ="urn:students">
+  <student>
+    <name>Haralampi</name>
+    <sex>Twice a day</sex>
+    <birthDate>classified</birthDate>
+    <phone>+357 888 111111</phone>
+    <email>TheBigOne@haralampy.com</email>
+    <course>Quantum Physics</course>
+    <speciality>String Theory</speciality>
+    <facultyNumber>11111111</facultyNumber>
+    <exams>
+      <exam>
+        <name>Quantum Chromodynamics</name>
+        <tutor>Albert</tutor>
+        <score>110</score>
+      </exam>
+      <exam>
+        <name>Condensed matter physics</name>
+        <tutor>Stephen</tutor>
+        <score>99</score>
+      </exam>
+    </exams>
+    <enrollment date="12.12.2010">
+      <examScore>95</examScore>
+    </enrollment>
+    <teacherEndorsements>
+      <endorsement>
+        <date>10.10.2011</date>
+        <teacher>Niel</teacher>
+      </endorsement>
+    </teacherEndorsements>
+  </student>
+</students>

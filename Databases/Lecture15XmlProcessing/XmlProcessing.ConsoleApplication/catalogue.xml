@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<catalogue name ="Albums catalogue">
+  <album>
+    <name>The Dark Side of the Moon</name>
+    <artist>Pink Floyd</artist>
+    <year>1973</year>
+    <producer>EMI</producer>
+    <price>18.23</price>
+    <songs>
+      <song>
+        <title>Speak to Me / Breathe</title>
+        <duration>3:38</duration>
+      </song>
+      <song>
+        <title>On the Run</title>
+        <duration>3:30</duration>
+      </song>
+      <song>
+        <title>Money</title>
+        <duration>6:23</duration>
+      </song>
+      <song>
+        <title>Brain Damage</title>
+        <duration>3:48</duration>
+      </song>
+    </songs>
+  </album>
+  <album>
+    <name>Revolver</name>
+    <artist>The Beatles</artist>
+    <year>1966</year>
+    <producer>Apple Records</producer>
+    <price>27.31</price>
+    <songs>
+      <song>
+        <title>Taxman</title>
+        <duration>2:41</duration>
+      </song>
+      <song>
+        <title>Love you to</title>
+        <duration>3:00</duration>
+      </song>
+      <song>
+        <title>Good day Sunshine</title>
+        <duration>2:08</duration>
+      </song>
+    </songs>
+  </album>
+  <album>
+    <name>The Wall</name>
+    <artist>Pink Floyd</artist>
+    <year>1979</year>
+    <producer>EMI</producer>
+    <price>30.50</price>
+    <songs>
+      <song>
+        <title>Vera</title>
+        <duration>1:36</duration>
+      </song>
+      <song>
+        <title>Mother</title>
+        <duration>5:34</duration>
+      </song>
+      <song>
+        <title>Another Brick in the Wall</title>
+        <duration>7.12</duration>
+      </song>
+    </songs>
+  </album>
+  <album>
+    <name>Nevermind</name>
+    <artist>Nirvana</artist>
+    <year>1991</year>
+    <producer>DGC Records</producer>
+    <price>22.20</price>
+    <songs>
+      <song>
+        <title>SMells Like Teen Spirit</title>
+        <duration>5:01</duration>
+      </song>
+      <song>
+        <title>Breed</title>
+        <duration>3:04</duration>
+      </song>
+      <song>
+        <title>Something in the Way</title>
+        <duration>3:50</duration>
+      </song>
+    </songs>
+  </album>
+  <album>
+    <name>The White Album</name>
+    <artist>The Beatles</artist>
+    <year>1968</year>
+    <producer>Apple Records</producer>
+    <price>32.20</price>
+    <songs>
+      <song>
+        <title>Back in the U.S.S.R.</title>
+        <duration>2:43</duration>
+      </song>
+      <song>
+        <title>Glass onion</title>
+        <duration>2:18</duration>
+      </song>
+      <song>
+        <title>I will</title>
+        <duration>1:46</duration>
+      </song>
+      <song>
+        <title>Rocky Raccoon</title>
+        <duration>3:33</duration>
+      </song>
+      <song>
+        <title>Helter Skelter</title>
+        <duration>4:29</duration>
+      </song>
+    </songs>
+  </album>
+  <album>
+    <name>Let it Bleed</name>
+    <artist>The Rolling Stones</artist>
+    <year>1969</year>
+    <producer></producer>
+    <price>35.12</price>
+    <songs>
+      <song>
+        <title>Gimme Shelter</title>
+        <duration>4:32</duration>
+      </song>
+    </songs>
+  </album>
+  <album>
+    <name>Exile on Main St.</name>
+    <artist>The Rolling Stones</artist>
+    <year>1972</year>
+    <producer>Virgin Records</producer>
+    <price>19.22</price>
+    <songs>
+      <song>
+        <title>Rocks Off</title>
+        <duration>4:20</duration>
+      </song>
+      <song>
+        <title>Shake your hips</title>
+        <duration>3:00</duration>
+      </song>
+      <song>
+        <title>Sweet Virginia</title>
+        <duration>4:26</duration>
+      </song>
+      <song>
+        <title>Shine a Light</title>
+        <duration>3:49</duration>
+      </song>
+    </songs>
+  </album>
+  <album>
+    <name>Steel Wheels</name>
+    <artist>The Rolling Stones</artist>
+    <year>1989</year>
+    <producer>Polydor Records</producer>
+    <price>27.17</price>
+    <songs>
+      <song>
+        <title>Rock and a Hard Place</title>
+        <duration>5:25</duration>
+      </song>
+      <song>
+        <title>Break the Spell</title>
+        <duration>3:08</duration>
+      </song>
+    </songs>
+  </album>
+  <album>
+    <name>Wish You Were Here</name>
+    <artist>Pink Floyd</artist>
+    <year>1975</year>
+    <producer>EMI</producer>
+    <price>17.42</price>
+    <songs>
+      <song>
+        <title>Welcome to the Machine</title>
+        <duration>7:23</duration>
+      </song>
+      <song>
+        <title>Wish you were Here</title>
+        <duration>5:39</duration>
+      </song>
+    </songs>
+  </album>
+</catalogue>

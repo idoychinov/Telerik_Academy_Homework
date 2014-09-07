@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<albums>
+    <album>
+        <name>The Dark Side of the Moon</name>
+        <author>Pink Floyd</author>
+    </album>
+    <album>
+        <name>Revolver</name>
+        <author>The Beatles</author>
+    </album>
+    <album>
+        <name>The Wall</name>
+        <author>Pink Floyd</author>
+    </album>
+    <album>
+        <name>Nevermind</name>
+        <author>Nirvana</author>
+    </album>
+    <album>
+        <name>The White Album</name>
+        <author>The Beatles</author>
+    </album>
+    <album>
+        <name>Let it Bleed</name>
+        <author>The Rolling Stones</author>
+    </album>
+    <album>
+        <name>Exile on Main St.</name>
+        <author>The Rolling Stones</author>
+    </album>
+    <album>
+        <name>Steel Wheels</name>
+        <author>The Rolling Stones</author>
+    </album>
+    <album>
+        <name>Wish You Were Here</name>
+        <author>Pink Floyd</author>
+    </album>
+</albums>
