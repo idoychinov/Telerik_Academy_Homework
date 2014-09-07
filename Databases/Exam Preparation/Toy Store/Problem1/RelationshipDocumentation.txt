@@ -1,0 +1,3 @@
+One to many relationship between Manifacturers and Toys (each manifacturer can have many related toys)
+One to many relationship between AgeRange and Toys (each age range can have many related toys)
+Many to many relationship between Toys and Categoryes via the cross-reference table ToyCategories (each toy can have many categories and each category can have many toys)
