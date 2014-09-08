@@ -1,0 +1,26 @@
+Connection string for "Company" database: in projects  CompanyDataGenerator.ConsoleApplication and CompanyDataGenerator.DataLayer
+<add name="CompanyEntities" connectionString="metadata=res://*/CompanyContext.csdl|res://*/CompanyContext.ssdl|res://*/CompanyContext.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.;initial catalog=Company;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+
+Connection string for "Cars" database: in Cars.ConsoleApplication and Cars.Data app.config files there are 3 connection strings for SQLSERVER, SQLEXPRESS and LocalDB. 
+I've set up the application to use one of them by users choice.
+If you need to change them you can search for
+<connectionStrings>
+    <add name="CarsDb" connectionString="data source=(LocalDb)\v11.0;initial catalog=CarsDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" providerName="System.Data.SqlClient" />
+    <add name="CarsDbSqlServer" connectionString="data source=.;initial catalog=CarsDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" providerName="System.Data.SqlClient" />
+    <add name="CarsDbSqlExpress" connectionString="data source=.\SQLExpress;initial catalog=CarsDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" providerName="System.Data.SqlClient" />
+</connectionStrings>
+  
+Relationships for "Company" database: 
+	Departments : Employees - one to many
+	Reports : Employees - one to many
+	Projects : Employees - many to many
+	Employees : Managers(Employees table again) - one to one
+
+Relationships for "Cars" database: (first-table : second-table - type of relationship)
+	Dealers : Cars - one to many relationship
+	Dealers : Cities - many to many relationship
+	Manufacturers : Cars - one to many relationship
+
+Query files: 
+Solution\Company  for SQL Queries
+Solution\Cars\Input`for Json input
