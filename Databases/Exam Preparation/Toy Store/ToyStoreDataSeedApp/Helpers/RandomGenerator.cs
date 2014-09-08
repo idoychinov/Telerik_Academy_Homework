@@ -4,7 +4,7 @@
 
     using Contracts;
 
-    class RandomGenerator : IRandomGenerator
+    public class RandomGenerator : IRandomGenerator
     {
         private const string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         private static IRandomGenerator randomGenerator;
@@ -19,7 +19,7 @@
         {
             get
             {
-                if(randomGenerator == null)
+                if (randomGenerator == null)
                 {
                     randomGenerator = new RandomGenerator();
                 }
@@ -27,9 +27,14 @@
             }
         }
 
+        public int GentRandomNumber(int max)
+        {
+            return this.random.Next(max + 1);
+        }
+
         public int GentRandomNumber(int min, int max)
         {
-            return this.random.Next(min,max+1);
+            return this.random.Next(min, max + 1);
         }
 
         public char GetRandomCharacter(string posibleValues)
@@ -52,8 +57,31 @@
 
         public string GetRandomString(int minLength, int maxLength)
         {
-            var length = this.random.Next(minLength,maxLength);
+            var length = this.random.Next(minLength, maxLength);
             return GetRandomString(length);
+        }
+
+        public double GetRandomDouble(double min, double max)
+        {
+            return min + (max - min) * random.NextDouble();
+        }
+
+        public decimal GetRandomDeciaml(decimal min, decimal max)
+        {
+            return (decimal)GetRandomDouble((double)min, (double)max);
+        }
+
+        public DateTime GetRandomDate(DateTime min, DateTime max)
+        {
+            var days = (max - min).Days;
+            return min.AddDays(this.GentRandomNumber(days));
+        }
+
+        public DateTime GetRandomDateTime(DateTime min, DateTime max)
+        {
+            var date = GetRandomDate(min, max);
+            date.AddSeconds(this.GetRandomDouble(0, 86400)); // 86400 seconds == 1 day
+            return date;
         }
     }
 }

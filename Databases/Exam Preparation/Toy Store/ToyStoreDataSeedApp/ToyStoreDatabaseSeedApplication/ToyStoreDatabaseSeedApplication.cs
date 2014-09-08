@@ -10,22 +10,30 @@
 
         private static ILogger logger;
         private static IInputManager input;
+        private static IRandomGenerator random;
+
 
         public static void Main()
         {
             logger = new ConsoleLogger();
             input = new ConsoleInputManager();
+            random = RandomGenerator.Instance;
+
+
             string connectionName = string.Empty; // Change to object DbContext or DbRepo
-            if (!ConnectionChoise(connectionName))
+            if (connectionName == null)
             {
                 logger.Message("Goodbye!");
                 return;
             }
 
+            // db.Configuration.AutoDetectChangesEnabled = false
+            // random generation
+            // db.Configuration.AutoDetectChangesEnabled = true
 
         }
 
-        public static bool ConnectionChoise(string connectionName)
+        public static string ConnectionChoise()
         {
             const string localDbConnectionName = "ToyStore";
             const string SqlServerConnectionName = "ToyStoreSqlServer";
@@ -34,25 +42,26 @@
             do
             {
                 logger.MenuMessage("Select database type\nPress 1 for SQL Server\nPress 2 for SQL Express\nPress 3 for LocalDb");
-                var menuChoise = input.MenuChoise();
-                switch (menuChoise)
+                var key = Console.ReadKey(true).Key;
+                switch (key)
                 {
-                    case 1:
-                        connectionName = SqlServerConnectionName;
-                        return true;
-                    case 2:
-                        connectionName = SqlExpressConnectionName;
-                        return true;
-                    case 3:
-                        connectionName = localDbConnectionName;
-                        break;
-                    case int.MaxValue:
-                        return true;
+                    case ConsoleKey.D1:
+                    case ConsoleKey.NumPad1:
+                        return SqlServerConnectionName;
+                    case ConsoleKey.D2:
+                    case ConsoleKey.NumPad2:
+                        return SqlExpressConnectionName;
+                    case ConsoleKey.D3:
+                    case ConsoleKey.NumPad3:
+                        return localDbConnectionName;
+                    case ConsoleKey.Escape:
+                        return null;
                     default:
+                        logger.ErrorMessage("Incorrect input. Please try again.");
                         break;
                 }
             } while (active);
-            return false;
+            return null;
         }
     }
 }
