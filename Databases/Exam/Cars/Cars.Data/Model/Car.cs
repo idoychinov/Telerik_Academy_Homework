@@ -11,21 +11,17 @@ namespace Cars.Data.Model
     {
         public int Id { get; set; }
 
-        [JsonProperty("Model")]
         [Required]
         [MaxLength(20)]
         [Column(TypeName = "nvarchar")]
         public string Model { get; set; }
 
-        [JsonProperty("TransmissionType")]
         [Required]
         public TransmitionTypes TransmitionType { get; set; }
 
-        [JsonProperty("Year")]
         [Required]
         public int Year { get; set; }
 
-        [JsonProperty("Price")]
         [Required]
         public decimal Price { get; set; }
 
@@ -35,13 +31,9 @@ namespace Cars.Data.Model
         public virtual Manufacturer Manufacturer { get; set; }
 
 
-        [JsonProperty("ManufacturerName")]
-        public string ManufacturerName { get; set; }
-
         [Required]
         public int DealerId { get; set; }
 
-        [JsonProperty("Dealer")]
         public virtual Dealer Dealer { get; set; }
 
 

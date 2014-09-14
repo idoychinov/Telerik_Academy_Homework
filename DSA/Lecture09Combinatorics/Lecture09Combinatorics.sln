@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task01BinaryPasswords", "Task01BinaryPasswords\Task01BinaryPasswords.csproj", "{6CE54546-914C-4632-A96D-4B933B52E31A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task02ColorBunnies", "Task02ColorBunnies\Task02ColorBunnies.csproj", "{C3179466-76FA-42E9-8D55-43FBFC65D8BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6CE54546-914C-4632-A96D-4B933B52E31A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CE54546-914C-4632-A96D-4B933B52E31A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CE54546-914C-4632-A96D-4B933B52E31A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CE54546-914C-4632-A96D-4B933B52E31A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3179466-76FA-42E9-8D55-43FBFC65D8BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3179466-76FA-42E9-8D55-43FBFC65D8BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3179466-76FA-42E9-8D55-43FBFC65D8BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3179466-76FA-42E9-8D55-43FBFC65D8BF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

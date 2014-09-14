@@ -15,7 +15,6 @@
 
         public int Id { get; set; }
 
-        [JsonProperty("City")]
         [Required]
         [MaxLength(10)]
         [Column(TypeName = "nvarchar")]

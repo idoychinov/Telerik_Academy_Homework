@@ -37,11 +37,12 @@
         private void LoadDataFromFile(string file)
         {
             var data = File.ReadAllText(file);
-            var listOfCars = JsonConvert.DeserializeObject<List<Car>>(data);
-            var manufacurerNames = listOfCars.Select(x => x.ManufacturerName).Distinct();
+            var listOfCars = JsonConvert.DeserializeObject<IEnumerable<Car>>(data);
+            var cars = listOfCars.ToList();
+            /*//var manufacurerNames = listOfCars.Select(x => x.ManufacturerName).Distinct();
             var cityNames = listOfCars.Select(x => x.Dealer.City).Distinct();
 
-            var distinctManufacturernames = manufacurerNames.Where(x => !db.Manifacturers.Select(m => m.Name).Contains(x));
+           // var distinctManufacturernames = manufacurerNames.Where(x => !db.Manifacturers.Select(m => m.Name).Contains(x));
             foreach(var manufacturer in distinctManufacturernames)
             {
                 db.Manifacturers.Add(new Manufacturer(){Name = manufacturer});
@@ -61,6 +62,7 @@
                 db.Cars.Add(car);
             }
             db.SaveChanges();
+            */
         }
     }
 }

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1FriendsOfPesho", "Task1FriendsOfPesho\Task1FriendsOfPesho.csproj", "{BE7EE784-3936-4F40-985C-63E5A43101C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task2Salaries", "Task2Salaries\Task2Salaries.csproj", "{929BD0BC-D6D1-4B8C-83FD-CBFC7CCC2610}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task3CableTv", "Task3CableTv\Task3CableTv.csproj", "{60035948-F8DE-421E-A8A1-B4900927AB76}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE7EE784-3936-4F40-985C-63E5A43101C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE7EE784-3936-4F40-985C-63E5A43101C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE7EE784-3936-4F40-985C-63E5A43101C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE7EE784-3936-4F40-985C-63E5A43101C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{929BD0BC-D6D1-4B8C-83FD-CBFC7CCC2610}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{929BD0BC-D6D1-4B8C-83FD-CBFC7CCC2610}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{929BD0BC-D6D1-4B8C-83FD-CBFC7CCC2610}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{929BD0BC-D6D1-4B8C-83FD-CBFC7CCC2610}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60035948-F8DE-421E-A8A1-B4900927AB76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60035948-F8DE-421E-A8A1-B4900927AB76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60035948-F8DE-421E-A8A1-B4900927AB76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60035948-F8DE-421E-A8A1-B4900927AB76}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
