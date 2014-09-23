@@ -42,10 +42,12 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.Activities" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Extensions" />
@@ -95,11 +97,19 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="Telerik.JustMock">
+      <HintPath>..\packages\JustMock.2014.2.811.1\lib\Net35\Telerik.JustMock.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\FakeRepository.cs" />
+    <Compile Include="Integration\InMemoryHttpServer.cs" />
+    <Compile Include="Integration\IntegrationTests.cs" />
+    <Compile Include="Integration\TestBugDependencyRespolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
-    <Compile Include="Controllers\ValuesControllerTest.cs" />
+    <Compile Include="Controllers\BugsControllerTests.cs" />
+    <Compile Include="Repositories\RepositoriesTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -108,6 +118,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BugLogger.Data\BugLogger.Data.csproj">
+      <Project>{E8E6825E-06D5-4C0F-A69D-E6D4825B6C44}</Project>
+      <Name>BugLogger.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BugLogger.Models\BugLogger.Models.csproj">
+      <Project>{3A96CE42-CB6C-45C7-A7AF-4087B9C7BF20}</Project>
+      <Name>BugLogger.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BugLogger.RestService\BugLogger.RestService.csproj">
       <Project>{D1F003BE-8364-4D07-8715-B48178546DA3}</Project>
       <Name>BugLogger.RestService</Name>
