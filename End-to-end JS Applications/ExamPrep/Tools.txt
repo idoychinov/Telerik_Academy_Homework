@@ -1,0 +1,22 @@
+1.NodeInspector for debuging
+
+
+2.MongoDB
+
+start:
+mongod.exe --dbpath "mongopath\data\db"
+
+
+start as a service:
+mongod --dbpath=""mongopath" --logpath=""mongopath\log.txt" --install
+
+
+execute services.msc and start service
+
+3.MongoVUE
+
+4.nodemon
+
+5. WS -> settings -> JavaScript - Libraries  add mongoose and other modules for intelisence
+
+6.
