@@ -1,0 +1,12 @@
+﻿extends ../shared/layout
+block main-content
+    form(name="profileForm" method="post")
+        label(for="username") Username
+        input#username.form-control(type="text", placeholder="First name", name="username")
+        br
+        label(for="password") Password
+        input#password.form-control(type="password", placeholder="Password", name="password")
+        br
+        br
+        input.btn.btn-primary(type="submit",id="update-user")
+        a.btn.btn-default(href="/") Cancel

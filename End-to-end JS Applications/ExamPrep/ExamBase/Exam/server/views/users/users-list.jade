@@ -1,0 +1,21 @@
+﻿extends ../shared/layout
+block main-content
+    table.table.table-bordered.table-hover
+        thead
+            tr
+                th Username
+                th Points
+                th Delete
+                th Update
+        tbody
+            each user in users
+                tr
+                    td 
+                        a(href="/users/#{user._id}") #{user.username}
+                    td #{user.points}
+                    td
+                        button(id="delete-user" onclick="deleteUser('#{user._id}')").btn.btn-primary Delete
+                    td
+                        a(href="/users/#{user._id}") Update
+block page-scripts
+    script(src="js/users.js")

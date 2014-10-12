@@ -149,3 +149,9 @@ $RECYCLE.BIN/
 
 # Mac crap
 .DS_Store
+
+# Node-modules
+node-modules/
+
+# Web Storm
+.idea
