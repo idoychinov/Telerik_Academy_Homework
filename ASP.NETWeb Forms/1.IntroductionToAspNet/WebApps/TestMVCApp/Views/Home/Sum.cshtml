@@ -1,0 +1,21 @@
+﻿@using TestMVCApp.Models;
+
+@model SumViewModel
+@{
+    ViewBag.Title = "Sum";
+}
+
+<h2>Sum</h2>
+
+@using (Html.BeginForm("Sum", "Home", FormMethod.Post))
+{ 
+    <label for="first">First Number</label>
+    @Html.EditorFor(x => x.First)
+    <label for="second">Second Number</label>
+    @Html.EditorFor(x => x.Second)
+    <br />
+    <label>Result:</label>
+    @Html.DisplayFor(x => x.Result)
+    <br/>
+    <input type="submit" value="Calculate" />  
+}
